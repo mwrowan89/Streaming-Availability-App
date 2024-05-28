@@ -1,3 +1,4 @@
+
 import './App.css';
 
 function App() {
@@ -9,10 +10,11 @@ function App() {
         </h1>
         <h5>Find where to stream your favorite TV Shows and Movies from 150+ Streaming platforms</h5>
         
-        <form className="form">
-        <input
+        <form className="form-container">
+
+        <input className="form"
         type="text"
-        placeholder="Enter a Title"
+        placeholder=" Enter a Title"
         />
         <button className="button"
         type="submit">

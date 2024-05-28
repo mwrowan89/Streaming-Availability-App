@@ -17,6 +17,28 @@
   font-size: 1.5rem;
   color: white;
 }
+.button {
+  background-color: red;
+  color: white;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  border-radius: 5px;
+  height: 30px;
+}
+.form {
+  border-radius: 5px;
+  height: 25px;
+  width: 15vw;
+  margin-right: 5px;
+}
+
+
+
+
+
+
+
+
 
 /* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
