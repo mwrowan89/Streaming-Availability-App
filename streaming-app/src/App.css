@@ -28,10 +28,16 @@
   margin-right: 5px;
 }
 .result-container{
-  background-color: rgba(255, 255, 255, 0.41);
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 20px;
   
+}
+.search-results{
+  background-color: rgba(255, 255, 255, 0.41);
+  padding: 20px;
+  margin: 10px;
+  max-width: 90vw;
 }
 
 

@@ -62,9 +62,9 @@ export default function App() {
               searchResults.map((result, index) => (
                 <div key={index} className="result-item">
                   <h3>{result.Title}</h3>
+                  <img src={result.Poster} alt={`${result.Title} poster`} />
                   <p>Year: {result.Year}</p>
                   <p>Type: {result.Type}</p>
-                  <img src={result.Poster} alt={`${result.Title} poster`} />
                 </div>
               ))
             ) : (
