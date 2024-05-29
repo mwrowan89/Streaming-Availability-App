@@ -8,6 +8,16 @@ export default function App() {
   const [titleDetails, setTitleDetails] = useState(null);
   const [streamingInfo, setStreamingInfo] = useState(null);
 
+  const getTitle = async () => {
+    try {
+      const result = await axios.get('api/search/', {
+        params: {title}
+      });
+      const {data} = result;
+      setSearchResults(data.results)
+    } catch (error) {}
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +28,7 @@ export default function App() {
         
         <form className="form-container"
         onSubmit={e => {
+          getTitle();
           e.preventDefault();
           e.stopPropagation();
         }}>
@@ -35,8 +46,10 @@ export default function App() {
         type="submit">
           Search
         </button>
-        
       </form>
+      <div className='search-results'>
+        
+      </div>
       </header>
       
     </div>
