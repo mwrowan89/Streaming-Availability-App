@@ -27,6 +27,12 @@
   width: 15vw;
   margin-right: 5px;
 }
+.result-container{
+  background-color: rgba(255, 255, 255, 0.41);
+  display: flex;
+  justify-content: space-around;
+  
+}
 
 
 
