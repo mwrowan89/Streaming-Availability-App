@@ -19,8 +19,8 @@ export default function App() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div>
+      <main className="App">
         <h1 className="Title">
           <span className="text-red">Streaming</span> Availabilty
         </h1>
@@ -48,9 +48,10 @@ export default function App() {
         </button>
       </form>
       <div className='search-results'>
-        
+
       </div>
-      </header>
+
+      </main>
       
     </div>
   );

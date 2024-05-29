@@ -1,16 +1,12 @@
-.App {
-  text-align: center;
-}
-.App-header {
-  background-color: black;
-}
+
 .text-red {
   color: red;
 }
-.App-header {
+.App {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
+  text-align: center;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;

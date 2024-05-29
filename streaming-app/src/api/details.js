@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const NEXT_PUBLIC_RAPIDAPI_KEY=' 81cb274c01msh4e27d6b4b0866cdp1a1d93jsn2aa43b86352d'
+const NEXT_PUBLIC_RAPIDAPI_KEY='81cb274c01msh4e27d6b4b0866cdp1a1d93jsn2aa43b86352d'
 
 
 export default async function handler(req, res) {
