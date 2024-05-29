@@ -50,7 +50,55 @@ export default function App() {
       <div className='search-results'>
 
       </div>
-
+      <div>
+      <h1> results</h1>
+      {searchResults && (
+				<div className="mt-10">
+					<div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+						{searchResults
+							.filter(item => item.imageurl && item.imageurl[0]) // Remove results with no images
+							.map(item => (
+								<div key={item.title} className="pt-6">
+									<div className="flow-root bg-light rounded-lg px-4 pb-8">
+										<div className="-mt-6">
+											<div className="flex items-center justify-center">
+												<span className="p-2">
+													{item.imageurl &&
+														item.imageurl[0] && (
+															<img
+																src={
+																	item
+																		.imageurl[0]
+																}
+																className="w-full h-full rounded-lg"
+																alt={item.title}
+															/>
+														)}
+												</span>
+											</div>
+											<div className="text-center justify-center items-center">
+												<h3 className="mt-4 text-lg font-bold w-full break-words overflow-x-auto text-primary tracking-tight">
+													{item.title}
+												</h3>
+												<span className="mt-2 text-sm text-secondary block">
+													{item.released} -{' '}
+													{item.genre[0]}
+												</span>
+												<p className="mt-4 text-sm leading-relaxed text-secondary block">
+													{item.synopsis}
+												</p>
+												<button className="mt-5 text-md  text-active">
+													Streaming Details &darr;
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							))}
+					</div>
+				</div>
+			)}
+      </div>
       </main>
       
     </div>
