@@ -56,7 +56,7 @@ export default function App() {
           </button>
         </form>
         <div className="search-results">
-          <h1>Search Results</h1>
+          <h1>Search Results for {title}</h1>
           <div className="result-container">
             {searchResults ? (
               searchResults.map((result, index) => (
