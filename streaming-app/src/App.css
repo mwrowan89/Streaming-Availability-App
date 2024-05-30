@@ -31,10 +31,9 @@
   display: grid;
   grid-template-columns: repeat(4,1fr);
   gap: 20px;
-  
+  background-color: rgba(255, 255, 255, 0.41);
 }
 .search-results{
-  background-color: rgba(255, 255, 255, 0.41);
   padding: 20px;
   margin: 10px;
   max-width: 90vw;
@@ -42,6 +41,7 @@
 img {
   height: 19vw;
   width: 12vw;
+  border-radius: 10px;
 }
 
 
