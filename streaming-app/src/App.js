@@ -63,11 +63,11 @@ export default function App() {
     setSearchResults(resultsWithStreamingInfo);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await getTitle();
-    await fetchStreamingInfoForResults();
-  };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   await getTitle();
+  //   await fetchStreamingInfoForResults();
+  // };
 
   return (
     <div>
@@ -84,6 +84,7 @@ export default function App() {
           className="form-container"
           onSubmit={(e) => {
             getTitle();
+            getStreamingInfo();
             console.log(searchResults);
             e.preventDefault();
             e.stopPropagation();
@@ -106,7 +107,9 @@ export default function App() {
         <div className="search-results">
           <h1>Search Results for {title}</h1>
           <div className="result-container">
-            {searchResults ? (
+            {loading ? (
+              <p>Loading...</p>
+            ) : searchResults ?  (
               searchResults.map((result, index) => (
                 <div key={index} className="result-item">
                   <h3>{result.Title}</h3>
