@@ -25,7 +25,7 @@ export default function App() {
     <div>
       <main className="App">
         <h1 className="Title">
-          <span className="text-red">Streaming</span> Availabilty
+          <span className="text-red">Stream</span> it
         </h1>
         <h5>
           Find where to stream your favorite TV Shows and Movies from 150+
