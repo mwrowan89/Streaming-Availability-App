@@ -21,6 +21,9 @@
   border-radius: 5px;
   height: 30px;
 }
+.Title {
+  text-decoration: underline;
+}
 .form {
   border-radius: 5px;
   height: 25px;
