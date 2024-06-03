@@ -5,8 +5,6 @@ import axios from "axios";
 export default function App() {
   const [title, setTitle] = useState(null);
   const [searchResults, setSearchResults] = useState(null);
-  const [titleDetails, setTitleDetails] = useState(null);
-  const [streamingInfo, setStreamingInfo] = useState(null);
   const [loading, setLoading] = useState(false);
 
 
@@ -53,21 +51,7 @@ export default function App() {
     }
   };
 
-  const fetchStreamingInfoForResults = async () => {
-    const resultsWithStreamingInfo = await Promise.all(
-      searchResults.map(async (result) => {
-        const streamingInfo = await getStreamingInfo(result.Title);
-        return { ...result, streamingInfo };
-      })
-    );
-    setSearchResults(resultsWithStreamingInfo);
-  };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   await getTitle();
-  //   await fetchStreamingInfoForResults();
-  // };
+ 
 
   return (
     <div>
@@ -97,7 +81,6 @@ export default function App() {
             onChange={(e) => {
               setTitle(e.target.value);
               setSearchResults(null);
-              setTitleDetails(null);
             }}
           />
           <button className="button" type="submit">
