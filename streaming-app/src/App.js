@@ -7,9 +7,12 @@ export default function App() {
   const [searchResults, setSearchResults] = useState(null);
   const [titleDetails, setTitleDetails] = useState(null);
   const [streamingInfo, setStreamingInfo] = useState(null);
+  const [loading, setLoading] = useState(false);
+
 
   const getTitle = async () => {
     try {
+      setLoading(true);
       const result = await axios.get("http://www.omdbapi.com/", {
         params: {
           s: title,
@@ -17,8 +20,53 @@ export default function App() {
         },
       });
       const { data } = result;
-      setSearchResults(data.Search);
-    } catch (error) {}
+      setSearchResults(data.Search || []);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching data from OMDB API", error);
+      setLoading(false);
+    }
+  };
+
+  const getStreamingInfo = async (title) => {
+    try {
+      const response = await axios.get(`https://api.watchmode.com/v1/title/matches/`, {
+        params: {
+          apiKey: "djrcOnHN4LJlkEwynPn2ihmdQrOp6Xmzp0pw8p6i",
+          title: title,
+        },
+      });
+      const titleId = response.data.title_results[0]?.id;
+      if (titleId) {
+        const sourcesResponse = await axios.get(`https://api.watchmode.com/v1/title/${titleId}/sources/`, {
+          params: {
+            apiKey: "djrcOnHN4LJlkEwynPn2ihmdQrOp6Xmzp0pw8p6i",
+          },
+        });
+        return sourcesResponse.data;
+      } else {
+        return null;
+      }
+    } catch (error) {
+      console.error("Error fetching streaming info", error);
+      return null;
+    }
+  };
+
+  const fetchStreamingInfoForResults = async () => {
+    const resultsWithStreamingInfo = await Promise.all(
+      searchResults.map(async (result) => {
+        const streamingInfo = await getStreamingInfo(result.Title);
+        return { ...result, streamingInfo };
+      })
+    );
+    setSearchResults(resultsWithStreamingInfo);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await getTitle();
+    await fetchStreamingInfoForResults();
   };
 
   return (
@@ -65,6 +113,20 @@ export default function App() {
                   <img src={result.Poster} alt={`${result.Title} poster`} />
                   <p>Year: {result.Year}</p>
                   <p>Type: {result.Type}</p>
+                  {result.streamingInfo ? (
+                    <div>
+                      <h4>Streaming Info:</h4>
+                      <ul>
+                        {result.streamingInfo.map((info, index) => (
+                          <li key={index}>
+                            {info.title}: <a href={info.web_url} target="_blank" rel="noopener noreferrer">Watch here</a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : (
+                    <p>No streaming information available.</p>
+                  )}
                 </div>
               ))
             ) : (
