@@ -26,30 +26,30 @@ export default function App() {
     }
   };
 
-  const getStreamingInfo = async (title) => {
-    try {
-      const response = await axios.get(`https://api.watchmode.com/v1/title/matches/`, {
-        params: {
-          apiKey: "djrcOnHN4LJlkEwynPn2ihmdQrOp6Xmzp0pw8p6i",
-          title: title,
-        },
-      });
-      const titleId = response.data.title_results[0]?.id;
-      if (titleId) {
-        const sourcesResponse = await axios.get(`https://api.watchmode.com/v1/title/${titleId}/sources/`, {
-          params: {
-            apiKey: "djrcOnHN4LJlkEwynPn2ihmdQrOp6Xmzp0pw8p6i",
-          },
-        });
-        return sourcesResponse.data;
-      } else {
-        return null;
-      }
-    } catch (error) {
-      console.error("Error fetching streaming info", error);
-      return null;
-    }
-  };
+  // const getStreamingInfo = async (title) => {
+  //   try {
+  //     const response = await axios.get(`https://api.watchmode.com/v1/title/matches/`, {
+  //       params: {
+  //         apiKey: "djrcOnHN4LJlkEwynPn2ihmdQrOp6Xmzp0pw8p6i",
+  //         title: title,
+  //       },
+  //     });
+  //     const titleId = response.data.title_results[0]?.id;
+  //     if (titleId) {
+  //       const sourcesResponse = await axios.get(`https://api.watchmode.com/v1/title/${titleId}/sources/`, {
+  //         params: {
+  //           apiKey: "djrcOnHN4LJlkEwynPn2ihmdQrOp6Xmzp0pw8p6i",
+  //         },
+  //       });
+  //       return sourcesResponse.data;
+  //     } else {
+  //       return null;
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching streaming info", error);
+  //     return null;
+  //   }
+  // };
 
 
   return (
@@ -67,7 +67,7 @@ export default function App() {
           className="form-container"
           onSubmit={(e) => {
             getTitle();
-            getStreamingInfo();
+            // getStreamingInfo();
             console.log(searchResults);
             e.preventDefault();
             e.stopPropagation();
