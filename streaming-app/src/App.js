@@ -5,6 +5,7 @@ import axios from "axios";
 export default function App() {
   const [title, setTitle] = useState(null);
   const [searchResults, setSearchResults] = useState(null);
+  const [titleInfo, setTitleInfo] = useState(null);
   const [loading, setLoading] = useState(false);
 
 
@@ -13,7 +14,7 @@ export default function App() {
       setLoading(true);
       const result = await axios.get("http://www.omdbapi.com/", {
         params: {
-          t: title,
+          s: title,
           plot: "",
           apikey: "5aa370ab",
         },
@@ -21,7 +22,7 @@ export default function App() {
       });
       console.log(result)
       const { data } = result;
-      setSearchResults(data.data || []);
+      setSearchResults(data.Search || []);
       setLoading(false);
       console.log(data.status)
     } catch (error) {
@@ -29,6 +30,27 @@ export default function App() {
       setLoading(false);
     }
   };
+
+  const getInfo = async () => {
+    
+    try {
+      setLoading(true);
+      const result = await axios.get("http://www.omdbapi.com/", {
+        params: {
+          t: title,
+          plot: "",
+          apikey: "5aa370ab",
+        },
+      });
+      const { data } = result;
+      setTitleInfo(data.data);
+      setLoading(false);
+    }
+    catch (error) {
+      console.error("Error fetching data from OMDB API", error);
+      setLoading(false);
+    }
+  }
 
 
   return (
@@ -72,13 +94,16 @@ export default function App() {
               searchResults.map((result, index) => (
                 <div key={index} className="result-item">
                   <h3>{result.Title}</h3>
+                  <div className="pop-up" 
+                  onClick={getInfo.preventDefault}>
                   <img src={result.Poster && result.Poster !== "N/A" ? result.Poster : "./NotFound.jpeg"} alt={`${result.Title} poster`} />
+                  </div>
                   <p>Year: {result.Year}</p>
                   <p>Type: {result.Type}</p>
                   <p>Rating: {result.Genre}</p>
                   
                   
-                  {result.streamingInfo ? (
+                  {/* {result.streamingInfo ? (
                     <div>
                       <h4>Streaming Info:</h4>
                       <ul>
@@ -91,7 +116,7 @@ export default function App() {
                     </div>
                   ) : (
                     <p>No streaming information available.</p>
-                  )}
+                  )} */}
                 </div>
               ))
             ) : (
