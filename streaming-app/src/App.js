@@ -94,9 +94,10 @@ export default function App() {
               searchResults.map((result, index) => (
                 <div key={index} className="result-item">
                   <h3>{result.Title}</h3>
-                  <div className="pop-up" 
+                  <div className="popup" 
                   onClick={getInfo.preventDefault}>
                   <img src={result.Poster && result.Poster !== "N/A" ? result.Poster : "./NotFound.jpeg"} alt={`${result.Title} poster`} />
+                  <span className="popuptext" id="myPopup">Popup window</span>
                   </div>
                   <p>Year: {result.Year}</p>
                   <p>Type: {result.Type}</p>
