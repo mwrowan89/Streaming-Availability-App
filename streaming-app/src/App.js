@@ -21,9 +21,9 @@ export default function App() {
       });
       console.log(result)
       const { data } = result;
-      setSearchResults(data.Search || []);
+      setSearchResults(data.data || []);
       setLoading(false);
-      console.log(searchResults)
+      console.log(data.status)
     } catch (error) {
       console.error("Error fetching data from OMDB API", error);
       setLoading(false);
