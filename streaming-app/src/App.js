@@ -1,6 +1,8 @@
 import { useState } from "react";
+import Popup from './Popup';
 import "./App.css";
 import axios from "axios";
+import PopupBox from "./Popup";
 
 export default function App() {
   const [title, setTitle] = useState(null);
@@ -55,10 +57,10 @@ export default function App() {
   
   }
 
-  function popUp() {
-    const popup = document.getElementById("myPopup");
-    popup.classList.toggle("show");
-  }
+  // function popUp() {
+  //   const popup = document.getElementById("myPopup");
+  //   popup.classList.toggle("show");
+  // }
 
 
   return (
@@ -103,9 +105,10 @@ export default function App() {
                 <div key={index} className="result-item">
                   <h3>{result.Title}</h3>
                   <div className="popup" 
-                  onClick={popUp()}>
+                  onClick={PopupBox()}>
                   <img src={result.Poster && result.Poster !== "N/A" ? result.Poster : "./NotFound.jpeg"} alt={`${result.Title} poster`} />
                   <span className="popuptext" id="myPopup">Popup window</span>
+                  
                   </div>
                   <p>Year: {result.Year}</p>
                   <p>Type: {result.Type}</p>
