@@ -57,10 +57,11 @@ export default function App() {
   
   }
 
-  // function PopupBox() {
-  //   const popup = document.getElementById("myPopup");
+  function PopupBox() {
+    const popup = document.getElementById("myPopup");
 
-  // }
+
+  }
 
 
   return (
@@ -104,13 +105,11 @@ export default function App() {
               searchResults.map((result, index) => (
                 <div key={index} className="result-item">
                   <h3>{result.Title}</h3>
-                  <div>
-                  <Popup trigger = {
+                  <div className="popup" 
+                  onClick={}>
                   <img src={result.Poster && result.Poster !== "N/A" ? result.Poster : "./NotFound.jpeg"} alt={`${result.Title} poster`} />
-                  }
-                  position = "center">
                   <span className="popuptext" id="myPopup">Popup window</span>
-                  </Popup>
+                  
                   </div>
                   <p>Year: {result.Year}</p>
                   <p>Type: {result.Type}</p>
