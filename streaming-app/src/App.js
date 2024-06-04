@@ -1,17 +1,13 @@
 import { useState } from "react";
-import Popup from './Popup';
 import "./App.css";
 import axios from "axios";
-import PopupBox from "./Popup";
 
 export default function App() {
   const [title, setTitle] = useState(null);
   const [searchResults, setSearchResults] = useState(null);
   const [titleInfo, setTitleInfo] = useState(null);
   const [loading, setLoading] = useState(false);
-  state = {
-    show: false
-  };
+  const [popup, setPopup] = useState(false);
 
   const getTitle = async () => {
     try {
@@ -22,49 +18,37 @@ export default function App() {
           plot: "",
           apikey: "5aa370ab",
         },
-        
       });
-      console.log(result)
+      console.log(result);
       const { data } = result;
       setSearchResults(data.Search || []);
       setLoading(false);
-      console.log(data.status)
     } catch (error) {
       console.error("Error fetching data from OMDB API", error);
       setLoading(false);
     }
   };
 
-  const getInfo = async () => {
-    
+  const getInfo = async (movieTitle) => {
     try {
       setLoading(true);
       const result = await axios.get("http://www.omdbapi.com/", {
         params: {
-          t: title,
+          t: movieTitle,
           plot: "",
           apikey: "5aa370ab",
         },
       });
+      console.log(result)
       const { data } = result;
-      setTitleInfo(data.data);
+      setTitleInfo(data);
       setLoading(false);
-    }
-    catch (error) {
+      setPopup(true);
+    } catch (error) {
       console.error("Error fetching data from OMDB API", error);
       setLoading(false);
     }
-    const popup = document.getElementById("myPopup");
-    popup.classList.toggle("show");
-  
-  }
-
-  function PopupBox() {
-    this.setState({
-      show: !this.state.show
-    });
-  }
-
+  };
 
   return (
     <div>
@@ -91,6 +75,7 @@ export default function App() {
             placeholder=" Enter a Title"
             onChange={(e) => {
               setTitle(e.target.value);
+              getInfo();
               setSearchResults(null);
             }}
           />
@@ -103,35 +88,28 @@ export default function App() {
           <div className="result-container">
             {loading ? (
               <p>Loading...</p>
-            ) : searchResults ?  (
+            ) : searchResults ? (
               searchResults.map((result, index) => (
                 <div key={index} className="result-item">
                   <h3>{result.Title}</h3>
-                  <div className="popup"
-                  onClick={PopupBox()}>
-                  <img src={result.Poster && result.Poster !== "N/A" ? result.Poster : "./NotFound.jpeg"} alt={`${result.Title} poster`} />
-                  <span className="popuptext" id="myPopup">Popup window</span>
-                  
+                  <div className="popup" onClick={(e) => {e.stopPropagation();getInfo(result.Title);}}>
+                    <img
+                      src={
+                        result.Poster && result.Poster !== "N/A"
+                          ? result.Poster
+                          : "./NotFound.jpeg"
+                      }
+                      alt={`${result.Title} poster`}
+                    />
+                    {/* {popup && (
+                      <span className="popuptext" id="myPopup">
+                        Rating: {titleInfo.Actors}
+                      </span>
+                    )} */}
                   </div>
                   <p>Year: {result.Year}</p>
                   <p>Type: {result.Type}</p>
-                  <p>Rating: {result.Genre}</p>
-                  
-                  
-                  {/* {result.streamingInfo ? (
-                    <div>
-                      <h4>Streaming Info:</h4>
-                      <ul>
-                        {result.streamingInfo.map((info, index) => (
-                          <li key={index}>
-                            {info.title}: <a href={info.web_url} target="_blank" rel="noopener noreferrer">Watch here</a>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ) : (
-                    <p>No streaming information available.</p>
-                  )} */}
+                  <p>Actors: {titleInfo.Actors}</p>
                 </div>
               ))
             ) : (
@@ -143,6 +121,3 @@ export default function App() {
     </div>
   );
 }
-
-
-  //Streaming site api 81cb274c01msh4e27d6b4b0866cdp1a1d93jsn2aa43b86352d

@@ -59,7 +59,7 @@ img {
 
 /* The actual popup (appears on top) */
 .popup .popuptext {
-  visibility: hidden;
+  visibility: visible;
   width: 160px;
   background-color: white;
   color: black;
