@@ -13,13 +13,17 @@ export default function App() {
       setLoading(true);
       const result = await axios.get("http://www.omdbapi.com/", {
         params: {
-          s: title,
+          t: title,
+          plot: "",
           apikey: "5aa370ab",
         },
+        
       });
+      console.log(result)
       const { data } = result;
       setSearchResults(data.Search || []);
       setLoading(false);
+      console.log(searchResults)
     } catch (error) {
       console.error("Error fetching data from OMDB API", error);
       setLoading(false);
@@ -42,7 +46,6 @@ export default function App() {
           className="form-container"
           onSubmit={(e) => {
             getTitle();
-            // getStreamingInfo();
             e.preventDefault();
             e.stopPropagation();
           }}
@@ -72,7 +75,7 @@ export default function App() {
                   <img src={result.Poster && result.Poster !== "N/A" ? result.Poster : "./NotFound.jpeg"} alt={`${result.Title} poster`} />
                   <p>Year: {result.Year}</p>
                   <p>Type: {result.Type}</p>
-                  <p>Rating: {result.Plot}</p>
+                  <p>Rating: {result.Genre}</p>
                   
                   
                   {result.streamingInfo ? (
