@@ -50,6 +50,14 @@ export default function App() {
       console.error("Error fetching data from OMDB API", error);
       setLoading(false);
     }
+    const popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+  
+  }
+
+  function popUp() {
+    const popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
   }
 
 
@@ -95,7 +103,7 @@ export default function App() {
                 <div key={index} className="result-item">
                   <h3>{result.Title}</h3>
                   <div className="popup" 
-                  onClick={getInfo.preventDefault}>
+                  onClick={popUp()}>
                   <img src={result.Poster && result.Poster !== "N/A" ? result.Poster : "./NotFound.jpeg"} alt={`${result.Title} poster`} />
                   <span className="popuptext" id="myPopup">Popup window</span>
                   </div>
