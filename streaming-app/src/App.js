@@ -9,7 +9,9 @@ export default function App() {
   const [searchResults, setSearchResults] = useState(null);
   const [titleInfo, setTitleInfo] = useState(null);
   const [loading, setLoading] = useState(false);
-
+  state = {
+    show: false
+  };
 
   const getTitle = async () => {
     try {
@@ -58,9 +60,9 @@ export default function App() {
   }
 
   function PopupBox() {
-    const popup = document.getElementById("myPopup");
-
-
+    this.setState({
+      show: !this.state.show
+    });
   }
 
 
@@ -105,8 +107,8 @@ export default function App() {
               searchResults.map((result, index) => (
                 <div key={index} className="result-item">
                   <h3>{result.Title}</h3>
-                  <div className="popup" 
-                  onClick={}>
+                  <div className="popup"
+                  onClick={PopupBox()}>
                   <img src={result.Poster && result.Poster !== "N/A" ? result.Poster : "./NotFound.jpeg"} alt={`${result.Title} poster`} />
                   <span className="popuptext" id="myPopup">Popup window</span>
                   
