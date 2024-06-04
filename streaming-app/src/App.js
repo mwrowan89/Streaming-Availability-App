@@ -95,7 +95,7 @@ export default function App() {
               searchResults.map((result, index) => (
                 <div key={index} className="result-item">
                   <h3>{result.Title}</h3>
-                  <img src={result.Poster && result.Poster !== "N/A" ? result.Poster : "./logo192.png"} alt={`${result.Title} poster`} />
+                  <img src={result.Poster && result.Poster !== "N/A" ? result.Poster : "./NotFound.jpeg"} alt={`${result.Title} poster`} />
                   <p>Year: {result.Year}</p>
                   <p>Type: {result.Type}</p>
                   {result.streamingInfo ? (
