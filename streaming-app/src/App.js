@@ -1,13 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 
 export default function App() {
   const [title, setTitle] = useState(null);
   const [searchResults, setSearchResults] = useState(null);
-  const [titleInfo, setTitleInfo] = useState(null);
+  const [titleInfo, setTitleInfo] = useState({});
   const [loading, setLoading] = useState(false);
-  const [popup, setPopup] = useState(false);
+
+  useEffect(() => {
+    if (searchResults) {
+      // Fetch info for each result
+      searchResults.forEach((result) => {
+        getInfo(result.Title);
+      });
+    }
+  }, [searchResults]);
 
   const getTitle = async () => {
     try {
@@ -39,11 +47,13 @@ export default function App() {
           apikey: "5aa370ab",
         },
       });
-      console.log(result)
+      console.log(result);
       const { data } = result;
-      setTitleInfo(data);
+      setTitleInfo((prevInfo) => ({
+        ...prevInfo,
+        [movieTitle]: data,
+      }));
       setLoading(false);
-      setPopup(true);
     } catch (error) {
       console.error("Error fetching data from OMDB API", error);
       setLoading(false);
@@ -66,7 +76,6 @@ export default function App() {
           onSubmit={(e) => {
             getTitle();
             e.preventDefault();
-            e.stopPropagation();
           }}
         >
           <input
@@ -75,7 +84,6 @@ export default function App() {
             placeholder=" Enter a Title"
             onChange={(e) => {
               setTitle(e.target.value);
-              getInfo();
               setSearchResults(null);
             }}
           />
@@ -90,26 +98,29 @@ export default function App() {
               <p>Loading...</p>
             ) : searchResults ? (
               searchResults.map((result, index) => (
-                <div key={index} className="result-item">
+                <div
+                  key={index}
+                  className="result-item"
+                  
+                >
                   <h3>{result.Title}</h3>
-                  <div className="popup" onClick={(e) => {e.stopPropagation();getInfo(result.Title);}}>
-                    <img
-                      src={
-                        result.Poster && result.Poster !== "N/A"
-                          ? result.Poster
-                          : "./NotFound.jpeg"
-                      }
-                      alt={`${result.Title} poster`}
-                    />
-                    {/* {popup && (
-                      <span className="popuptext" id="myPopup">
-                        Rating: {titleInfo.Actors}
-                      </span>
-                    )} */}
-                  </div>
+                  <img
+                    src={
+                      result.Poster && result.Poster !== "N/A"
+                        ? result.Poster
+                        : "./NotFound.jpeg"
+                    }
+                    alt={`${result.Title} poster`}
+                  />
+                  {titleInfo[result.Title] && (
+                    <>
+                      <p>Actors: {titleInfo[result.Title].Actors}</p>
+                      <p>Rating: {titleInfo[result.Title].imdbRating}</p>
+                      {/* Display other info as needed */}
+                    </>
+                  )}
                   <p>Year: {result.Year}</p>
                   <p>Type: {result.Type}</p>
-                  <p>Actors: {titleInfo.Actors}</p>
                 </div>
               ))
             ) : (
