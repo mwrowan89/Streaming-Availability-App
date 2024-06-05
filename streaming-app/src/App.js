@@ -112,15 +112,15 @@ export default function App() {
                     }
                     alt={`${result.Title} poster`}
                   />
+                  <p>Year: {result.Year}</p>
+                  <p>Type: {result.Type}</p>
                   {titleInfo[result.Title] && (
                     <>
                       <p>Actors: {titleInfo[result.Title].Actors}</p>
-                      <p>Rating: {titleInfo[result.Title].imdbRating}</p>
+                      <p>IMDB Rating: {titleInfo[result.Title].imdbRating}</p>
                       {/* Display other info as needed */}
                     </>
                   )}
-                  <p>Year: {result.Year}</p>
-                  <p>Type: {result.Type}</p>
                 </div>
               ))
             ) : (
