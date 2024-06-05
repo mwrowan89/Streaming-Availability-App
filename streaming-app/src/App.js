@@ -7,10 +7,10 @@ export default function App() {
   const [searchResults, setSearchResults] = useState(null);
   const [titleInfo, setTitleInfo] = useState({});
   const [loading, setLoading] = useState(false);
-  const [showMoreInfo, setShowMoreInfo] = useState(false);
 
   useEffect(() => {
     if (searchResults) {
+      // Fetch info for each result
       searchResults.forEach((result) => {
         getInfo(result.Title);
       });
@@ -60,9 +60,10 @@ export default function App() {
     }
   };
 
-  
-  const toggleMoreInfo = () => {
-    setShowMoreInfo((prevShowMoreInfo) => !prevShowMoreInfo);
+  const [expandedPoster, setExpandedPoster] = useState(null);
+
+  const toggleMoreInfo = (movieTitle) => {
+    setExpandedPoster((prevPoster) => (prevPoster === movieTitle ? null : movieTitle));
   };
 
   return (
@@ -103,11 +104,7 @@ export default function App() {
               <p>Loading...</p>
             ) : searchResults ? (
               searchResults.map((result, index) => (
-                <div
-                  key={index}
-                  className="result-item"
-                  
-                >
+                <div key={index} className="result-item">
                   <h3>{result.Title}</h3>
                   <img
                     src={
@@ -116,23 +113,19 @@ export default function App() {
                         : "./NotFound.jpeg"
                     }
                     alt={`${result.Title} poster`}
-                    onClick={toggleMoreInfo}
+                    onMouseEnter={() => toggleMoreInfo(result.Title)}
                   />
-                  <p>Year: {result.Year}</p>
-                  <p>Type: {result.Type}</p>
-                  {titleInfo[result.Title] && (
-                    <>
-                      <p>Actors: {titleInfo[result.Title].Actors}</p>
-                      <p>IMDB Rating: {titleInfo[result.Title].imdbRating}</p>
-                      {/* Display other info as needed */}
-                    </>
-                  )}
-
-                  {showMoreInfo && titleInfo[result.Title] && (
+                  {expandedPoster === result.Title && titleInfo[result.Title] && (
                     <div>
-                      <p>Awards: {titleInfo[result.Title].Awards}</p>
+                      <p>Actors: {titleInfo[result.Title].Actors}</p>
+                      <p>Genre: {titleInfo[result.Title].Genre}</p>
+                      <p>Rated: {titleInfo[result.Title].Rated}</p>
+                      {/* Display other info as needed */}
                     </div>
                   )}
+                  <p>Year: {result.Year}</p>
+                  <p>IMBD Rating: {titleInfo[result.Title].imdbRating}</p>
+                  <p>Type: {result.Type}</p>
                 </div>
               ))
             ) : (
