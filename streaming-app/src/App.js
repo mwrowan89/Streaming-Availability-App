@@ -7,10 +7,10 @@ export default function App() {
   const [searchResults, setSearchResults] = useState(null);
   const [titleInfo, setTitleInfo] = useState({});
   const [loading, setLoading] = useState(false);
+  const [showMoreInfo, setShowMoreInfo] = useState(false);
 
   useEffect(() => {
     if (searchResults) {
-      // Fetch info for each result
       searchResults.forEach((result) => {
         getInfo(result.Title);
       });
@@ -58,6 +58,11 @@ export default function App() {
       console.error("Error fetching data from OMDB API", error);
       setLoading(false);
     }
+  };
+
+  
+  const toggleMoreInfo = () => {
+    setShowMoreInfo((prevShowMoreInfo) => !prevShowMoreInfo);
   };
 
   return (
@@ -111,6 +116,7 @@ export default function App() {
                         : "./NotFound.jpeg"
                     }
                     alt={`${result.Title} poster`}
+                    onClick={toggleMoreInfo}
                   />
                   <p>Year: {result.Year}</p>
                   <p>Type: {result.Type}</p>
@@ -120,6 +126,12 @@ export default function App() {
                       <p>IMDB Rating: {titleInfo[result.Title].imdbRating}</p>
                       {/* Display other info as needed */}
                     </>
+                  )}
+
+                  {showMoreInfo && titleInfo[result.Title] && (
+                    <div>
+                      <p>Awards: {titleInfo[result.Title].Awards}</p>
+                    </div>
                   )}
                 </div>
               ))
