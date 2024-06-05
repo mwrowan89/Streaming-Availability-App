@@ -10,7 +10,6 @@ export default function App() {
 
   useEffect(() => {
     if (searchResults) {
-      // Fetch info for each result
       searchResults.forEach((result) => {
         getInfo(result.Title);
       });
@@ -43,7 +42,6 @@ export default function App() {
       const result = await axios.get("http://www.omdbapi.com/", {
         params: {
           t: movieTitle,
-          plot: "",
           apikey: "5aa370ab",
         },
       });
@@ -114,6 +112,7 @@ export default function App() {
                     }
                     alt={`${result.Title} poster`}
                     onMouseEnter={() => toggleMoreInfo(result.Title)}
+
                   />
                   {expandedPoster === result.Title && titleInfo[result.Title] && (
                     <div>
@@ -124,7 +123,7 @@ export default function App() {
                     </div>
                   )}
                   <p>Year: {result.Year}</p>
-                  <p>IMBD Rating: {titleInfo[result.Title].imdbRating}</p>
+                  {/* <p>IMBD Rating: {titleInfo[result.Title].imdbRating}</p> */}
                   <p>Type: {result.Type}</p>
                 </div>
               ))
