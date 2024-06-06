@@ -7,16 +7,15 @@ function Banner() {
   const releaseYear = 2024;
 
   useEffect(() => {
-    getInfo(releaseYear);
+    getInfo();
   }, [releaseYear]);
 
-  const getInfo = async (releaseYear) => {
+  const getInfo = async () => {
     try {
       setLoading(true);
       const result = await axios.get("http://www.omdbapi.com/", {
         params: {
-          t: "*",
-          y: releaseYear,
+          y: 2024,
           apikey: "5aa370ab",
         },
       });
@@ -49,12 +48,12 @@ function Banner() {
               }
               alt={`${result.Title} poster`}
             />
-            {titleInfo[releaseYear] && (
+            {titleInfo && (
               <div>
-                <p>Actors: {titleInfo[result.Title].Actors}</p>
+                {/* <p>Actors: {titleInfo[result.Title].Actors}</p>
                 <p>Genre: {titleInfo[result.Title].Genre}</p>
                 <p>Rated: {titleInfo[result.Title].Rated}</p>
-                {/* Display other info as needed */}
+                Display other info as needed */}
               </div>
             )}
             <p>Year: {result.Year}</p>
