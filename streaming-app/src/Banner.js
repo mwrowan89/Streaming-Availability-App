@@ -5,34 +5,37 @@ function Banner() {
   const [titleInfo, setTitleInfo] = useState(null);
   const [loading, setLoading] = useState(false);
   const releaseYear = 2024;
-  const [bannerTitles, setBannerTitles] = useState(null);
+  const [movies, setMovies] = useState(null);
 
   useEffect(() => {
     getInfo();
   }, [releaseYear]);
 
+  
   const tmdbInfo = async () => {
     const options = {
-      method: "GET",
-      url: "https://api.themoviedb.org/3/authentication",
+      method: 'GET',
+      url: 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&primary_release_year=2024&sort_by=popularity.desc',
       headers: {
-        accept: "application/json",
-        Authorization: "api_key=a137ccfe7126766133345af6e9bfcf9e",
-      },
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMTM3Y2NmZTcxMjY3NjYxMzMzNDVhZjZlOWJmY2Y5ZSIsInN1YiI6IjY2NWU0ZDk4N2U3NGNlNTcyMzIzMWM3ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Bws_3Y0C7Tah8B0W1oV4kn9soF-vrTTl803_ccppujI'
+      }
     };
-
-    const {data} = options;
-    console.log(data);
-
-    axios
-      .request(options)
-      .then(function (response) {
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+    
+    try {
+      setLoading(true);
+      const response = await axios.request(options);
+      setMovies(response.data.results); // Assuming response.data.results contains the list of movies
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching data from TMDB API", error);
+      setLoading(false);
+    }
   };
+
+  useEffect(() => {
+    tmdbInfo();
+  }, []);
 
   const getInfo = async () => {
     try {
@@ -60,39 +63,29 @@ function Banner() {
     <div>
       {loading ? (
         <p>Loading...</p>
-      ) : titleInfo ? (
-        titleInfo[releaseYear].map((result, index) => (
+      ) : movies ? (
+        movies.map((movie, index) => (
           <div key={index} className="result-item">
-            <h3>{result.Title}</h3>
+            <h3>{movie.title}</h3>
             <img
               src={
-                result.Poster && result.Poster !== "N/A"
-                  ? result.Poster
+                movie.poster_path
+                  ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
                   : "./NotFound.jpeg"
               }
-              alt={`${result.Title} poster`}
+              alt={`${movie.title} poster`}
             />
-            {titleInfo && (
-              <div>
-                {/* <p>Actors: {titleInfo[result.Title].Actors}</p>
-                <p>Genre: {titleInfo[result.Title].Genre}</p>
-                <p>Rated: {titleInfo[result.Title].Rated}</p>
-                Display other info as needed */}
-              </div>
-            )}
-            <p>Year: {result.Year}</p>
-            {/* <p>IMBD Rating: {titleInfo[result.Title].imdbRating}</p> */}
-            <p>Type: {result.Type}</p>
+            <div>
+              <p>Release Date: {movie.release_date}</p>
+              <p>Overview: {movie.overview}</p>
+              <p>Popularity: {movie.popularity}</p>
+              {/* Display other info as needed */}
+            </div>
           </div>
         ))
       ) : (
         <p>No results found.</p>
       )}
-      <button onClick={tmdbInfo()}>Click me</button>
-      <div>
-        {bannerTitles ? bannerTitles : null}
-        <p></p>
-      </div>
     </div>
   );
 }
