@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "./Banner.css"
 
 function Banner() {
   const [titleInfo, setTitleInfo] = useState(null);
@@ -60,7 +61,7 @@ function Banner() {
   };
 
   return (
-    <div>
+    <div className="results">
       {loading ? (
         <p>Loading...</p>
       ) : movies ? (
