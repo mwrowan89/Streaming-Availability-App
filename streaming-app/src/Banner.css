@@ -14,7 +14,18 @@
 .results {
     display: inline-flex;
     gap: 10px;
+    animation: scroll 30s linear infinite;
+
 }
+
+@keyframes scroll {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
 
 .result-item {
     display: inline-block;
