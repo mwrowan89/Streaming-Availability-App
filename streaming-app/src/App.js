@@ -20,6 +20,7 @@ export default function App() {
   useEffect(() => {
     if(!titleInfo) {
       getInfo()
+      console.log(titleInfo)
     }
   })
 
@@ -72,7 +73,7 @@ export default function App() {
 
   return (
     <div>
-    <Banner/>
+
       <main className="App">
         <h1 className="Title">
           <span className="text-red">Stream</span> it
@@ -102,8 +103,10 @@ export default function App() {
             Search
           </button>
         </form>
+        <Banner/>
         <div className="search-results">
           <h1>Search Results for {title}</h1>
+          
           <div className="result-container">
             {loading ? (
               <p>Loading...</p>
