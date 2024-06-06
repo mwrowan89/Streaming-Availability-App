@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
+import Banner from "./Banner";
 
 export default function App() {
   const [title, setTitle] = useState(null);
@@ -15,6 +16,12 @@ export default function App() {
       });
     }
   }, [searchResults]);
+
+  useEffect(() => {
+    if(!titleInfo) {
+      getInfo()
+    }
+  })
 
   const getTitle = async () => {
     try {
@@ -45,7 +52,6 @@ export default function App() {
           apikey: "5aa370ab",
         },
       });
-      console.log(result);
       const { data } = result;
       setTitleInfo((prevInfo) => ({
         ...prevInfo,
@@ -66,6 +72,7 @@ export default function App() {
 
   return (
     <div>
+    <Banner/>
       <main className="App">
         <h1 className="Title">
           <span className="text-red">Stream</span> it
