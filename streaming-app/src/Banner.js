@@ -67,7 +67,7 @@ function Banner() {
       ) : movies ? (
         movies.map((movie, index) => (
           <div key={index} className="result-item">
-            <h3>{movie.title}</h3>
+            
             <img
               src={
                 movie.poster_path
@@ -76,12 +76,11 @@ function Banner() {
               }
               alt={`${movie.title} poster`}
             />
-            <div>
+            {/* <div>
               <p>Release Date: {movie.release_date}</p>
               <p>Overview: {movie.overview}</p>
               <p>Popularity: {movie.popularity}</p>
-              {/* Display other info as needed */}
-            </div>
+            </div> */}
           </div>
         ))
       ) : (
