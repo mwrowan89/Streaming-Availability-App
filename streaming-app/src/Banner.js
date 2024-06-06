@@ -5,10 +5,34 @@ function Banner() {
   const [titleInfo, setTitleInfo] = useState(null);
   const [loading, setLoading] = useState(false);
   const releaseYear = 2024;
+  const [bannerTitles, setBannerTitles] = useState(null);
 
   useEffect(() => {
     getInfo();
   }, [releaseYear]);
+
+  const tmdbInfo = async () => {
+    const options = {
+      method: "GET",
+      url: "https://api.themoviedb.org/3/authentication",
+      headers: {
+        accept: "application/json",
+        Authorization: "api_key=a137ccfe7126766133345af6e9bfcf9e",
+      },
+    };
+
+    const {data} = options;
+    console.log(data);
+
+    axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  };
 
   const getInfo = async () => {
     try {
@@ -64,6 +88,11 @@ function Banner() {
       ) : (
         <p>No results found.</p>
       )}
+      <button onClick={tmdbInfo()}>Click me</button>
+      <div>
+        {bannerTitles ? bannerTitles : null}
+        <p></p>
+      </div>
     </div>
   );
 }
