@@ -72,7 +72,7 @@ export default function App() {
   };
 
   return (
-    <div>
+    <div className="main">
 
       <main className="App">
         <h1 className="Title">

@@ -1,4 +1,8 @@
 
+.main {
+  max-width: 100vw;
+  overflow: hidden;
+}
 .text-red {
   color: red;
 }

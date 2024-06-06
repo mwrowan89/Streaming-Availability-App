@@ -1,7 +1,22 @@
-.results {
+/* .results {
     display: flex;
-    flex-wrap: wrap;
     max-width: 70vw;
     justify-content: center;
     gap: 10px;
+} */
+
+.results-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    max-width: 70vw;
+}
+
+.results {
+    display: inline-flex;
+    gap: 10px;
+}
+
+.result-item {
+    display: inline-block;
+    white-space: normal; /* Ensures content within result-item wraps correctly */
 }
