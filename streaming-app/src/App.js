@@ -112,7 +112,9 @@ export default function App() {
               <p>Loading...</p>
             ) : searchResults ? (
               searchResults.map((result, index) => (
-                <div key={index} className="result-item">
+                <div key={index} className="result-item"
+                onMouseEnter={() => toggleMoreInfo(result.Title)}
+                onMouseLeave={() => toggleMoreInfo(result.Title)}>
                   <h3>{result.Title}</h3>
                   <img
                     src={
@@ -121,9 +123,6 @@ export default function App() {
                         : "./NotFound.jpeg"
                     }
                     alt={`${result.Title} poster`}
-                    onMouseEnter={() => toggleMoreInfo(result.Title)}
-                    onMouseLeave={() => toggleMoreInfo(result.Title)}
-
                   />
                   {expandedPoster === result.Title && titleInfo[result.Title] && (
                     <div>
