@@ -122,6 +122,7 @@ export default function App() {
                     }
                     alt={`${result.Title} poster`}
                     onMouseEnter={() => toggleMoreInfo(result.Title)}
+                    onMouseLeave={() => toggleMoreInfo(result.Title)}
 
                   />
                   {expandedPoster === result.Title && titleInfo[result.Title] && (
