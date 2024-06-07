@@ -128,13 +128,12 @@ export default function App() {
                     <div>
                       <p>Actors: {titleInfo[result.Title].Actors}</p>
                       <p>Genre: {titleInfo[result.Title].Genre}</p>
-                      <p>Rated: {titleInfo[result.Title].Rated && titleInfo[result.Title].Rated !== "N/A"
-                      ? titleInfo[result.Title].Rated : ""}</p>
-                      {/* Display other info as needed */}
+                      {titleInfo[result.Title].Rated && titleInfo[result.Title].Rated !== "N/A" && (
+                        <p>Rated: {titleInfo[result.Title].Rated}</p>
+                      )}
                     </div>
                   )}
                   <p>Year: {result.Year}</p>
-                  {/* <p>IMBD Rating: {titleInfo[result.Title].imdbRating}</p> */}
                   <p>Type: {result.Type}</p>
                 </div>
               ))
