@@ -82,7 +82,7 @@ export default function App() {
           Find where to stream your favorite TV Shows and Movies from 150+
           Streaming platforms
         </h5>
-        <Banner/>
+        <Banner/> <br></br>
         <form
           className="form-container"
           onSubmit={(e) => {
