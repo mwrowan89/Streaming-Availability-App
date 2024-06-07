@@ -67,7 +67,7 @@ function Banner() {
         {loading ? (
           <p>Loading...</p>
         ) : movies ? (
-          movies.map((movie, index) => (
+          [...movies, ...movies].map((movie, index) => (
             <div key={index} className="result-item">
               <img
                 src={
@@ -77,17 +77,11 @@ function Banner() {
                 }
                 alt={`${movie.title} poster`}
               />
-              {/* <div>
-              <p>Release Date: {movie.release_date}</p>
-              <p>Overview: {movie.overview}</p>
-              <p>Popularity: {movie.popularity}</p>
-            </div> */}
             </div>
           ))
         ) : (
           <p>No results found.</p>
         )}
-      
       </div>
     </div>
   );

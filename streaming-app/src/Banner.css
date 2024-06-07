@@ -15,16 +15,15 @@
     display: inline-flex;
     margin-left: 170vw;
     gap: 10px;
-    animation: scroll 40s linear infinite;
-
+    animation: scroll 70s linear infinite;
 }
 
 @keyframes scroll {
     0% {
-      transform: translateX(-1%);
+      transform: translateX(25%);
     }
     100% {
-      transform: translateX(-65%);
+      transform: translateX(-100%);
     }
   }
 
