@@ -82,7 +82,7 @@ export default function App() {
           Find where to stream your favorite TV Shows and Movies from 150+
           Streaming platforms
         </h5>
-
+        <Banner/>
         <form
           className="form-container"
           onSubmit={(e) => {
@@ -99,11 +99,11 @@ export default function App() {
               setSearchResults(null);
             }}
           />
+         
           <button className="button" type="submit">
             Search
           </button>
         </form>
-        <Banner/>
         <div className="search-results">
           <h1>Search Results for {title}</h1>
           
