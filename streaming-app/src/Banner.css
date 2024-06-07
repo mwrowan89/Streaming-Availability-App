@@ -1,9 +1,3 @@
-/* .results {
-    display: flex;
-    max-width: 70vw;
-    justify-content: center;
-    gap: 10px;
-} */
 
 .results-container {
     overflow-x: auto;
@@ -15,7 +9,7 @@
     display: inline-flex;
     margin-left: 170vw;
     gap: 10px;
-    animation: scroll 70s linear infinite;
+    animation: scroll 80s linear infinite;
 }
 
 @keyframes scroll {
@@ -29,5 +23,5 @@
 
 .result-item {
     display: inline-block;
-    white-space: normal; /* Ensures content within result-item wraps correctly */
+    white-space: normal; 
 }
