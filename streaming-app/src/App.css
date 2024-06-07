@@ -25,6 +25,9 @@
   border-radius: 5px;
   height: 30px;
 }
+.page-description {
+  margin-bottom: -1vw;
+}
 .Title {
   text-decoration: underline;
   margin-bottom: -1vw;
