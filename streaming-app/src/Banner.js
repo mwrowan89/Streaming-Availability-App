@@ -3,14 +3,9 @@ import axios from "axios";
 import "./Banner.css";
 
 function Banner() {
-  const [titleInfo, setTitleInfo] = useState(null);
   const [loading, setLoading] = useState(false);
-  const releaseYear = 2024;
   const [movies, setMovies] = useState(null);
 
-  useEffect(() => {
-    getInfo();
-  }, [releaseYear]);
 
   const tmdbInfo = async () => {
     const options = {
@@ -38,28 +33,7 @@ function Banner() {
     tmdbInfo();
   }, []);
 
-  const getInfo = async () => {
-    try {
-      setLoading(true);
-      const result = await axios.get("http://www.omdbapi.com/", {
-        params: {
-          y: 2024,
-          apikey: "5aa370ab",
-        },
-      });
-      const { data } = result;
-      console.log(data);
-      setTitleInfo((prevInfo) => ({
-        ...prevInfo,
-        [releaseYear]: data.Search || [],
-      }));
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching data from OMDB API", error);
-      setLoading(false);
-    }
-  };
-
+   
   return (
     <div className="results-conatiner">
     <h1>Popular Titles from 2024</h1>
