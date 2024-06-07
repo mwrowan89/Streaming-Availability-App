@@ -62,6 +62,7 @@ function Banner() {
 
   return (
     <div className="results-conatiner">
+    <h1>Popular Titles from 2024</h1>
       <div className="results">
         {loading ? (
           <p>Loading...</p>
@@ -86,6 +87,7 @@ function Banner() {
         ) : (
           <p>No results found.</p>
         )}
+      
       </div>
     </div>
   );
