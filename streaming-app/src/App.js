@@ -78,7 +78,7 @@ export default function App() {
         <h1 className="Title">
           <span className="text-red">Stream</span> it
         </h1>
-        <h5>
+        <h5 className="page-description">
           Find where to stream your favorite TV Shows and Movies from 150+
           Streaming platforms
         </h5>
