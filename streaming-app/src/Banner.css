@@ -10,22 +10,25 @@
     display: flex;
     margin-left: 170vw;
     gap: 10px;
-    /* animation: scroll 60s linear infinite; */
 }
 
 @keyframes scroll {
     0% {
-      transform: translateX(0%);
+      transform: translateX(1000%);
+    }
+    50% {
+      transform: translateX(-2400%);
     }
     100% {
-      transform: translateX(-100%);
+      transform: translateX(1000%);
     }
+    
   }
 
 .banner-result-item {
     display: flex;
     white-space: normal;
-    animation: scroll 2s linear infinite; 
+    animation: scroll 50s linear infinite; 
 }
 .banner-results:hover .banner-result-item {
   animation-play-state: paused;
