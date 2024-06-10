@@ -1,27 +1,33 @@
 
-.results-container {
+.banner-results-container {
     overflow-x: auto;
     white-space: nowrap;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
+    position: relative;
 }
 
-.results {
-    display: inline-flex;
+.banner-results {
+    display: flex;
     margin-left: 170vw;
     gap: 10px;
-    animation: scroll 60s linear infinite;
+    /* animation: scroll 60s linear infinite; */
 }
 
 @keyframes scroll {
     0% {
-      transform: translateX(25%);
+      transform: translateX(0%);
     }
     100% {
-      transform: translateX(-58%);
+      transform: translateX(-100%);
     }
   }
 
-.result-item {
-    display: inline-block;
-    white-space: normal; 
+.banner-result-item {
+    display: flex;
+    white-space: normal;
+    animation: scroll 2s linear infinite; 
+}
+.banner-results:hover .banner-result-item {
+  animation-play-state: paused;
+  cursor: pointer;
 }

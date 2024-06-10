@@ -35,14 +35,14 @@ function Banner() {
 
    
   return (
-    <div className="results-conatiner">
+    <div className="banner-results-conatiner">
     <h1>Popular Titles from 2024</h1>
-      <div className="results">
+      <div className="banner-results">
         {loading ? (
           <p>Loading...</p>
         ) : movies ? (
           [...movies, ...movies].map((movie, index) => (
-            <div key={index} className="result-item">
+            <div key={index} className="banner-result-item">
               <img
                 src={
                   movie.poster_path
