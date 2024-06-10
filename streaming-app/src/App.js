@@ -105,7 +105,10 @@ export default function App() {
           </button>
         </form>
         <div className="search-results">
-          <h1>Search Results for {title}</h1>
+          <h1>{ title ? (
+            "Search Results for " + {title} ) :
+            (" ")
+          }</h1>
           
           <div className="result-container">
             {loading ? (
@@ -138,7 +141,7 @@ export default function App() {
                 </div>
               ))
             ) : (
-              <p className="no-results">No results found.</p>
+              <p className="no-results">No search results.</p>
             )}
           </div>
         </div>

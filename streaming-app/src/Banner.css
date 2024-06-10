@@ -9,7 +9,7 @@
     display: inline-flex;
     margin-left: 170vw;
     gap: 10px;
-    animation: scroll 50s linear infinite;
+    animation: scroll 60s linear infinite;
 }
 
 @keyframes scroll {
