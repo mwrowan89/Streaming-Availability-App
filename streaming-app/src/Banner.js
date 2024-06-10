@@ -5,8 +5,9 @@ import "./Banner.css";
 function Banner() {
   const [loading, setLoading] = useState(false);
   const [movies, setMovies] = useState(null);
-  const [moreInfo, setMoreInfo] = useState(false);
+  const [moreInfo, setMoreInfo] = useState(null);
   const [tvShows, setTvShows] = useState(null);
+  const [selectedTitle, setSelectedTitle] = useState(null);
 
   const tmdbMovieInfo = async () => {
     const options = {
@@ -52,9 +53,29 @@ function Banner() {
       setLoading(false);
     }
   };
-  // const getMoreInfo = ( => {
 
-  // })
+  const getMoreInfo = async (title) => {
+    try {
+      setLoading(true);
+      const result = await axios.get("http://www.omdbapi.com/", {
+        params: {
+          t: title,
+          apikey: "5aa370ab",
+        },
+      });
+      const { data } = result;
+      setMoreInfo((prevInfo) => ({
+        ...prevInfo,
+        [title]: data,
+      }));
+      setSelectedTitle(title);
+      setLoading(false);
+      console.log(data)
+    } catch (error) {
+      console.error("Error fetching data from OMDB API", error);
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     tmdbMovieInfo();
@@ -77,9 +98,12 @@ function Banner() {
                     : "./NotFound.jpeg"
                 }
                 alt={`${result.title} poster`}
-                onClick={!moreInfo}
+                onClick={() => getMoreInfo(result.title)}
               />
-              <p>{moreInfo ? <p>{result.adult}</p> : " "}</p>
+              {selectedTitle === (result.title) && (
+                <p>{moreInfo[result.title].Plot}</p>
+              )}
+            
             </div>
           ))
         ) : (
