@@ -106,7 +106,7 @@ export default function App() {
         </form>
         <div className="search-results">
           <h1>{ title ? (
-            "Search Results for " + {title} ) :
+            "Search Results for " + title ) :
             (" ")
           }</h1>
           
