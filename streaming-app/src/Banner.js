@@ -101,7 +101,7 @@ function Banner() {
                 onClick={(e) => getMoreInfo(result.title)}
               />
               {selectedTitle === (result.title) && (
-                <p>{moreInfo[result.title].Plot}</p>
+                <p className="more-info">{moreInfo[result.title].Plot}</p>
               )}
               {/* <h1 onClick={setMoreInfo(null)}>Close</h1> */}
             </div>

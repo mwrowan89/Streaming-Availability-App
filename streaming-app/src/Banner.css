@@ -37,3 +37,9 @@ cursor: pointer;
 .banner-result-item:hover {
 transform: scale(1.2);
 }
+.more-info {
+  background-color: black;
+  color: white;
+  display: flex;
+  width: 10vw;
+}
