@@ -54,7 +54,8 @@ function Banner() {
     }
   };
 
-  const getMoreInfo = async (title) => {
+  const getMoreInfo = async (e, title) => {
+    e.preventDefault();
     try {
       setLoading(true);
       const result = await axios.get("http://www.omdbapi.com/", {
@@ -98,15 +99,17 @@ function Banner() {
                     : "./NotFound.jpeg"
                 }
                 alt={`${result.title} poster`}
-                onClick={(e) => getMoreInfo(result.title)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  getMoreInfo(e, result.title)}}
               />
               {selectedTitle === (result.title) && (
                 <p className="more-info">{moreInfo[result.title].Plot}
-                <p onClick={ () => setMoreInfo === null }>X</p>
+                <p onClick={ (e) => {
+                  e.preventDefault();
+                  setSelectedTitle(null)} }>X</p>
                 </p>
               )}
-              
-              
             </div>
           ))
         ) : (
