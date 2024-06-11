@@ -9,6 +9,11 @@ function Banner() {
   const [tvShows, setTvShows] = useState(null);
   const [selectedTitle, setSelectedTitle] = useState(null);
 
+  useEffect(() => {
+    tmdbMovieInfo();
+    tmbdTvInfo();
+  }, []);
+
   const tmdbMovieInfo = async () => {
     const options = {
       method: "GET",
@@ -23,7 +28,7 @@ function Banner() {
     try {
       setLoading(true);
       const response = await axios.request(options);
-      setMovies(response.data.results); // Assuming response.data.results contains the list of movies
+      setMovies(response.data.results);
       setLoading(false);
       console.log(response);
     } catch (error) {
@@ -45,7 +50,7 @@ function Banner() {
     try {
       setLoading(true);
       const response = await axios.request(options);
-      setTvShows(response.data.results); // Assuming response.data.results contains the list of movies
+      setTvShows(response.data.results); 
       setLoading(false);
       console.log(response);
     } catch (error) {
@@ -78,11 +83,6 @@ function Banner() {
     }
   };
 
-  useEffect(() => {
-    tmdbMovieInfo();
-    tmbdTvInfo();
-  }, []);
-
   return (
     <div className="banner-results-conatiner">
       <h1>Popular Titles from 2024</h1>
@@ -105,6 +105,7 @@ function Banner() {
                 }
                 alt={`${title} poster`}
                 onClick={(e) => {
+                  e.preventDefault();
                   getMoreInfo(e, title)}}
               />
               {selectedTitle === title && (
