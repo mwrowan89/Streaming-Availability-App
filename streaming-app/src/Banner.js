@@ -98,12 +98,12 @@ function Banner() {
                     : "./NotFound.jpeg"
                 }
                 alt={`${result.title} poster`}
-                onClick={() => getMoreInfo(result.title)}
+                onClick={(e) => getMoreInfo(result.title)}
               />
               {selectedTitle === (result.title) && (
                 <p>{moreInfo[result.title].Plot}</p>
               )}
-            
+              {/* <h1 onClick={setMoreInfo(null)}>Close</h1> */}
             </div>
           ))
         ) : (
