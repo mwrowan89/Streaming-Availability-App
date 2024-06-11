@@ -5,7 +5,7 @@ import "./Banner.css";
 function Banner() {
   const [loading, setLoading] = useState(false);
   const [movies, setMovies] = useState(null);
-  const [moreInfo, setMoreInfo] = useState(null);
+  const [moreInfo, setMoreInfo] = useState({});
   const [tvShows, setTvShows] = useState(null);
   const [selectedTitle, setSelectedTitle] = useState(null);
 
@@ -89,8 +89,13 @@ function Banner() {
       <div className="banner-results">
         {loading ? (
           <p>Loading...</p>
-        ) : movies ? (
-          [...movies, ...tvShows].map((result, index) => (
+        ) : movies && tvShows ? (
+          [...movies, ...tvShows].map((result, index) => {
+            const title = result.title || result.name;
+            const info = moreInfo[title];
+            const description = info ? (info.Plot || info.overview) : null;
+
+            return (
             <div key={index} className="banner-result-item">
               <img
                 src={
@@ -98,20 +103,20 @@ function Banner() {
                     ? `https://image.tmdb.org/t/p/w500${result.poster_path}`
                     : "./NotFound.jpeg"
                 }
-                alt={`${result.title} poster`}
+                alt={`${title} poster`}
                 onClick={(e) => {
-                  e.preventDefault();
-                  getMoreInfo(e, result.title)}}
+                  getMoreInfo(e, title)}}
               />
-              {selectedTitle === (result.title) && (
-                <p className="more-info">{moreInfo[result.title].Plot}
+              {selectedTitle === title && (
+                <div className="more-info">
+                <p>{description}</p> 
                 <p onClick={ (e) => {
                   e.preventDefault();
                   setSelectedTitle(null)} }>X</p>
-                </p>
+                </div>
               )}
             </div>
-          ))
+          )})
         ) : (
           <p>No results found.</p>
         )}
