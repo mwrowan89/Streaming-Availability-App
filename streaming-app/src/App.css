@@ -57,4 +57,11 @@ img {
   width: 12vw;
   border-radius: 10px;
 }
+.movies-tv-tags {
+  display: flex;
+
+}
+.movie-button {
+  cursor: pointer;
+}
 

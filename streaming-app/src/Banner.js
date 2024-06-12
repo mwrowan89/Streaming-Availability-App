@@ -82,11 +82,12 @@ function Banner() {
               />
               {selectedTitle === title && (
                 <div className="more-info">
+                <h3>{title}</h3>
                 <p>{description}</p> 
-                <p className="close-button"
+                {/* <p className="close-button"
                 onClick={ (e) => {
                   e.preventDefault();
-                  setSelectedTitle(null)} }>X</p>
+                  setSelectedTitle(null)} }>X</p> */}
                 </div>
               )}
             </div>
