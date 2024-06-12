@@ -146,7 +146,9 @@ export default function App() {
         </div>
 
         <div>
-        {/* <MovieApi /> */}
+        {showMovies ? 
+        <MovieApi /> : " "
+        }
         </div>
 
         <div className="search-results">
