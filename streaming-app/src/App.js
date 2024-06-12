@@ -78,7 +78,7 @@ export default function App() {
     };
     try {
       setLoading(true);
-      const [movieResponse, tvResponse] = await Promise.all([
+      const [movieResponse] = await Promise.all([
         axios.request(movieOptions)
       ]);
 
@@ -144,7 +144,7 @@ export default function App() {
             ) : movieResults ? (
               movieResults.map((result, index) => (
                 <div key={index} className="result-item">
-                  <h3>{result.title}</h3>
+                  
                   <img
                     src={
                       result.poster_path && result.Poster !== "N/A"
