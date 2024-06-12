@@ -103,7 +103,7 @@ export default function App() {
   };
 
   const toggleMovies = () => {
-    setShowMovies(true);
+    setShowMovies(!showMovies);
   }
 
   return (
