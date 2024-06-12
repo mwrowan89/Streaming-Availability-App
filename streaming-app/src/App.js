@@ -19,10 +19,7 @@ export default function App() {
   }, [searchResults]);
 
   useEffect(() => {
-    if(!titleInfo) {
       getInfo()
-      console.log(titleInfo)
-    }
   })
 
   const getTitle = async () => {
@@ -137,30 +134,6 @@ export default function App() {
         <h2 className="movie-button"
         onClick={tmdbMovieInfo}>Movies</h2>&nbsp;
         <h2>TV Shows</h2>
-        </div>
-        <div className="result-container">
-        {loading ? (
-              <p>Loading...</p>
-            ) : movieResults ? (
-              movieResults.map((result, index) => (
-                <div key={index} className="result-item">
-                  
-                  <img
-                    src={
-                      result.poster_path && result.Poster !== "N/A"
-                        ? `https://image.tmdb.org/t/p/w500${result.poster_path}`
-                        : "./NotFound.jpeg"
-                    }
-                    alt={`${result.Title} poster`}
-                  />
-                </div>
-
-              )
-            ))
-            :(
-              <p className="no-results">No search results.</p>
-            )}
-
         </div>
 
         <div className="search-results">
