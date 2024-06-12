@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 import Banner from "./Banner";
+import MovieApi from "./MovieApi";
 
 export default function App() {
   const [title, setTitle] = useState(null);
@@ -9,6 +10,7 @@ export default function App() {
   const [movieResults, setMovieResults] = useState(null);
   const [titleInfo, setTitleInfo] = useState({});
   const [loading, setLoading] = useState(false);
+  const [showMovies, setShowMovies] = useState(false);
 
   useEffect(() => {
     if (searchResults) {
@@ -19,7 +21,10 @@ export default function App() {
   }, [searchResults]);
 
   useEffect(() => {
+    if(!titleInfo) {
       getInfo()
+      console.log(titleInfo)
+    }
   })
 
   const getTitle = async () => {
@@ -97,6 +102,10 @@ export default function App() {
     setExpandedPoster((prevPoster) => (prevPoster === movieTitle ? null : movieTitle));
   };
 
+  const toggleMovies = () => {
+    setShowMovies(true);
+  }
+
   return (
     <div className="main">
 
@@ -132,8 +141,12 @@ export default function App() {
         </form>
         <div className="movies-tv-tags">
         <h2 className="movie-button"
-        onClick={tmdbMovieInfo}>Movies</h2>&nbsp;
+        onClick={toggleMovies}>Movies</h2>&nbsp;
         <h2>TV Shows</h2>
+        </div>
+
+        <div>
+        {/* <MovieApi /> */}
         </div>
 
         <div className="search-results">
