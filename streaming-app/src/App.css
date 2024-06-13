@@ -31,6 +31,7 @@
 .Title {
   text-decoration: underline;
   margin-bottom: -1vw;
+  text-shadow: 0px 0px 10px #fff, 0px 0px 10px #ffffff86;
 }
 .form {
   border-radius: 5px;
@@ -63,7 +64,10 @@ img {
   display: flex;
 
 }
-.movie-button {
-  cursor: pointer;
+.movie-button:hover,
+.tv-button:hover {
+  
+  text-shadow: 0px 0px 10px #fff, 0px 0px 10px #fff;
+  cursor:grab;
 }
 

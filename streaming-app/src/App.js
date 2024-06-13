@@ -116,7 +116,7 @@ export default function App() {
 
       <main className="App">
         <h1 className="Title">
-          <span className="text-red">Stream</span> it
+          <span className="text-red">Discover</span> Titles
         </h1>
         <h5 className="page-description">
           Find where to stream your favorite TV Shows and Movies from 150+
@@ -150,7 +150,7 @@ export default function App() {
         <h2
         className="tv-button"
         onClick={toggleTvShows}>TV Shows
-          
+
         </h2>
         </div>
 
