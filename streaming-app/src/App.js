@@ -23,11 +23,11 @@ export default function App() {
   }, [searchResults]);
 
   useEffect(() => {
-    if(!titleInfo) {
-      getInfo()
-      console.log(titleInfo)
+    if (!titleInfo) {
+      getInfo();
+      console.log(titleInfo);
     }
-  })
+  });
 
   const getTitle = async () => {
     setShowMovies(false);
@@ -72,23 +72,23 @@ export default function App() {
     }
   };
 
-
   const [expandedPoster, setExpandedPoster] = useState(null);
 
   const toggleMoreInfo = (movieTitle) => {
-    setExpandedPoster((prevPoster) => (prevPoster === movieTitle ? null : movieTitle));
+    setExpandedPoster((prevPoster) =>
+      prevPoster === movieTitle ? null : movieTitle
+    );
   };
 
   const toggleMovies = () => {
     setShowMovies(!showMovies);
-  }
+  };
   const toggleTvShows = () => {
     setShowTvShows(!showTvShows);
-  }
+  };
 
   return (
     <div className="main">
-
       <main className="App">
         <h1 className="Title">
           <span className="text-red">Discover</span> Titles
@@ -97,7 +97,7 @@ export default function App() {
           Find where to stream your favorite TV Shows and Movies from 150+
           Streaming platforms
         </h5>
-        <Banner/> <br></br>
+        <Banner /> <br></br>
         <form
           className="form-container"
           onSubmit={(e) => {
@@ -113,47 +113,39 @@ export default function App() {
               setTitle(e.target.value);
             }}
           />
-         
+
           <button className="button" type="submit">
             Search
           </button>
         </form>
         <div className="movies-tv-tags">
-        <h2 className="movie-button"
-        onClick={toggleMovies}>Movies </h2>&nbsp;
-        <h2
-        className="tv-button"
-        onClick={toggleTvShows}> TV Shows
-
-        </h2>
+          <h2 className="movie-button" onClick={toggleMovies}>
+            Movies{" "}
+          </h2>
+          &nbsp;
+          <h2 className="tv-button" onClick={toggleTvShows}>
+            {" "}
+            TV Shows
+          </h2>
         </div>
-
         <div>
-        {!searchResults ? (
-          showMovies ? 
-        <MovieApi /> : " "
-        ) : (" ")
-          
-        }
-        {showTvShows ? 
-        <TvApi /> : " "
-        }
+          {showMovies ? <MovieApi /> : " "}
+          {showTvShows ? <TvApi /> : " "}
         </div>
-
         <div className="search-results">
-          <h1>{ title ? (
-            "Search Results for " + title ) :
-            (" ")
-          }</h1>
-          
+          <h1>{title ? "Search Results for " + title : " "}</h1>
+
           <div className="result-container">
             {loading ? (
               <p>Loading...</p>
             ) : searchResults ? (
               searchResults.map((result, index) => (
-                <div key={index} className="result-item"
-                onMouseEnter={() => toggleMoreInfo(result.Title)}
-                onMouseLeave={() => toggleMoreInfo(result.Title)}>
+                <div
+                  key={index}
+                  className="result-item"
+                  onMouseEnter={() => toggleMoreInfo(result.Title)}
+                  onMouseLeave={() => toggleMoreInfo(result.Title)}
+                >
                   <h3>{result.Title}</h3>
                   <img
                     src={
@@ -163,15 +155,17 @@ export default function App() {
                     }
                     alt={`${result.Title} poster`}
                   />
-                  {expandedPoster === result.Title && titleInfo[result.Title] && (
-                    <div>
-                      <p>Actors: {titleInfo[result.Title].Actors}</p>
-                      <p>Genre: {titleInfo[result.Title].Genre}</p>
-                      {titleInfo[result.Title].Rated && titleInfo[result.Title].Rated !== "N/A" && (
-                        <p>Rated: {titleInfo[result.Title].Rated}</p>
-                      )}
-                    </div>
-                  )}
+                  {expandedPoster === result.Title &&
+                    titleInfo[result.Title] && (
+                      <div>
+                        <p>Actors: {titleInfo[result.Title].Actors}</p>
+                        <p>Genre: {titleInfo[result.Title].Genre}</p>
+                        {titleInfo[result.Title].Rated &&
+                          titleInfo[result.Title].Rated !== "N/A" && (
+                            <p>Rated: {titleInfo[result.Title].Rated}</p>
+                          )}
+                      </div>
+                    )}
                   <p>Year: {result.Year}</p>
                   <p>Type: {result.Type}</p>
                 </div>
