@@ -3,6 +3,7 @@ import "./App.css";
 import axios from "axios";
 import Banner from "./Banner";
 import MovieApi from "./MovieApi";
+import TvApi from "./TvApi";
 
 export default function App() {
   const [title, setTitle] = useState(null);
@@ -11,6 +12,7 @@ export default function App() {
   const [titleInfo, setTitleInfo] = useState({});
   const [loading, setLoading] = useState(false);
   const [showMovies, setShowMovies] = useState(false);
+  const [showTvShows, setShowTvShows] = useState(false);
 
   useEffect(() => {
     if (searchResults) {
@@ -105,6 +107,9 @@ export default function App() {
   const toggleMovies = () => {
     setShowMovies(!showMovies);
   }
+  const toggleTvShows = () => {
+    setShowTvShows(!showTvShows);
+  }
 
   return (
     <div className="main">
@@ -142,12 +147,19 @@ export default function App() {
         <div className="movies-tv-tags">
         <h2 className="movie-button"
         onClick={toggleMovies}>Movies</h2>&nbsp;
-        <h2>TV Shows</h2>
+        <h2
+        className="tv-button"
+        onClick={toggleTvShows}>TV Shows
+          
+        </h2>
         </div>
 
         <div>
         {showMovies ? 
         <MovieApi /> : " "
+        }
+        {showTvShows ? 
+        <TvApi /> : " "
         }
         </div>
 

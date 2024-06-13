@@ -38,7 +38,9 @@
   width: 25vw;
   margin-right: 5px;
 }
-.result-container{
+.result-container,
+.movie-result-container,
+.tv-result-container {
   display: grid;
   grid-template-columns: repeat(4,1fr);
   gap: 20px;
@@ -64,8 +66,4 @@ img {
 .movie-button {
   cursor: pointer;
 }
-.movie-result-container{
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 20px;
-}
+
