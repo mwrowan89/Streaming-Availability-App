@@ -81,9 +81,11 @@ export default function App() {
   };
 
   const toggleMovies = () => {
+    setShowTvShows(false);
     setShowMovies(!showMovies);
   };
   const toggleTvShows = () => {
+    setShowMovies(false);
     setShowTvShows(!showTvShows);
   };
 

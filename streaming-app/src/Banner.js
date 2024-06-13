@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { tmdbMovieInfo, tmdbTvInfo } from "./TmdbApi";
 import "./Banner.css";
 
 function Banner() {
@@ -8,49 +9,24 @@ function Banner() {
   const [selectedTitle, setSelectedTitle] = useState(null);
 
   useEffect(() => {
-    tmdbInfo();
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const [movieData, tvData] = await Promise.all([tmdbMovieInfo(), tmdbTvInfo()]);
+        setResults([...movieData, ...tvData]);
+      } catch (error) {
+        console.error("Error fetching data from TMDB API", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
   }, []);
 
-  const tmdbInfo = async () => {
-    const movieOptions = {
-      method: "GET",
-      url: "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&primary_release_year=2024&sort_by=popularity.desc",
-      headers: {
-        accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMTM3Y2NmZTcxMjY3NjYxMzMzNDVhZjZlOWJmY2Y5ZSIsInN1YiI6IjY2NWU0ZDk4N2U3NGNlNTcyMzIzMWM3ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Bws_3Y0C7Tah8B0W1oV4kn9soF-vrTTl803_ccppujI",
-      },
-    };
-
-    const tvOptions = {
-      method: "GET",
-      url: "https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc",
-      headers: {
-        accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMTM3Y2NmZTcxMjY3NjYxMzMzNDVhZjZlOWJmY2Y5ZSIsInN1YiI6IjY2NWU0ZDk4N2U3NGNlNTcyMzIzMWM3ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Bws_3Y0C7Tah8B0W1oV4kn9soF-vrTTl803_ccppujI",
-      },
-    };
-
-    try {
-      setLoading(true);
-      const [movieResponse, tvResponse] = await Promise.all([
-        axios.request(movieOptions),
-        axios.request(tvOptions),
-      ]);
-
-      const combinedResults = [
-        ...movieResponse.data.results,
-        ...tvResponse.data.results,
-      ];
-      setResults(combinedResults);
-      setLoading(false);
-      console.log(combinedResults);
-    } catch (error) {
-      console.error("Error fetching data from TMDB API", error);
-      setLoading(false);
-    }
-  };
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   const getMoreInfo = (title) => {
     setSelectedTitle(title === selectedTitle ? null : title);
