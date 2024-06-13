@@ -30,6 +30,8 @@ export default function App() {
   })
 
   const getTitle = async () => {
+    setShowMovies(false);
+    setShowTvShows(false);
     try {
       setLoading(true);
       const result = await axios.get("http://www.omdbapi.com/", {
@@ -70,33 +72,6 @@ export default function App() {
     }
   };
 
-  const tmdbMovieInfo = async () => {
-    const movieOptions = {
-      method: "GET",
-      url: "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&primary_release_year=2024&sort_by=popularity.desc",
-      headers: {
-        accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMTM3Y2NmZTcxMjY3NjYxMzMzNDVhZjZlOWJmY2Y5ZSIsInN1YiI6IjY2NWU0ZDk4N2U3NGNlNTcyMzIzMWM3ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Bws_3Y0C7Tah8B0W1oV4kn9soF-vrTTl803_ccppujI",
-      },
-    };
-    try {
-      setLoading(true);
-      const [movieResponse] = await Promise.all([
-        axios.request(movieOptions)
-      ]);
-
-      const movieResults = [
-        ...movieResponse.data.results
-      ];
-      setMovieResults(movieResults);
-      setLoading(false);
-      console.log(movieResults);
-    } catch (error) {
-      console.error("Error fetching movie data from TMDB API", error);
-      setLoading(false);
-    }
-  };
 
   const [expandedPoster, setExpandedPoster] = useState(null);
 
@@ -136,7 +111,6 @@ export default function App() {
             placeholder=" Enter a Title"
             onChange={(e) => {
               setTitle(e.target.value);
-              setSearchResults(null);
             }}
           />
          
@@ -146,17 +120,20 @@ export default function App() {
         </form>
         <div className="movies-tv-tags">
         <h2 className="movie-button"
-        onClick={toggleMovies}>Movies</h2>&nbsp;
+        onClick={toggleMovies}>Movies </h2>&nbsp;
         <h2
         className="tv-button"
-        onClick={toggleTvShows}>TV Shows
+        onClick={toggleTvShows}> TV Shows
 
         </h2>
         </div>
 
         <div>
-        {showMovies ? 
+        {!searchResults ? (
+          showMovies ? 
         <MovieApi /> : " "
+        ) : (" ")
+          
         }
         {showTvShows ? 
         <TvApi /> : " "
