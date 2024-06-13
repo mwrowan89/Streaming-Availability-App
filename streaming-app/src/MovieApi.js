@@ -5,6 +5,7 @@ import {tmdbMovieInfo, tmdbTvInfo} from './TmdbApi';
 function MovieApi() {
     const [loading, setLoading] = useState(false);
     const [movieResults, setMovieResults] = useState(null);
+    const [tvResults, setTvResults] = useState(null);
 
     useEffect(() => {
         const fetchMovies = async () => {
@@ -20,10 +21,25 @@ function MovieApi() {
     
         fetchMovies();
       }, []);
+
+      useEffect(() => {
+        const fetchTvShows = async () => {
+          setLoading(true);
+          try {
+            const tvShows = await tmdbTvInfo();
+            setTvResults(tvShows);
+            setLoading(false);
+          } catch (error) {
+            console.error("Error fetching movie data", error);
+          }
+        };
+    
+        fetchTvShows();
+      }, []);
     
   return (
     <div>
-        <div className="result-container">
+        <div className="movie-result-container">
         {loading ? (
               <p>Loading...</p>
             ) : movieResults ? (
@@ -44,7 +60,28 @@ function MovieApi() {
             :(
               <p className="no-results">No search results.</p>
             )}
-
+        </div>
+        <div className="tv-result-container">
+        {loading ? (
+              <p>Loading...</p>
+            ) : tvResults ? (
+              tvResults.map((result, index) => (
+                <div key={index} className="result-item">
+                  
+                  <img
+                    src={
+                      result.poster_path && result.Poster !== "N/A"
+                        ? `https://image.tmdb.org/t/p/w500${result.poster_path}`
+                        : "./NotFound.jpeg"
+                    }
+                    alt={`${result.Title} poster`}
+                  />
+                </div>
+              )
+            ))
+            :(
+              <p className="no-results">No search results.</p>
+            )}
         </div>
     </div>
   )
