@@ -32,6 +32,10 @@ function Banner() {
     setSelectedTitle(title === selectedTitle ? null : title);
   };
 
+  // const nextPage = () =>  {
+  //   page++;
+  //   fetchData();
+  // }
   return (
     <div className="banner-results-conatiner">
       <h1>Popular Titles from 2024</h1>
@@ -72,6 +76,7 @@ function Banner() {
           <p>No results found.</p>
         )}
       </div>
+      {/* <h1 onClick={nextPage}>more</h1> */}
     </div>
   );
 }

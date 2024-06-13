@@ -1,52 +1,76 @@
-import React, { useEffect, useState } from 'react'
-import { tmdbMovieInfo, tmdbTvInfo } from './TmdbApi';
+import React, { useEffect, useState } from "react";
+import { tmdbMovieInfo, tmdbTvInfo } from "./TmdbApi";
 
 function MovieApi() {
-    const [loading, setLoading] = useState(false);
-    const [movieResults, setMovieResults] = useState(null);
-    
+  const [loading, setLoading] = useState(false);
+  const [movieResults, setMovieResults] = useState(null);
+  const [page, setPage] = useState(1);
 
-    useEffect(() => {
-        const fetchMovies = async () => {
-          setLoading(true);
-          try {
-            const movies = await tmdbMovieInfo();
-            setMovieResults(movies);
-            setLoading(false);
-          } catch (error) {
-            console.error("Error fetching movie data", error);
-          }
-        };
-    
-        fetchMovies();
-      }, []);
-    
+  useEffect(() => {
+    const fetchMovies = async () => {
+      setLoading(true);
+      try {
+        const movies = await tmdbMovieInfo(page);
+        setMovieResults(movies);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching movie data", error);
+      }
+    };
+
+    fetchMovies();
+  }, [page]);
+
+  const nextPage = () => {
+    setPage((page) => page + 1);
+  };
+  const prevPage = () => {
+    setPage((page) => page - 1);
+  }
+
   return (
     <div>
-        <div className="movie-result-container">
+    <div className="next-prev-buttons">
+      <h3
+        onClick={(e) => {
+          e.preventDefault();
+          nextPage();
+        }}
+      >
+        Next Page
+      </h3>
+      {page}
+      <h3
+        onClick={(e) => {
+          e.preventDefault();
+          prevPage();
+        }}
+      >
+        Prev Page
+      </h3>
+      </div>
+      <div className="movie-result-container">
         {loading ? (
-              <p>Loading...</p>
-            ) : movieResults ? (
-              movieResults.map((result, index) => (
-                <div key={index} className="result-item">
-                  
-                  <img
-                    src={
-                      result.poster_path && result.Poster !== "N/A"
-                        ? `https://image.tmdb.org/t/p/w500${result.poster_path}`
-                        : "./NotFound.jpeg"
-                    }
-                    alt={`${result.Title} poster`}
-                  />
-                </div>
-              )
-            ))
-            :(
-              <p className="no-results">No search results.</p>
-            )}
-        </div>
+          <p>Loading...</p>
+        ) : movieResults ? (
+          movieResults.map((result, index) => (
+            <div key={index} className="result-item">
+              <img
+                src={
+                  result.poster_path && result.Poster !== "N/A"
+                    ? `https://image.tmdb.org/t/p/w500${result.poster_path}`
+                    : "./NotFound.jpeg"
+                }
+                alt={`${result.Title} poster`}
+              />
+            </div>
+          ))
+        ) : (
+          <p className="no-results">No search results.</p>
+        )}
+      </div>
     </div>
-  )
+  );
 }
 
-export default MovieApi
+export default MovieApi;
