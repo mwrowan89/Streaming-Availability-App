@@ -30,25 +30,6 @@ function MovieApi() {
 
   return (
     <div>
-    <div className="next-prev-buttons">
-      <h3 id="next"
-        onClick={(e) => {
-          e.preventDefault();
-          nextPage();
-        }}
-      >
-        Next Page
-      </h3>
-      <p>{page}</p>
-      <h3 id="prev"
-        onClick={(e) => {
-          e.preventDefault();
-          prevPage();
-        }}
-      >
-        Prev Page
-      </h3>
-      </div>
       <div className="movie-result-container">
         {loading ? (
           <p>Loading...</p>
@@ -68,6 +49,25 @@ function MovieApi() {
         ) : (
           <p className="no-results">No search results.</p>
         )}
+      </div>
+      <div className="next-prev-buttons">
+      <h3 id="next"
+        onClick={(e) => {
+          e.preventDefault();
+          nextPage();
+        }}
+      >
+        Next Page
+      </h3>
+      <p>{page}</p>
+      <h3 id="prev"
+        onClick={(e) => {
+          e.preventDefault();
+          prevPage();
+        }}
+      >
+        Prev Page
+      </h3>
       </div>
     </div>
   );
