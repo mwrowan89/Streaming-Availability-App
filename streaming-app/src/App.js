@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
-import Banner from "./Banner";
+import Banner from "./components/Banner";
 import MovieApi from "./MovieApi";
 import TvApi from "./TvApi";
 

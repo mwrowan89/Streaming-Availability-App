@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { tmdbMovieInfo, tmdbTvInfo } from "./TmdbApi";
+import { tmdbMovieInfo, tmdbTvInfo } from "../TmdbApi";
 import "./Banner.css";
 
 function Banner() {
@@ -64,12 +64,10 @@ function Banner() {
                     />
                   </div>
                   <div className="card-back">
-                    
-                      <div className="more-info">
-                        <h3>{title}</h3>
-                        <p>{description}</p>
-                      </div>
-                    
+                    <div className="more-info">
+                      <h3>{title}</h3>
+                      <p>{description}</p>
+                    </div>
                   </div>
                 </div>
               </div>
