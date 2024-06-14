@@ -23,7 +23,7 @@ const tvOptions = (page) => ({
   method: "GET",
   url: "https://api.themoviedb.org/3/discover/tv",
   params: {
-    include_adult: true,
+    include_adult: false,
     include_null_first_air_dates: false,
     language: "en-US",
     page: page,
@@ -48,7 +48,7 @@ export const tmdbMovieInfo = async (page) => {
 
 export const tmdbTvInfo = async (page) => {
   try {
-    const response = await axios.request(tvOptions);
+    const response = await axios.request(tvOptions(page));
     return response.data.results;
   } catch (error) {
     console.error("Error fetching TV data from TMDB API", error);

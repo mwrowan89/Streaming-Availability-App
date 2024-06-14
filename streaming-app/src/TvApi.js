@@ -32,7 +32,7 @@ function TvApi() {
   return (
     <div>
       <div className="next-prev-buttons">
-        <h3
+        <h3 id="next"
           onClick={(e) => {
             e.preventDefault();
             nextPage();
@@ -40,8 +40,8 @@ function TvApi() {
         >
           Next Page
         </h3>
-        {page}
-        <h3
+        <p>{page}</p>
+        <h3 id="prev"
           onClick={(e) => {
             e.preventDefault();
             prevPage();

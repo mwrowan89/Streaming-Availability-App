@@ -39,9 +39,7 @@
   width: 25vw;
   margin-right: 5px;
 }
-.result-container,
-.movie-result-container,
-.tv-result-container {
+.result-container {
   display: grid;
   grid-template-columns: repeat(4,1fr);
   gap: 20px;
@@ -62,12 +60,26 @@ img {
 }
 .movies-tv-tags {
   display: flex;
+  width: 30vw;
+  justify-content: space-evenly;
 
+}
+.movie-result-container,
+.tv-result-container {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 20px;
 }
 .movie-button:hover,
 .tv-button:hover {
-  
   text-shadow: 0px 0px 10px #fff, 0px 0px 10px #fff;
   cursor:grab;
+}
+.next-prev-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+#next, #prev{
+  color:red;
 }
 
