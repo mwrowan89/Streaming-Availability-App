@@ -25,7 +25,9 @@ function MovieApi() {
     setPage((page) => page + 1);
   };
   const prevPage = () => {
+    if(page > 1){
     setPage((page) => page - 1);
+    }
   }
 
   return (
@@ -51,15 +53,6 @@ function MovieApi() {
         )}
       </div>
       <div className="next-prev-buttons">
-      <h3 id="next"
-        onClick={(e) => {
-          e.preventDefault();
-          nextPage();
-        }}
-      >
-        Next Page
-      </h3>
-      <p>{page}</p>
       <h3 id="prev"
         onClick={(e) => {
           e.preventDefault();
@@ -68,6 +61,16 @@ function MovieApi() {
       >
         Prev Page
       </h3>
+      <p>{page}</p>
+      <h3 id="next"
+        onClick={(e) => {
+          e.preventDefault();
+          nextPage();
+        }}
+      >
+        Next Page
+      </h3>
+      
       </div>
     </div>
   );
