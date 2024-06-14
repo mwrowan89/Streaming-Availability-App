@@ -5,12 +5,13 @@ import { tmdbMovieInfo, tmdbTvInfo } from "./TmdbApi";
 function TvApi() {
   const [loading, setLoading] = useState(false);
   const [tvResults, setTvResults] = useState(null);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     const fetchTvShows = async () => {
       setLoading(true);
       try {
-        const tvShows = await tmdbTvInfo();
+        const tvShows = await tmdbTvInfo(page);
         setTvResults(tvShows);
         setLoading(false);
       } catch (error) {
@@ -19,10 +20,36 @@ function TvApi() {
     };
 
     fetchTvShows();
-  }, []);
+  }, [page]);
+
+  const nextPage = () => {
+    setPage((page) => page + 1);
+  };
+  const prevPage = () => {
+    setPage((page) => page - 1);
+  }
 
   return (
     <div>
+      <div className="next-prev-buttons">
+        <h3
+          onClick={(e) => {
+            e.preventDefault();
+            nextPage();
+          }}
+        >
+          Next Page
+        </h3>
+        {page}
+        <h3
+          onClick={(e) => {
+            e.preventDefault();
+            prevPage();
+          }}
+        >
+          Prev Page
+        </h3>
+      </div>
       <div className="tv-result-container">
         {loading ? (
           <p>Loading...</p>

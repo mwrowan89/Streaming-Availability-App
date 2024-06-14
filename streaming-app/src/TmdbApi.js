@@ -19,14 +19,14 @@ const movieOptions = (page) => ({
   },
 });
 
-const tvOptions = {
+const tvOptions = (page) => ({
   method: "GET",
   url: "https://api.themoviedb.org/3/discover/tv",
   params: {
     include_adult: true,
     include_null_first_air_dates: false,
     language: "en-US",
-    page: 1,
+    page: page,
     sort_by: "popularity.desc"
   },
 
@@ -34,7 +34,7 @@ const tvOptions = {
     accept: "application/json",
     Authorization: API_KEY,
   },
-};
+});
 
 export const tmdbMovieInfo = async (page) => {
   try {
@@ -46,7 +46,7 @@ export const tmdbMovieInfo = async (page) => {
   }
 };
 
-export const tmdbTvInfo = async () => {
+export const tmdbTvInfo = async (page) => {
   try {
     const response = await axios.request(tvOptions);
     return response.data.results;
