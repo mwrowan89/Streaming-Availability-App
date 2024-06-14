@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { tmdbMovieInfo, tmdbTvInfo } from "./TmdbApi";
+import { tmdbMovieInfo, tmdbTvInfo } from "../TmdbApi";
 
 function TvApi() {
   const [loading, setLoading] = useState(false);
@@ -26,11 +26,10 @@ function TvApi() {
     setPage((page) => page + 1);
   };
   const prevPage = () => {
-    if(page > 1){
-    setPage((page) => page - 1);
+    if (page > 1) {
+      setPage((page) => page - 1);
     }
-  }
-
+  };
 
   return (
     <div>
@@ -55,7 +54,8 @@ function TvApi() {
         )}
       </div>
       <div className="next-prev-buttons">
-      <h3 id="prev"
+        <h3
+          id="prev"
           onClick={(e) => {
             e.preventDefault();
             prevPage();
@@ -64,7 +64,8 @@ function TvApi() {
           Prev Page
         </h3>
         <p>{page}</p>
-        <h3 id="next"
+        <h3
+          id="next"
           onClick={(e) => {
             e.preventDefault();
             nextPage();
