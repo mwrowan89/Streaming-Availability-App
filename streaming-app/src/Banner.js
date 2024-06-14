@@ -12,7 +12,10 @@ function Banner() {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const [movieData, tvData] = await Promise.all([tmdbMovieInfo(), tmdbTvInfo()]);
+        const [movieData, tvData] = await Promise.all([
+          tmdbMovieInfo(),
+          tmdbTvInfo(),
+        ]);
         setResults([...movieData, ...tvData]);
       } catch (error) {
         console.error("Error fetching data from TMDB API", error);
@@ -32,10 +35,6 @@ function Banner() {
     setSelectedTitle(title === selectedTitle ? null : title);
   };
 
-  // const nextPage = () =>  {
-  //   page++;
-  //   fetchData();
-  // }
   return (
     <div className="banner-results-conatiner">
       <h1>Popular Titles from 2024</h1>
@@ -48,35 +47,38 @@ function Banner() {
             const description = result.overview;
 
             return (
-            <div key={index} className="banner-result-item">
-              <img
-                src={
-                  result.poster_path
-                    ? `https://image.tmdb.org/t/p/w500${result.poster_path}`
-                    : "./NotFound.jpeg"
-                }
-                alt={`${title} poster`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  getMoreInfo(title)}}
-              />
-              {selectedTitle === title && (
-                <div className="more-info">
-                <h3>{title}</h3>
-                <p>{description}</p> 
-                {/* <p className="close-button"
-                onClick={ (e) => {
-                  e.preventDefault();
-                  setSelectedTitle(null)} }>X</p> */}
+              <div key={index} className="banner-result-item">
+                <div className="card">
+                  <div className="card-front">
+                    <img
+                      src={
+                        result.poster_path
+                          ? `https://image.tmdb.org/t/p/w500${result.poster_path}`
+                          : "./NotFound.jpeg"
+                      }
+                      alt={`${title} poster`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        getMoreInfo(title);
+                      }}
+                    />
+                  </div>
+                  <div className="card-back">
+                    {selectedTitle === title && (
+                      <div className="more-info">
+                        <h3>{title}</h3>
+                        <p>{description}</p>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              )}
-            </div>
-          )})
+              </div>
+            );
+          })
         ) : (
           <p>No results found.</p>
         )}
       </div>
-      {/* <h1 onClick={nextPage}>more</h1> */}
     </div>
   );
 }
