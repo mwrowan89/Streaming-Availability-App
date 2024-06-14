@@ -3,6 +3,7 @@
   white-space: nowrap;
   /* justify-content: flex-end; */
   position: relative;
+  perspective: 1000px;
 }
 
 .banner-results {
@@ -35,7 +36,9 @@ animation-play-state: paused;
 cursor: pointer;
 }
 .banner-result-item:hover {
-transform: scale(1.2);
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  transform: rotateY(180deg);
 }
 .more-info {
   background-color: black;
