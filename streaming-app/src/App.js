@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 import Banner from "./components/Banner";
-import MovieApi from "./MovieApi";
-import TvApi from "./TvApi";
+import MovieApi from "./components/MovieApi";
+import TvApi from "./components/TvApi";
 
 export default function App() {
   const [title, setTitle] = useState(null);
   const [searchResults, setSearchResults] = useState(null);
-  const [movieResults, setMovieResults] = useState(null);
+  // const [movieResults, setMovieResults] = useState(null);
   const [titleInfo, setTitleInfo] = useState({});
   const [loading, setLoading] = useState(false);
   const [showMovies, setShowMovies] = useState(false);

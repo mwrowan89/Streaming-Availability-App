@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { tmdbMovieInfo, tmdbTvInfo } from "../TmdbApi";
-import "./Banner.css";
+import "../Banner.css";
 
 function Banner() {
   const [loading, setLoading] = useState(false);
