@@ -4,6 +4,7 @@
   /* justify-content: flex-end; */
   position: relative;
   perspective: 1000px;
+  width: 100%;
 }
 
 .banner-results {
@@ -37,11 +38,11 @@ cursor: pointer;
 }
 .banner-result-item:hover,
 .banner-result-item:focus {
-  transform-style: preserve-3d;
+  transform: scale(1.5);
   transition: transform 0.6s;
+  z-index: 1;
 }
 .more-info {
-  background-color: black;
   color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
@@ -58,18 +59,6 @@ color:red;
 font-weight: bold;
 position: absolute;
 }
-
-
-.banner-results-container {
-  width: 100%;
-  padding: 20px;
-}
-
-/* .banner-results {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-} */
 
 .banner-result-item {
   perspective: 1000px;
@@ -98,12 +87,8 @@ position: absolute;
   overflow: hidden;
 }
 
-.card-front {
-  background-color: #007BFF;
-}
-
 .card-back {
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.811);
   transform: rotateY(180deg);
   padding: 10px;
   box-sizing: border-box;
@@ -115,7 +100,8 @@ position: absolute;
 
 .card-back h3,
 .card-back p {
-  margin: 0;
-  color: #fff;
+  margin: 20px;
+  color: white;
+  font-size: 16px;
   text-align: center;
 }

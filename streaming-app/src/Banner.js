@@ -64,12 +64,12 @@ function Banner() {
                     />
                   </div>
                   <div className="card-back">
-                    {selectedTitle === title && (
+                    
                       <div className="more-info">
                         <h3>{title}</h3>
                         <p>{description}</p>
                       </div>
-                    )}
+                    
                   </div>
                 </div>
               </div>
