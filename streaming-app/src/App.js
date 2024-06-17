@@ -9,7 +9,6 @@ import Menu from "./components/Menu";
 export default function App() {
   const [title, setTitle] = useState(null);
   const [searchResults, setSearchResults] = useState(null);
-  // const [movieResults, setMovieResults] = useState(null);
   const [titleInfo, setTitleInfo] = useState({});
   const [loading, setLoading] = useState(false);
   const [showMovies, setShowMovies] = useState(false);
@@ -92,8 +91,10 @@ export default function App() {
 
   return (
     <div className="main">
-      <main className="App">
+      <div className="menu-icon">
         <Menu />
+      </div>
+      <main className="App">
         <h1 className="Title">
           <span className="text-red">Discover</span> Titles
         </h1>

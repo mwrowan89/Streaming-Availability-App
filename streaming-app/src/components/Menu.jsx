@@ -3,7 +3,7 @@ import "./Menu.css";
 
 const Menu = () => {
   return (
-    <div>
+    <div className="menu-main">
       <div className="hamburger-icon"></div>
       <div className="hamburger-icon"></div>
       <div className="hamburger-icon"></div>
