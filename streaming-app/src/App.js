@@ -4,6 +4,7 @@ import axios from "axios";
 import Banner from "./components/Banner";
 import MovieApi from "./components/MovieApi";
 import TvApi from "./components/TvApi";
+import Menu from "./components/Menu";
 
 export default function App() {
   const [title, setTitle] = useState(null);
@@ -92,6 +93,7 @@ export default function App() {
   return (
     <div className="main">
       <main className="App">
+        <Menu />
         <h1 className="Title">
           <span className="text-red">Discover</span> Titles
         </h1>
