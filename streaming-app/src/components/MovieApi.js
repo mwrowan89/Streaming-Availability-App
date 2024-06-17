@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { tmdbMovieInfo, tmdbTvInfo } from "../TmdbApi";
+import "./MovieApi.css";
 
 function MovieApi() {
   const [loading, setLoading] = useState(false);
@@ -37,7 +38,7 @@ function MovieApi() {
           <p>Loading...</p>
         ) : movieResults ? (
           movieResults.map((result, index) => (
-            <div key={index} className="result-item">
+            <div key={index} className="movie-result-item">
               <img
                 src={
                   result.poster_path && result.Poster !== "N/A"
