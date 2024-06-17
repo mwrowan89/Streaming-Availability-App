@@ -25,7 +25,6 @@ export default function App() {
   useEffect(() => {
     if (!titleInfo) {
       getInfo();
-      console.log(titleInfo);
     }
   });
 
@@ -41,7 +40,6 @@ export default function App() {
           apikey: "5aa370ab",
         },
       });
-      console.log(result);
       const { data } = result;
       setSearchResults(data.Search || []);
       setLoading(false);
