@@ -82,6 +82,7 @@ img {
 #next,
 #prev {
   color: red;
+  cursor: pointer;
 }
 
 /* Main CSS */
