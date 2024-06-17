@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { tmdbMovieInfo, tmdbTvInfo } from "../TmdbApi";
+import "./TvApi.css";
 
 function TvApi() {
   const [loading, setLoading] = useState(false);
@@ -38,7 +39,7 @@ function TvApi() {
           <p>Loading...</p>
         ) : tvResults ? (
           tvResults.map((result, index) => (
-            <div key={index} className="result-item">
+            <div key={index} className="tv-result-item">
               <img
                 src={
                   result.poster_path && result.Poster !== "N/A"
