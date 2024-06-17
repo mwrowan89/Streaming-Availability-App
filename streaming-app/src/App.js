@@ -176,7 +176,7 @@ export default function App() {
                 </div>
               ))
             ) : (
-              <p className="no-results">No search results.</p>
+              <p className="no-results"> </p>
             )}
           </div>
         </div>
