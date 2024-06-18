@@ -6,6 +6,7 @@ import MovieApi from "./components/MovieApi";
 import TvApi from "./components/TvApi";
 import Menu from "./components/Menu";
 import Header from "./components/Header";
+import SearchBar from "./components/SearchBar";
 
 export default function App() {
   const [title, setTitle] = useState(null);
@@ -75,6 +76,7 @@ export default function App() {
       <main className="App">
         <Header />
         <Banner /> <br></br>
+        <SearchBar />
         <div className="movies-tv-tags">
           <h2 className="movie-button" onClick={toggleMovies}>
             Movies{" "}
@@ -88,49 +90,6 @@ export default function App() {
         <div>
           {showMovies ? <MovieApi /> : " "}
           {showTvShows ? <TvApi /> : " "}
-        </div>
-        <div className="search-results">
-          <h1>{title ? "Search Results for " + title : " "}</h1>
-
-          <div className="result-container">
-            {loading ? (
-              <p>Loading...</p>
-            ) : searchResults ? (
-              searchResults.map((result, index) => (
-                <div
-                  key={index}
-                  className="result-item"
-                  onMouseEnter={() => toggleMoreInfo(result.Title)}
-                  onMouseLeave={() => toggleMoreInfo(result.Title)}
-                >
-                  <h3>{result.Title}</h3>
-                  <img
-                    src={
-                      result.Poster && result.Poster !== "N/A"
-                        ? result.Poster
-                        : "./NotFound.jpeg"
-                    }
-                    alt={`${result.Title} poster`}
-                  />
-                  {expandedPoster === result.Title &&
-                    titleInfo[result.Title] && (
-                      <div>
-                        <p>Actors: {titleInfo[result.Title].Actors}</p>
-                        <p>Genre: {titleInfo[result.Title].Genre}</p>
-                        {titleInfo[result.Title].Rated &&
-                          titleInfo[result.Title].Rated !== "N/A" && (
-                            <p>Rated: {titleInfo[result.Title].Rated}</p>
-                          )}
-                      </div>
-                    )}
-                  <p>Year: {result.Year}</p>
-                  <p>Type: {result.Type}</p>
-                </div>
-              ))
-            ) : (
-              <p className="no-results"> </p>
-            )}
-          </div>
         </div>
       </main>
     </div>
