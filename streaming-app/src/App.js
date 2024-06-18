@@ -7,6 +7,7 @@ import TvApi from "./components/TvApi";
 import Menu from "./components/Menu";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
+import SelectButtons from "./components/SelectButtons";
 
 export default function App() {
   const [title, setTitle] = useState(null);
@@ -51,23 +52,6 @@ export default function App() {
     }
   };
 
-  const [expandedPoster, setExpandedPoster] = useState(null);
-
-  const toggleMoreInfo = (movieTitle) => {
-    setExpandedPoster((prevPoster) =>
-      prevPoster === movieTitle ? null : movieTitle
-    );
-  };
-
-  const toggleMovies = () => {
-    setShowTvShows(false);
-    setShowMovies(!showMovies);
-  };
-  const toggleTvShows = () => {
-    setShowMovies(false);
-    setShowTvShows(!showTvShows);
-  };
-
   return (
     <div className="main">
       <div className="menu-icon">
@@ -77,20 +61,7 @@ export default function App() {
         <Header />
         <Banner /> <br></br>
         <SearchBar />
-        <div className="movies-tv-tags">
-          <h2 className="movie-button" onClick={toggleMovies}>
-            Movies{" "}
-          </h2>
-          &nbsp;
-          <h2 className="tv-button" onClick={toggleTvShows}>
-            {" "}
-            TV Shows
-          </h2>
-        </div>
-        <div>
-          {showMovies ? <MovieApi /> : " "}
-          {showTvShows ? <TvApi /> : " "}
-        </div>
+        <SelectButtons />
       </main>
     </div>
   );
