@@ -4,3 +4,6 @@
   transition: transform 0.6s;
   z-index: 1;
 }
+.movie-result-item {
+  cursor: pointer;
+}
