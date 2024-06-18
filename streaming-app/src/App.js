@@ -29,27 +29,6 @@ export default function App() {
     }
   });
 
-  const getTitle = async () => {
-    setShowMovies(false);
-    setShowTvShows(false);
-    try {
-      setLoading(true);
-      const result = await axios.get("http://www.omdbapi.com/", {
-        params: {
-          s: title,
-          plot: "",
-          apikey: "5aa370ab",
-        },
-      });
-      const { data } = result;
-      setSearchResults(data.Search || []);
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching data from OMDB API", error);
-      setLoading(false);
-    }
-  };
-
   const getInfo = async (movieTitle) => {
     try {
       setLoading(true);
@@ -96,26 +75,6 @@ export default function App() {
       <main className="App">
         <Header />
         <Banner /> <br></br>
-        <form
-          className="form-container"
-          onSubmit={(e) => {
-            getTitle();
-            e.preventDefault();
-          }}
-        >
-          <input
-            className="form"
-            type="text"
-            placeholder=" Enter a Title"
-            onChange={(e) => {
-              setTitle(e.target.value);
-            }}
-          />
-
-          <button className="button" type="submit">
-            Search
-          </button>
-        </form>
         <div className="movies-tv-tags">
           <h2 className="movie-button" onClick={toggleMovies}>
             Movies{" "}
