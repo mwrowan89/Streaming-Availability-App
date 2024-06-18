@@ -44,7 +44,7 @@
   gap: 20px;
 }
 .result-item {
-  background-color: rgba(0, 0, 0, 0.251);
+  background-color: #00000040;
   border-radius: 10px;
 }
 .search-results {
@@ -71,7 +71,7 @@ img {
 }
 .movie-button:hover,
 .tv-button:hover {
-  text-shadow: 0px 0px 10px #fff, 0px 0px 10px #fff;
+  text-shadow: 0px 0px 10px rgb(255, 255, 255), 0px 0px 10px #fff;
   cursor: grab;
 }
 .next-prev-buttons {
