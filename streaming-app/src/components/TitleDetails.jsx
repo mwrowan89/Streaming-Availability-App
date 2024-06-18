@@ -1,6 +1,6 @@
 import React from "react";
 
-const TitleDetails = () => {
+const TitleDetails = (id) => {
   return <div></div>;
 };
 
