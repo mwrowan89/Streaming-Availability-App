@@ -41,6 +41,9 @@ function TvApi() {
           tvResults.map((result, index) => (
             <div key={index} className="tv-result-item">
               <img
+                onClick={() => {
+                  console.table(result);
+                }}
                 src={
                   result.poster_path && result.Poster !== "N/A"
                     ? `https://image.tmdb.org/t/p/w500${result.poster_path}`
