@@ -8,17 +8,13 @@ import Footer from "./components/Footer";
 
 export default function App() {
   return (
-    <div className="main">
-      <div className="menu-icon">
-        <Menu />
-      </div>
-      <main className="App">
-        <Header />
-        <Banner /> <br></br>
-        <SearchBar />
-        <SelectButtons />
-        <Footer />
-      </main>
+    <div className="App">
+      <Menu />
+      <Header />
+      <Banner /> <br></br>
+      <SearchBar />
+      <SelectButtons />
+      <Footer className="footer" />
     </div>
   );
 }
