@@ -1,6 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
 
-const API_KEY = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMTM3Y2NmZTcxMjY3NjYxMzMzNDVhZjZlOWJmY2Y5ZSIsInN1YiI6IjY2NWU0ZDk4N2U3NGNlNTcyMzIzMWM3ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Bws_3Y0C7Tah8B0W1oV4kn9soF-vrTTl803_ccppujI";
+const API_KEY =
+  "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMTM3Y2NmZTcxMjY3NjYxMzMzNDVhZjZlOWJmY2Y5ZSIsInN1YiI6IjY2NWU0ZDk4N2U3NGNlNTcyMzIzMWM3ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Bws_3Y0C7Tah8B0W1oV4kn9soF-vrTTl803_ccppujI";
 
 const movieOptions = (page) => ({
   method: "GET",
@@ -11,7 +12,7 @@ const movieOptions = (page) => ({
     language: "en-US",
     page: page,
     primary_release_year: 2024,
-    sort_by: "popularity.desc"
+    sort_by: "popularity.desc",
   },
   headers: {
     accept: "application/json",
@@ -27,7 +28,7 @@ const tvOptions = (page) => ({
     include_null_first_air_dates: false,
     language: "en-US",
     page: page,
-    sort_by: "popularity.desc"
+    sort_by: "popularity.desc",
   },
 
   headers: {
@@ -36,7 +37,7 @@ const tvOptions = (page) => ({
   },
 });
 
-export const tmdbMovieInfo = async (page) => {
+export const tmdbPopMovieInfo = async (page) => {
   try {
     const response = await axios.request(movieOptions(page));
     return response.data.results;
@@ -46,7 +47,7 @@ export const tmdbMovieInfo = async (page) => {
   }
 };
 
-export const tmdbTvInfo = async (page) => {
+export const tmdbPopTvInfo = async (page) => {
   try {
     const response = await axios.request(tvOptions(page));
     return response.data.results;

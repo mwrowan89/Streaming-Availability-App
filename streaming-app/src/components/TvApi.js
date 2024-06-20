@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { tmdbMovieInfo, tmdbTvInfo } from "../TmdbApi";
+import { tmdbPopMovieInfo, tmdbPopTvInfo } from "../TmdbApi";
 import "./TvApi.css";
 
 function TvApi() {
@@ -12,7 +12,7 @@ function TvApi() {
     const fetchTvShows = async () => {
       setLoading(true);
       try {
-        const tvShows = await tmdbTvInfo(page);
+        const tvShows = await tmdbPopTvInfo(page);
         setTvResults(tvShows);
         setLoading(false);
       } catch (error) {

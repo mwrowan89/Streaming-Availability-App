@@ -105,12 +105,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-/* Menu CSS */
-.menu-icon {
-  position: absolute;
-  margin: 1vw 0vw 0vw 1vw;
-}
-.menu-icon:focus {
-  text-shadow: 0px 0px 10px #fff, 0px 0px 10px #ffffff86;
-}

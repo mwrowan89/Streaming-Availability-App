@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { tmdbMovieInfo, tmdbTvInfo } from "../TmdbApi";
+import { tmdbPopMovieInfo, tmdbPopTvInfo } from "../TmdbApi";
 import "./Banner.css";
 
 function Banner() {
@@ -12,8 +12,8 @@ function Banner() {
       setLoading(true);
       try {
         const [movieData, tvData] = await Promise.all([
-          tmdbMovieInfo(),
-          tmdbTvInfo(),
+          tmdbPopMovieInfo(),
+          tmdbPopTvInfo(),
         ]);
         setResults([...movieData, ...tvData]);
       } catch (error) {

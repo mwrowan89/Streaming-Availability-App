@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { tmdbMovieInfo, tmdbTvInfo } from "../TmdbApi";
+import { tmdbPopMovieInfo, tmdbPopTvInfo } from "../TmdbApi";
 import "./MovieApi.css";
 
 function MovieApi() {
@@ -11,7 +11,7 @@ function MovieApi() {
     const fetchMovies = async () => {
       setLoading(true);
       try {
-        const movies = await tmdbMovieInfo(page);
+        const movies = await tmdbPopMovieInfo(page);
         setMovieResults(movies);
         setLoading(false);
       } catch (error) {
