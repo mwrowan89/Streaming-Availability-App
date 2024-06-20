@@ -17,8 +17,8 @@
 .menu-filter-options {
   display: flex;
   align-items: center;
-  gap: 30px;
-  margin: 0 2vw 0 55vw;
+  gap: 35px;
+  margin: 0 2vw 0 53vw;
   flex: 1 1 100px;
   transition: all 0.3s ease;
 }
