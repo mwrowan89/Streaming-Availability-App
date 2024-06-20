@@ -23,7 +23,13 @@
 .menu-main {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   width: 100vw;
   height: 8vh;
   background-color: rgba(3, 63, 106, 0.811);
+}
+.menu-title {
+  text-decoration: underline;
+  justify-content: flex-start !important;
+  text-shadow: 0px 0px 10px #fff, 0px 0px 10px #ffffff86;
 }
