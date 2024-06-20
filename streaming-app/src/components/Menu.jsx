@@ -16,7 +16,12 @@ const Menu = () => {
 
   return (
     <div className="menu-main">
-      <h1 className="menu-title">
+      <h1
+        className="menu-title"
+        onClick={() => {
+          handleNavigation("/");
+        }}
+      >
         <span className="text-red">Discover</span> Titles
       </h1>
 
