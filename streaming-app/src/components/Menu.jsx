@@ -4,11 +4,9 @@ import "./Menu.css";
 const Menu = () => {
   return (
     <div className="menu-main">
-      <div className="hamburger-main">
-        <div className="hamburger-icon"></div>
-        <div className="hamburger-icon"></div>
-        <div className="hamburger-icon"></div>
-      </div>
+      <h1 className="Title">
+        <span className="text-red">Discover</span> Titles
+      </h1>
 
       <div className="menu-filter-options">
         <h3>Movies</h3>

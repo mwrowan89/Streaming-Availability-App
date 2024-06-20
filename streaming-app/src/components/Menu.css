@@ -1,4 +1,4 @@
-.hamburger-icon {
+/* .hamburger-icon {
   width: 35px;
   height: 5px;
   background-color: rgba(255, 255, 255, 0.825);
@@ -9,20 +9,21 @@
   flex-direction: column;
   justify-content: center;
   margin-left: 10px;
-}
-.hamburger-main:hover {
+} */
+/* .hamburger-main:hover {
   text-shadow: 0px 0px 10px #fff, 0px 0px 10px #ffffff86;
   cursor: pointer;
-}
+} */
 .menu-filter-options {
   display: flex;
   align-items: center;
   gap: 30px;
-  margin-left: 36.5vw;
+  margin-left: 20vw;
 }
 .menu-main {
   display: flex;
+  align-items: center;
   width: 100vw;
-  height: 7vh;
+  height: 8vh;
   background-color: rgba(3, 63, 106, 0.811);
 }
