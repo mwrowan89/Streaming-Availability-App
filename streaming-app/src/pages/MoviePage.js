@@ -7,6 +7,7 @@ const MoviePage = () => {
     <div className="App">
       <Menu />
       <Header />
+      <h1>Search Movies</h1>
     </div>
   );
 };

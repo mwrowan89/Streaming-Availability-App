@@ -12,6 +12,7 @@ export default function App() {
       <Menu />
       <Header />
       <Banner /> <br></br>
+      <br />
       <SearchBar />
       <SelectButtons />
       <Footer className="footer" />
