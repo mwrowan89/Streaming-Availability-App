@@ -36,7 +36,6 @@ function Banner() {
 
   return (
     <div className="banner-results-conatiner">
-      <h1>Popular Titles from 2024</h1>
       <div className="banner-results">
         {loading ? (
           <p>Loading...</p>

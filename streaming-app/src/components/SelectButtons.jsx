@@ -4,7 +4,7 @@ import MovieApi from "./MovieApi";
 import TvApi from "./TvApi";
 
 const SelectButtons = () => {
-  const [showMovies, setShowMovies] = useState(false);
+  const [showMovies, setShowMovies] = useState(true);
   const [showTvShows, setShowTvShows] = useState(false);
 
   const toggleMovies = useCallback(
