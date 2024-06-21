@@ -41,7 +41,6 @@ function PeopleApi() {
         ) : results ? (
           results.map((result, index) => (
             <div key={index} className="people-result-item">
-              {result.name}
               <img
                 onClick={() => {
                   console.table(result);
@@ -53,6 +52,7 @@ function PeopleApi() {
                 }
                 alt={`${result.name} poster`}
               />
+              <br />
             </div>
           ))
         ) : (

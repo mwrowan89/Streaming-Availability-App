@@ -5,20 +5,19 @@
   z-index: 1;
   cursor: pointer;
 }
-.movies-tv-tags,
-.people-result-item {
+.movies-tv-tags {
   display: flex;
   gap: 12rem;
   justify-content: center;
 }
 .movie-result-container,
-.people-result-container,
 .tv-result-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 20px;
   margin-bottom: 15px;
 }
+
 .movie-button:hover,
 .tv-button:hover {
   text-shadow: 0px 0px 10px rgb(255, 255, 255), 0px 0px 10px #fff;
@@ -33,4 +32,12 @@
 #prev {
   color: red;
   cursor: pointer;
+}
+.people-result-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+.people-result-item {
 }
