@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { tmdbPopMovieInfo, tmdbPopTvInfo } from "../TmdbApi";
-import "./TvApi.css";
+import { tmdbPopTvInfo } from "../TmdbApi";
+import "./Api.css";
 
 function TvApi() {
   const [loading, setLoading] = useState(false);

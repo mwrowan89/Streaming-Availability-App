@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { tmdbPopMovieInfo, tmdbPopTvInfo } from "../TmdbApi";
-import "./MovieApi.css";
+import "./Api.css";
 
 function MovieApi() {
   const [loading, setLoading] = useState(false);

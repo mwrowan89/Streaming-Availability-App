@@ -1,9 +1,0 @@
-.tv-result-item:hover,
-.tv-result-item:focus {
-  transform: scale(1.5);
-  transition: transform 0.6s;
-  z-index: 1;
-}
-.tv-result-item {
-  cursor: pointer;
-}
