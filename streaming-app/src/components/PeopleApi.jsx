@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { tmdbPeopleInfo } from "../TmdbApi";
-import "./TvApi.css";
+import "./Api.css";
 
 function PeopleApi() {
   const [loading, setLoading] = useState(false);
@@ -35,7 +35,7 @@ function PeopleApi() {
 
   return (
     <div>
-      <div className="tv-result-container">
+      <div className="people-result-container">
         {loading ? (
           <p>Loading...</p>
         ) : results ? (

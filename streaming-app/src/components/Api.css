@@ -1,18 +1,18 @@
 .movie-result-item:hover,
-.movie-result-item:focus {
+.tv-result-item:hover {
   transform: scale(1.5);
   transition: transform 0.6s;
   z-index: 1;
-}
-.movie-result-item {
   cursor: pointer;
 }
-.movies-tv-tags {
+.movies-tv-tags,
+.people-result-item {
   display: flex;
   gap: 12rem;
   justify-content: center;
 }
 .movie-result-container,
+.people-result-container,
 .tv-result-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
