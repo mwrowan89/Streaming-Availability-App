@@ -53,6 +53,7 @@ function PeopleApi() {
                 alt={`${result.name} poster`}
               />
               <br />
+              {result.name}
             </div>
           ))
         ) : (
