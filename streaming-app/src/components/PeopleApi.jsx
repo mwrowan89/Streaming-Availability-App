@@ -42,18 +42,17 @@ function PeopleApi() {
           results.map((result, index) => (
             <div key={index} className="people-result-item">
               {result.name}
-              {result.profile_path}
-              {/* <img
+              <img
                 onClick={() => {
                   console.table(result);
                 }}
                 src={
                   result.poster_path && result.Poster !== "N/A"
-                    ? `https://image.tmdb.org/t/p/w500${result.poster_path}`
+                    ? `https://image.tmdb.org/t/p/w185${result.profile_path}`
                     : "./NotFound.jpeg"
                 }
-                alt={`${result.Title} poster`}
-              /> */}
+                alt={`${result.name} poster`}
+              />
             </div>
           ))
         ) : (
