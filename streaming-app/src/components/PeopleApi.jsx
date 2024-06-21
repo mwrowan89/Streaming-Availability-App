@@ -47,7 +47,7 @@ function PeopleApi() {
                   console.table(result);
                 }}
                 src={
-                  result.poster_path && result.Poster !== "N/A"
+                  result.profile_path && result.profile_path !== "N/A"
                     ? `https://image.tmdb.org/t/p/w185${result.profile_path}`
                     : "./NotFound.jpeg"
                 }
