@@ -39,7 +39,7 @@ const tvOptions = (page) => ({
 
 const peopleOptions = () => ({
   method: "GET",
-  url: "https://api.themoviedb.org/3/discover/tv",
+  url: "https://api.themoviedb.org/3/person/popular?language=en-US&page=1",
   params: {
     page: 1,
   },
