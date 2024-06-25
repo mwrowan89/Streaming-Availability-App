@@ -1,6 +1,7 @@
 import React from "react";
 import Menu from "../components/Menu";
 import TvApi from "../components/TvApi";
+import Footer from "../components/Footer";
 import { useState } from "react";
 
 const TvPage = () => {
@@ -22,6 +23,7 @@ const TvPage = () => {
           </select>
         </h2>
         <TvApi />
+        <Footer />
       </div>
     </>
   );

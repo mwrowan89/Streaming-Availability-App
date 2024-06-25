@@ -5,12 +5,6 @@
 .text-red {
   color: red;
 }
-.footer {
-  color: red;
-  border-top: 2px solid white;
-  width: 100vw;
-  position: bottom;
-}
 .App {
   background-color: #282c34;
   min-height: 100vh;
