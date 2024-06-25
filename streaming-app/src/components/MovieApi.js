@@ -4,6 +4,7 @@ import {
   tmdbTrendingMovies,
   tmdbTopRatedMovies,
   tmdbPopularMovies,
+  tmdbUpcomingMovies,
 } from "../TmdbApi";
 import "./Api.css";
 
@@ -29,6 +30,9 @@ function MovieApi() {
         setMovieResults(movies);
       } else if (selectedOption === "popular") {
         const movies = await tmdbPopularMovies(page);
+        setMovieResults(movies);
+      } else if (selectedOption === "upcoming") {
+        const movies = await tmdbUpcomingMovies(page);
         setMovieResults(movies);
       } else {
         const movies = await tmdbPopMovieInfo(page);
@@ -63,6 +67,7 @@ function MovieApi() {
           <option value="trending">Trending</option>
           <option value="top-rated">Top Rated</option>
           <option value="popular">Popular</option>
+          <option value="upcoming">Upcoming</option>
         </select>
       </h2>
       <div className="movie-result-container">
