@@ -29,6 +29,19 @@ const trendingMovieOptions = () => ({
   },
 });
 
+const topRatedMovieOptions = (page) => ({
+  method: "GET",
+  url: "https://api.themoviedb.org/3/movie/top_rated",
+  params: {
+    language: "en-US",
+    page: page,
+  },
+  headers: {
+    accept: "application/json",
+    Authorization: API_KEY,
+  },
+});
+
 const tvOptions = (page) => ({
   method: "GET",
   url: "https://api.themoviedb.org/3/discover/tv",
@@ -64,6 +77,16 @@ export const tmdbTrendingMovies = async () => {
     return response.data.results;
   } catch (error) {
     console.error("Error fetching trending movies", error);
+    throw error;
+  }
+};
+
+export const tmbdTopRatedMovies = async (page) => {
+  try {
+    const response = await axios.request(topRatedMovieOptions(page));
+    return response.data.results;
+  } catch (error) {
+    console.error("Error fetching movie data from TMDB API", error);
     throw error;
   }
 };
