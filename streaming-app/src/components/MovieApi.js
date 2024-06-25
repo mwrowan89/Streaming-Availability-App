@@ -14,8 +14,6 @@ function MovieApi() {
 
   const handleChange = (e) => {
     setSelectedOption(e.target.value);
-    console.log(selectedOption);
-    filterResults();
   };
 
   const filterResults = async () => {
@@ -24,7 +22,7 @@ function MovieApi() {
       if (selectedOption === "trending") {
         const movies = await tmdbTrendingMovies();
         setMovieResults(movies);
-      } else if (selectedOption === "tv-shows") {
+      } else if (selectedOption === "top-rated") {
         const movies = await tmdbPopTvInfo();
         setMovieResults(movies);
       } else {
@@ -42,9 +40,6 @@ function MovieApi() {
     filterResults();
   }, [selectedOption, page]);
 
-    fetchMovies();
-  }, [page]);
-
   const nextPage = () => {
     setPage((page) => page + 1);
   };
@@ -61,7 +56,7 @@ function MovieApi() {
         <select id="options" value={selectedOption} onChange={handleChange}>
           <option value="">Select...</option>
           <option value="trending">Trending</option>
-          <option value="tv-shows">TV Shows</option>
+          <option value="top-rated">Top Rated</option>
           <option value="people">People</option>
         </select>
       </h2>
