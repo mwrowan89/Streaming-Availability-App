@@ -23,14 +23,14 @@ function PeopleApi() {
     fetchTvShows();
   }, [page]);
 
-  const nextPage = () => {
-    setPage((page) => page + 1);
-  };
-  const prevPage = () => {
-    if (page > 1) {
-      setPage((page) => page - 1);
-    }
-  };
+  // const nextPage = () => {
+  //   setPage((page) => page + 1);
+  // };
+  // const prevPage = () => {
+  //   if (page > 1) {
+  //     setPage((page) => page - 1);
+  //   }
+  // };
 
   return (
     <div>
@@ -59,7 +59,7 @@ function PeopleApi() {
           <p className="no-results">No search results.</p>
         )}
       </div>
-      <div className="next-prev-buttons">
+      {/* <div className="next-prev-buttons">
         <h3
           id="prev"
           onClick={(e) => {
@@ -79,7 +79,7 @@ function PeopleApi() {
         >
           Next Page
         </h3>
-      </div>
+      </div> */}
     </div>
   );
 }
