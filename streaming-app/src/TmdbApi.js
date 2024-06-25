@@ -20,6 +20,10 @@ const movieOptions = (page) => ({
   },
 });
 
+const trendingMovieOptions = () => ({
+  method: "GET",
+});
+
 const tvOptions = (page) => ({
   method: "GET",
   url: "https://api.themoviedb.org/3/discover/tv",
