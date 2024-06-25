@@ -43,7 +43,9 @@
   height: 2vw;
   width: 10vw;
   border-radius: 10px;
-  background-color: rgb(107, 107, 249);
+  background-color: rgba(3, 63, 106, 0.811);
+  color: white;
+  font-weight: bold;
 }
 .filter-header {
   display: flex;
