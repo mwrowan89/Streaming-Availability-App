@@ -6,13 +6,13 @@ import "./Api.css";
 function PeopleApi() {
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState(null);
-  const [page, setPage] = useState(1);
+  // const [page, setPage] = useState(1);
 
   useEffect(() => {
     const fetchTvShows = async () => {
       setLoading(true);
       try {
-        const people = await tmdbPeopleInfo(page);
+        const people = await tmdbPeopleInfo();
         setResults(people);
         setLoading(false);
       } catch (error) {
@@ -21,7 +21,7 @@ function PeopleApi() {
     };
 
     fetchTvShows();
-  }, [page]);
+  }, []);
 
   // const nextPage = () => {
   //   setPage((page) => page + 1);
@@ -34,6 +34,7 @@ function PeopleApi() {
 
   return (
     <div>
+      <h1>Popular People This Week</h1>
       <div className="people-result-container">
         {loading ? (
           <p>Loading...</p>
@@ -52,7 +53,9 @@ function PeopleApi() {
                 alt={`${result.name} poster`}
               />
               <br />
-              {result.name}
+              {result.name} <br />
+              Known for: &nbsp;
+              {result.known_for_department}
             </div>
           ))
         ) : (
