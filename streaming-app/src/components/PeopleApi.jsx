@@ -12,10 +12,9 @@ function PeopleApi() {
     const fetchTvShows = async () => {
       setLoading(true);
       try {
-        const people = await tmdbPeopleInfo();
+        const people = await tmdbPeopleInfo(page);
         setResults(people);
         setLoading(false);
-        console.log(results);
       } catch (error) {
         console.error("Error fetching movie data", error);
       }

@@ -37,11 +37,11 @@ const tvOptions = (page) => ({
   },
 });
 
-const peopleOptions = () => ({
+const peopleOptions = (page) => ({
   method: "GET",
   url: "https://api.themoviedb.org/3/person/popular?language=en-US&page=1",
   params: {
-    page: 1,
+    page: page,
   },
   headers: {
     accept: "application/json",
