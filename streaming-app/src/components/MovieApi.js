@@ -60,9 +60,13 @@ function MovieApi() {
 
   return (
     <div>
-      <h2>
-        <label htmlFor="options">Search Movies By: &nbsp;</label>
-        <select id="options" value={selectedOption} onChange={handleChange}>
+      <h2 className="filter-header">
+        <label>Search Movies By: &nbsp;</label>
+        <select
+          id="filter-options"
+          value={selectedOption}
+          onChange={handleChange}
+        >
           <option value="">Select...</option>
           <option value="trending">Trending</option>
           <option value="top-rated">Top Rated</option>

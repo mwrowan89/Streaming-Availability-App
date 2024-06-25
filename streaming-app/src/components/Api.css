@@ -39,5 +39,14 @@
   gap: 12px;
   justify-content: center;
 }
-.people-result-item {
+#filter-options {
+  height: 2vw;
+  width: 10vw;
+  border-radius: 10px;
+  background-color: rgb(107, 107, 249);
+}
+.filter-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
