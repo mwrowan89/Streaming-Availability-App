@@ -104,7 +104,7 @@ export const tmdbPopularMovies = async (page) => {
   }
 };
 
-export const tmbdTopRatedMovies = async (page) => {
+export const tmdbTopRatedMovies = async (page) => {
   try {
     const response = await axios.request(topRatedMovieOptions(page));
     return response.data.results;

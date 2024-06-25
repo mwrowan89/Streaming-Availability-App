@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import {
   tmdbPopMovieInfo,
-  tmdbPopTvInfo,
   tmdbTrendingMovies,
-  tmbdTopRatedMovies,
+  tmdbTopRatedMovies,
+  tmdbPopularMovies,
 } from "../TmdbApi";
 import "./Api.css";
 
@@ -25,7 +25,10 @@ function MovieApi() {
         const movies = await tmdbTrendingMovies();
         setMovieResults(movies);
       } else if (selectedOption === "top-rated") {
-        const movies = await tmbdTopRatedMovies(page);
+        const movies = await tmdbTopRatedMovies(page);
+        setMovieResults(movies);
+      } else if (selectedOption === "popular") {
+        const movies = await tmdbPopularMovies(page);
         setMovieResults(movies);
       } else {
         const movies = await tmdbPopMovieInfo(page);
