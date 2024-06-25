@@ -22,6 +22,11 @@ const movieOptions = (page) => ({
 
 const trendingMovieOptions = () => ({
   method: "GET",
+  url: "https://api.themoviedb.org/3/trending/movie/week?language=en-US",
+  headers: {
+    accept: "application/json",
+    Authorization: API_KEY,
+  },
 });
 
 const tvOptions = (page) => ({
@@ -52,6 +57,16 @@ const peopleOptions = () => ({
     Authorization: API_KEY,
   },
 });
+
+export const tmdbTrendingMovies = async () => {
+  try {
+    const response = await axios.request(trendingMovieOptions());
+    return response.data.results;
+  } catch (error) {
+    console.error("Error fetching trending movies", error);
+    throw error;
+  }
+};
 
 export const tmdbPeopleInfo = async () => {
   try {
