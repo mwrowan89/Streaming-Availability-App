@@ -1,23 +1,46 @@
 import React, { useEffect, useState } from "react";
-import { tmdbPopMovieInfo, tmdbPopTvInfo } from "../TmdbApi";
+import {
+  tmdbPopMovieInfo,
+  tmdbPopTvInfo,
+  tmdbTrendingMovies,
+} from "../TmdbApi";
 import "./Api.css";
 
 function MovieApi() {
   const [loading, setLoading] = useState(false);
   const [movieResults, setMovieResults] = useState(null);
   const [page, setPage] = useState(1);
+  const [selectedOption, setSelectedOption] = useState("");
 
-  useEffect(() => {
-    const fetchMovies = async () => {
-      setLoading(true);
-      try {
+  const handleChange = (e) => {
+    setSelectedOption(e.target.value);
+    console.log(selectedOption);
+    filterResults();
+  };
+
+  const filterResults = async () => {
+    setLoading(true);
+    try {
+      if (selectedOption === "trending") {
+        const movies = await tmdbTrendingMovies();
+        setMovieResults(movies);
+      } else if (selectedOption === "tv-shows") {
+        const movies = await tmdbPopTvInfo();
+        setMovieResults(movies);
+      } else {
         const movies = await tmdbPopMovieInfo(page);
         setMovieResults(movies);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching movie data", error);
       }
-    };
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching movie data", error);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    filterResults();
+  }, [selectedOption, page]);
 
     fetchMovies();
   }, [page]);
@@ -33,6 +56,15 @@ function MovieApi() {
 
   return (
     <div>
+      <h2>
+        <label htmlFor="options">Search Movies By: &nbsp;</label>
+        <select id="options" value={selectedOption} onChange={handleChange}>
+          <option value="">Select...</option>
+          <option value="trending">Trending</option>
+          <option value="tv-shows">TV Shows</option>
+          <option value="people">People</option>
+        </select>
+      </h2>
       <div className="movie-result-container">
         {loading ? (
           <p>Loading...</p>
