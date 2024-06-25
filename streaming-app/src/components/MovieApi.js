@@ -3,6 +3,7 @@ import {
   tmdbPopMovieInfo,
   tmdbPopTvInfo,
   tmdbTrendingMovies,
+  tmbdTopRatedMovies,
 } from "../TmdbApi";
 import "./Api.css";
 
@@ -23,7 +24,7 @@ function MovieApi() {
         const movies = await tmdbTrendingMovies();
         setMovieResults(movies);
       } else if (selectedOption === "top-rated") {
-        const movies = await tmdbPopTvInfo();
+        const movies = await tmbdTopRatedMovies(page);
         setMovieResults(movies);
       } else {
         const movies = await tmdbPopMovieInfo(page);
