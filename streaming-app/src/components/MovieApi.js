@@ -15,6 +15,7 @@ function MovieApi() {
 
   const handleChange = (e) => {
     setSelectedOption(e.target.value);
+    setPage(1);
   };
 
   const filterResults = async () => {
@@ -58,7 +59,7 @@ function MovieApi() {
           <option value="">Select...</option>
           <option value="trending">Trending</option>
           <option value="top-rated">Top Rated</option>
-          <option value="people">People</option>
+          <option value="popular">Popular</option>
         </select>
       </h2>
       <div className="movie-result-container">
