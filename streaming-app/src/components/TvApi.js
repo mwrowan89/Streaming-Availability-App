@@ -24,8 +24,8 @@ function TvApi() {
         // const tvShows = await tmdbTrendingTv();
         // setTvResults(tvShows);
       } else if (selectedOption === "popular") {
-        const tvShows = await tmdbPopularTv();
-        setTvResults(tvShows);
+        // const tvShows = await tmdbPopularTv();
+        // setTvResults(tvShows);
       } else if (selectedOption === "upcoming") {
         const tvShows = await tmdbTrendingTv();
         setTvResults(tvShows);
