@@ -7,6 +7,7 @@ function TvApi() {
   const [loading, setLoading] = useState(false);
   const [tvResults, setTvResults] = useState(null);
   const [page, setPage] = useState(1);
+  const [selectedOption, setSelectedOption] = useState("");
 
   useEffect(() => {
     const fetchTvShows = async () => {
@@ -22,6 +23,32 @@ function TvApi() {
 
     fetchTvShows();
   }, [page]);
+
+  const filterResults = async () => {
+    setLoading(true);
+    try {
+      // if (selectedOption === "trending") {
+      //   const movies = await tmdbTrendingMovies();
+      //   setTvResults(movies);
+      // } else if (selectedOption === "top-rated") {
+      //   const movies = await tmdbTopRatedMovies(page);
+      //   setTvResults(movies);
+      // } else if (selectedOption === "popular") {
+      //   const movies = await tmdbPopularMovies(page);
+      //   setTvResults(movies);
+      // } else if (selectedOption === "upcoming") {
+      //   const movies = await tmdbUpcomingMovies(page);
+      //   setTvResults(movies);
+      // } else {
+      //   const movies = await tmdbPopMovieInfo(page);
+      //   setTvResults(movies);
+      // }
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching movie data", error);
+      setLoading(false);
+    }
+  };
 
   const nextPage = () => {
     setPage((page) => page + 1);

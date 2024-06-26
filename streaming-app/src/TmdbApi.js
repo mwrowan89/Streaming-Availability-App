@@ -85,12 +85,18 @@ const tvOptions = (page) => ({
   },
 });
 
+const trendingTvOptions = () => ({
+  method: "GET",
+  url: "https://api.themoviedb.org/3/trending/tv/week?language=en-US",
+  headers: {
+    accept: "application/json",
+    Authorization: API_KEY,
+  },
+});
+
 const peopleOptions = () => ({
   method: "GET",
   url: "https://api.themoviedb.org/3/person/popular?language=en-US&page=1",
-  params: {
-    page: 1,
-  },
   headers: {
     accept: "application/json",
     Authorization: API_KEY,
@@ -163,6 +169,16 @@ export const tmdbPopTvInfo = async (page) => {
     return response.data.results;
   } catch (error) {
     console.error("Error fetching TV data from TMDB API", error);
+    throw error;
+  }
+};
+
+export const tmdbTrendingTv = async () => {
+  try {
+    const response = await axios.request(trendingTvOptions());
+    return response.data.results;
+  } catch (error) {
+    console.error("Error fetching trending movies", error);
     throw error;
   }
 };
