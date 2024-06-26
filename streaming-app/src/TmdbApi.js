@@ -94,6 +94,22 @@ const trendingTvOptions = () => ({
   },
 });
 
+const popularTvOptions = (page) => ({
+  method: "GET",
+  url: "https://api.themoviedb.org/3/discover/tv",
+  params: {
+    include_adult: false,
+    include_null_first_air_dates: false,
+    language: "en-US",
+    page: page,
+    sort_by: "popularity.desc",
+  },
+  headers: {
+    accept: "application/json",
+    Authorization: API_KEY,
+  },
+});
+
 const peopleOptions = () => ({
   method: "GET",
   url: "https://api.themoviedb.org/3/person/popular?language=en-US&page=1",
@@ -176,6 +192,16 @@ export const tmdbPopTvInfo = async (page) => {
 export const tmdbTrendingTv = async () => {
   try {
     const response = await axios.request(trendingTvOptions());
+    return response.data.results;
+  } catch (error) {
+    console.error("Error fetching trending movies", error);
+    throw error;
+  }
+};
+
+export const tmdbPopularTv = async (page) => {
+  try {
+    const response = await axios.request(popularTvOptions(page));
     return response.data.results;
   } catch (error) {
     console.error("Error fetching trending movies", error);

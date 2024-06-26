@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { tmdbPopTvInfo, tmdbTrendingTv } from "../TmdbApi";
+import { tmdbPopTvInfo, tmdbTrendingTv, tmdbPopularTv } from "../TmdbApi";
 import "./Api.css";
 
 function TvApi() {
@@ -24,7 +24,7 @@ function TvApi() {
         const tvShows = await tmdbTrendingTv();
         setTvResults(tvShows);
       } else if (selectedOption === "popular") {
-        const tvShows = await tmdbTrendingTv();
+        const tvShows = await tmdbPopularTv();
         setTvResults(tvShows);
       } else if (selectedOption === "upcoming") {
         const tvShows = await tmdbTrendingTv();
