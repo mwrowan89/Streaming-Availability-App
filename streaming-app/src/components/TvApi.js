@@ -21,8 +21,8 @@ function TvApi() {
         const tvShows = await tmdbTrendingTv();
         setTvResults(tvShows);
       } else if (selectedOption === "top-rated") {
-        const tvShows = await tmdbTrendingTv();
-        setTvResults(tvShows);
+        // const tvShows = await tmdbTrendingTv();
+        // setTvResults(tvShows);
       } else if (selectedOption === "popular") {
         const tvShows = await tmdbPopularTv();
         setTvResults(tvShows);
