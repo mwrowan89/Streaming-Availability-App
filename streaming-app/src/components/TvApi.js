@@ -9,6 +9,11 @@ function TvApi() {
   const [page, setPage] = useState(1);
   const [selectedOption, setSelectedOption] = useState("");
 
+  const handleChange = (e) => {
+    setSelectedOption(e.target.value);
+    setPage(1);
+  };
+
   useEffect(() => {
     const fetchTvShows = async () => {
       setLoading(true);
@@ -61,6 +66,20 @@ function TvApi() {
 
   return (
     <div>
+      <h2 className="filter-header">
+        <label>Search Movies By: &nbsp;</label>
+        <select
+          id="filter-options"
+          value={selectedOption}
+          onChange={handleChange}
+        >
+          <option value="">Select...</option>
+          <option value="trending">Trending</option>
+          <option value="top-rated">Top Rated</option>
+          <option value="popular">Popular</option>
+          <option value="upcoming">Upcoming</option>
+        </select>
+      </h2>
       <div className="tv-result-container">
         {loading ? (
           <p>Loading...</p>
