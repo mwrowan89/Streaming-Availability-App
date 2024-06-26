@@ -27,8 +27,8 @@ function TvApi() {
         // const tvShows = await tmdbPopularTv();
         // setTvResults(tvShows);
       } else if (selectedOption === "upcoming") {
-        const tvShows = await tmdbTrendingTv();
-        setTvResults(tvShows);
+        // const tvShows = await tmdbTrendingTv();
+        // setTvResults(tvShows);
       } else {
         const tvShows = await tmdbTrendingTv();
         setTvResults(tvShows);
