@@ -14,21 +14,6 @@ function TvApi() {
     setPage(1);
   };
 
-  useEffect(() => {
-    const fetchTvShows = async () => {
-      setLoading(true);
-      try {
-        const tvShows = await tmdbPopTvInfo(page);
-        setTvResults(tvShows);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching movie data", error);
-      }
-    };
-
-    fetchTvShows();
-  }, [page]);
-
   const filterResults = async () => {
     setLoading(true);
     try {
@@ -54,6 +39,10 @@ function TvApi() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    filterResults();
+  }, [selectedOption, page]);
 
   const nextPage = () => {
     setPage((page) => page + 1);
