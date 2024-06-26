@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { tmdbPopTvInfo } from "../TmdbApi";
+import { tmdbPopTvInfo, tmdbTrendingTv } from "../TmdbApi";
 import "./Api.css";
 
 function TvApi() {
@@ -27,22 +27,22 @@ function TvApi() {
   const filterResults = async () => {
     setLoading(true);
     try {
-      // if (selectedOption === "trending") {
-      //   const movies = await tmdbTrendingMovies();
-      //   setTvResults(movies);
-      // } else if (selectedOption === "top-rated") {
-      //   const movies = await tmdbTopRatedMovies(page);
-      //   setTvResults(movies);
-      // } else if (selectedOption === "popular") {
-      //   const movies = await tmdbPopularMovies(page);
-      //   setTvResults(movies);
-      // } else if (selectedOption === "upcoming") {
-      //   const movies = await tmdbUpcomingMovies(page);
-      //   setTvResults(movies);
-      // } else {
-      //   const movies = await tmdbPopMovieInfo(page);
-      //   setTvResults(movies);
-      // }
+      if (selectedOption === "trending") {
+        const tvShows = await tmdbTrendingTv();
+        setTvResults(tvShows);
+      } else if (selectedOption === "top-rated") {
+        const tvShows = await tmdbTrendingTv();
+        setTvResults(tvShows);
+      } else if (selectedOption === "popular") {
+        const tvShows = await tmdbTrendingTv();
+        setTvResults(tvShows);
+      } else if (selectedOption === "upcoming") {
+        const tvShows = await tmdbTrendingTv();
+        setTvResults(tvShows);
+      } else {
+        const tvShows = await tmdbTrendingTv();
+        setTvResults(tvShows);
+      }
       setLoading(false);
     } catch (error) {
       console.error("Error fetching movie data", error);
