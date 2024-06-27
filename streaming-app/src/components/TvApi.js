@@ -67,7 +67,7 @@ function TvApi() {
           <option value="">Select...</option>
           <option value="trending">Trending</option>
           <option value="top-rated">Top Rated</option>
-          <option value="airing-today">Airing Today</option>
+          <option value="airing-today">New Episodes Today</option>
         </select>
       </h2>
       <div className="tv-result-container">
