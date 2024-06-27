@@ -3,7 +3,6 @@ import {
   tmdbPopMovieInfo,
   tmdbTrendingMovies,
   tmdbTopRatedMovies,
-  tmdbPopularMovies,
   tmdbUpcomingMovies,
 } from "../TmdbApi";
 import "./Api.css";
@@ -27,9 +26,6 @@ function MovieApi() {
         setMovieResults(movies);
       } else if (selectedOption === "top-rated") {
         const movies = await tmdbTopRatedMovies(page);
-        setMovieResults(movies);
-      } else if (selectedOption === "popular") {
-        const movies = await tmdbPopularMovies(page);
         setMovieResults(movies);
       } else if (selectedOption === "upcoming") {
         const movies = await tmdbUpcomingMovies(page);
