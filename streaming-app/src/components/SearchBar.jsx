@@ -6,8 +6,6 @@ const SearchBar = () => {
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState(null);
   const [searchResults, setSearchResults] = useState(null);
-  //   const [showMovies, setShowMovies] = useState(false);
-  //   const [showTvShows, setShowTvShows] = useState(false);
   const [expandedPoster, setExpandedPoster] = useState(null);
   const [titleInfo, setTitleInfo] = useState({});
 
