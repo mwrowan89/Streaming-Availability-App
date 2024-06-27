@@ -1,6 +1,11 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { tmdbPopTvInfo, tmdbTrendingTv, tmdbTopRatedTv } from "../TmdbApi";
+import {
+  tmdbPopTvInfo,
+  tmdbTrendingTv,
+  tmdbTopRatedTv,
+  tmdbAiringToday,
+} from "../TmdbApi";
 import "./Api.css";
 
 function TvApi() {
@@ -23,9 +28,9 @@ function TvApi() {
       } else if (selectedOption === "top-rated") {
         const tvShows = await tmdbTopRatedTv(page);
         setTvResults(tvShows);
-      } else if (selectedOption === "upcoming") {
-        // const tvShows = await tmdbTrendingTv();
-        // setTvResults(tvShows);
+      } else if (selectedOption === "airing-today") {
+        const tvShows = await tmdbAiringToday(page);
+        setTvResults(tvShows);
       } else {
         const tvShows = await tmdbPopTvInfo();
         setTvResults(tvShows);
@@ -62,7 +67,7 @@ function TvApi() {
           <option value="">Select...</option>
           <option value="trending">Trending</option>
           <option value="top-rated">Top Rated</option>
-          <option value="upcoming">Upcoming</option>
+          <option value="airing-today">Airing Today</option>
         </select>
       </h2>
       <div className="tv-result-container">
