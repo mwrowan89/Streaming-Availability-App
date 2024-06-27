@@ -94,6 +94,19 @@ const topRatedTvOptions = (page) => ({
   },
 });
 
+const airingTodayOptions = (page) => ({
+  method: "GET",
+  url: "https://api.themoviedb.org/3/tv/airing_today",
+  params: {
+    language: "en-US",
+    page: page,
+  },
+  headers: {
+    accept: "application/json",
+    Authorization: API_KEY,
+  },
+});
+
 const peopleOptions = () => ({
   method: "GET",
   url: "https://api.themoviedb.org/3/person/popular?language=en-US&page=1",
@@ -176,6 +189,16 @@ export const tmdbTrendingTv = async () => {
 export const tmdbTopRatedTv = async (page) => {
   try {
     const response = await axios.request(topRatedTvOptions(page));
+    return response.data.results;
+  } catch (error) {
+    console.error("Error fetching trending movies", error);
+    throw error;
+  }
+};
+
+export const tmdbAiringToday = async (page) => {
+  try {
+    const response = await axios.request(airingTodayOptions(page));
     return response.data.results;
   } catch (error) {
     console.error("Error fetching trending movies", error);
