@@ -173,7 +173,7 @@ export const tmdbTrendingTv = async () => {
   }
 };
 
-export const topRatedTv = async (page) => {
+export const tmdbTopRatedTv = async (page) => {
   try {
     const response = await axios.request(topRatedTvOptions(page));
     return response.data.results;
