@@ -66,7 +66,6 @@ function MovieApi() {
           <option value="">Select...</option>
           <option value="trending">Trending</option>
           <option value="top-rated">Top Rated</option>
-          <option value="popular">Popular</option>
           <option value="upcoming">Upcoming</option>
         </select>
       </h2>
