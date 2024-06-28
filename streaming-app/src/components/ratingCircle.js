@@ -1,12 +1,10 @@
 import React from "react";
 import "./RatingCircle.css";
 
-const ratingCircle = () => {
+const RatingCircle = ({ value }) => {
   return (
-    <div>
-      <div className="progress" data-value="20"></div>
-    </div>
+    <div>{value && <div className="progress" data-value={value}></div>}</div>
   );
 };
 
-export default ratingCircle;
+export default RatingCircle;

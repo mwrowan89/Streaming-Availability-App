@@ -6,6 +6,7 @@ import {
   tmdbTopRatedTv,
   tmdbAiringToday,
 } from "../TmdbApi";
+import RatingCircle from "./RatingCircle";
 import "./Api.css";
 
 function TvApi() {
@@ -87,7 +88,7 @@ function TvApi() {
                 }
                 alt={`${result.Title} poster`}
               />
-              {result.vote_average * 10}
+              <RatingCircle value={result.vote_average * 10} />
             </div>
           ))
         ) : (
