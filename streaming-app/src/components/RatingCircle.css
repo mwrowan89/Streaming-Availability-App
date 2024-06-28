@@ -18,7 +18,7 @@
   place-content: center;
   font-size: calc(var(--size) * 0.3);
   font-weight: bold;
-  color: black;
+  color: white;
 }
 
 .red {
