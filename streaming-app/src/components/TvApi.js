@@ -87,7 +87,7 @@ function TvApi() {
                 }
                 alt={`${result.Title} poster`}
               />
-              {result.vote_average}
+              {result.vote_average * 10}
             </div>
           ))
         ) : (
