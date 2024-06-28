@@ -55,8 +55,10 @@
 
 .tv-result-item {
   display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 .rating-circle {
-  justify-content: flex-end;
+  position: absolute;
   scale: 0.4;
 }
