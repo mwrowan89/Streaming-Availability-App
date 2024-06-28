@@ -12,9 +12,10 @@
   width: calc(var(--size) * 0.8);
   background: white;
   aspect-ratio: 1;
-  content: "200";
+  content: attr(data-value);
   border-radius: 50%;
   display: grid;
   place-content: center;
   font-size: calc(var(--size) * 0.3);
+  color: black;
 }

@@ -4,8 +4,7 @@ import "./RatingCircle.css";
 const ratingCircle = () => {
   return (
     <div>
-      <div className="progress"></div>
-      <button>Start</button>
+      <div className="progress" data-value="20"></div>
     </div>
   );
 };
