@@ -1,10 +1,11 @@
 import React from "react";
+import "./RatingCircle.css";
 
 const ratingCircle = () => {
   return (
-    <div className="progress">
+    <div>
+      <div className="progress"></div>
       <button>Start</button>
-      <button>Reset</button>
     </div>
   );
 };

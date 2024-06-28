@@ -12,7 +12,7 @@
   width: calc(var(--size) * 0.8);
   background: white;
   aspect-ratio: 1;
-  content: "2";
+  content: "200";
   border-radius: 50%;
   display: grid;
   place-content: center;
