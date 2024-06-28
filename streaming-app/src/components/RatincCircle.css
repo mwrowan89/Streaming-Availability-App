@@ -1,0 +1,20 @@
+.progress {
+  --size: 100px;
+  width: var(--size);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: #ccc;
+  display: grid;
+  place-content: center;
+}
+
+.progress::after {
+  width: calc(var(--size) * 0.8);
+  background: white;
+  aspect-ratio: 1;
+  content: "2";
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  font-size: calc(var(--size) * 0.3);
+}
