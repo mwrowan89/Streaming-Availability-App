@@ -17,7 +17,7 @@ const RatingCircle = ({ value }) => {
   }
 
   return (
-    <div>
+    <div className="rating-circle">
       {value && (
         <div
           className={`progress ${colorClass}`}
