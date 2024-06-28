@@ -10,13 +10,14 @@
 
 .progress::after {
   width: calc(var(--size) * 0.8);
-  background: white;
+  background: #0000004e;
   aspect-ratio: 1;
   content: attr(data-value);
   border-radius: 50%;
   display: grid;
   place-content: center;
   font-size: calc(var(--size) * 0.3);
+  font-weight: bold;
   color: black;
 }
 
