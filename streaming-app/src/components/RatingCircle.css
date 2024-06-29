@@ -16,7 +16,6 @@
 .progress-value {
   width: calc(var(--size));
   transform: scale(1.2);
-  content: attr(data-value);
   z-index: -1;
   border-radius: 50%;
   place-content: center;

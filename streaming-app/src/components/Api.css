@@ -56,10 +56,12 @@
 .tv-result-item,
 .movie-result-item {
   display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 .rating-circle {
   position: absolute;
+  margin-left: -20px;
+  margin-top: -20px;
   scale: 0.4;
 }
