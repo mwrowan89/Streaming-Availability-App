@@ -1,17 +1,8 @@
-/* .progress {
-  --size: 100px;
-  width: var(--size);
-  height: var(--size);
-  position: relative;
+.rating-circle {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  background: conic-gradient(
-    var(--progress-color) calc(var(--value) * 1%),
-    black calc(var(--value) * 1%)
-  );
-} */
+}
 .progress {
   --size: 100px;
   width: var(--size);
@@ -20,6 +11,7 @@
   background-color: #040303ee;
   display: flex;
   place-content: center;
+  color: white;
 }
 .progress-value {
   width: calc(var(--size));
@@ -38,33 +30,6 @@
     black calc(var(--value) * 1%)
   );
 }
-/* .progress::after {
-  width: calc(var(--size) * 0.8);
-  aspect-ratio: 1;
-  content: attr(--value);
-  border-radius: 50%;
-  display: grid;
-  place-content: center;
-  font-size: calc(var(--size) * 0.3);
-  font-weight: bold;
-  color: white;
-  background-color: rgb(134, 131, 131);
-} */
-/* .red {
-  background-color: red;
-}
-
-.orange {
-  background-color: orange;
-}
-
-.yellow {
-  background-color: yellow;
-}
-
-.green {
-  background-color: green;
-} */
 
 .progress.red {
   --progress-color: red;
