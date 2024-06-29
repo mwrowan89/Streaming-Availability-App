@@ -36,10 +36,11 @@ const Menu = () => {
         <h3 onClick={() => handleNavigation("/people")}>People</h3>
         <div onClick={toggleSearchBar}>
           <SearchIcon />
+          <br />
         </div>
         {/* TODO: add search functionality */}
       </div>
-      {searchBar && <SearchBar />}
+      <div className="menu-search-bar">{searchBar && <SearchBar />}</div>
     </div>
   );
 };
