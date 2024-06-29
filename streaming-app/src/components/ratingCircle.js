@@ -19,8 +19,9 @@ const RatingCircle = ({ value }) => {
   return (
     <div className="rating-circle">
       <div className={`progress ${colorClass}`} data-value={roundedValue + "%"}>
+        {" "}
         <div className="progress-value" style={{ "--value": roundedValue }}>
-          {roundedValue}%
+          <div className="value">{roundedValue}%</div>
         </div>
       </div>
     </div>

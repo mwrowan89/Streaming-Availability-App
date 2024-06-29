@@ -8,7 +8,7 @@
   width: var(--size);
   aspect-ratio: 1;
   border-radius: 50%;
-  background-color: #040303ee;
+  background-color: #040303;
   display: flex;
   place-content: center;
   color: white;
@@ -20,7 +20,6 @@
   z-index: -1;
   content: attr(data-value);
   border-radius: 50%;
-  display: grid;
   place-content: center;
   font-size: calc(var(--size) * 0.3);
   font-weight: bold;
@@ -29,6 +28,9 @@
     var(--progress-color) calc(var(--value) * 1%),
     black calc(var(--value) * 1%)
   );
+}
+.value {
+  z-index: 1;
 }
 
 .progress.red {
