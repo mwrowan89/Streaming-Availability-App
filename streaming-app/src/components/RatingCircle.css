@@ -8,7 +8,7 @@
   width: var(--size);
   aspect-ratio: 1;
   border-radius: 50%;
-  background-color: #040303;
+  background-color: #040303b7;
   display: flex;
   place-content: center;
   color: white;
@@ -16,9 +16,8 @@
 .progress-value {
   width: calc(var(--size));
   transform: scale(1.2);
-  aspect-ratio: 1;
-  z-index: -1;
   content: attr(data-value);
+  z-index: -1;
   border-radius: 50%;
   place-content: center;
   font-size: calc(var(--size) * 0.3);
@@ -29,10 +28,16 @@
     black calc(var(--value) * 1%)
   );
 }
-.value {
-  z-index: 1;
+.progress::after {
+  content: attr(data-value);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: calc(var(--size) * 0.3);
+  font-weight: bold;
+  color: white;
 }
-
 .progress.red {
   --progress-color: red;
 }
