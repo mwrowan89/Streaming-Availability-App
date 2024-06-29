@@ -33,7 +33,7 @@ function TvApi() {
         const tvShows = await tmdbAiringToday(page);
         setTvResults(tvShows);
       } else {
-        const tvShows = await tmdbPopTvInfo();
+        const tvShows = await tmdbPopTvInfo(page);
         setTvResults(tvShows);
       }
       setLoading(false);
