@@ -1,37 +1,31 @@
 /* .progress {
   --size: 100px;
   width: var(--size);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: conic-gradient(
-    var(--progress-color) calc(var(--value) * 1%),
-    black calc(var(--value) * 1%)
-  );
-  display: grid;
-  place-content: center;
-} */
-
-.rating-circle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.progress {
-  --size: 100px;
-  width: var(--size);
   height: var(--size);
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  content: attr(--value);
-}
-/* .progress-value::after {
-  width: calc(var(--size) * 0.8);
-  background: #000000;
+  background: conic-gradient(
+    var(--progress-color) calc(var(--value) * 1%),
+    black calc(var(--value) * 1%)
+  );
+} */
+.progress {
+  --size: 100px;
+  width: var(--size);
   aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: #040303;
+  display: grid;
+  place-content: center;
+}
+.progress-value {
+  width: calc(var(--size));
+  transform: scale(1.2);
+  aspect-ratio: 1;
+  z-index: -1;
   content: attr(data-value);
   border-radius: 50%;
   display: grid;
@@ -39,24 +33,23 @@
   font-size: calc(var(--size) * 0.3);
   font-weight: bold;
   color: white;
-} */
-
-.progress-value {
-  width: calc(var(--size) * 0.8);
-  height: calc(var(--size) * 0.8);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(var(--size) * 0.3);
-  color: white;
   background: conic-gradient(
     var(--progress-color) calc(var(--value) * 1%),
     black calc(var(--value) * 1%)
   );
-  content: attr(--value);
 }
-
+/* .progress::after {
+  width: calc(var(--size) * 0.8);
+  aspect-ratio: 1;
+  content: attr(--value);
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  font-size: calc(var(--size) * 0.3);
+  font-weight: bold;
+  color: white;
+  background-color: rgb(134, 131, 131);
+} */
 /* .red {
   background-color: red;
 }
