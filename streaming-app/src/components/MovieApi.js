@@ -5,6 +5,7 @@ import {
   tmdbTopRatedMovies,
   tmdbUpcomingMovies,
 } from "../TmdbApi";
+import RatingCircle from "./RatingCircle";
 import "./Api.css";
 
 function MovieApi() {
@@ -86,6 +87,7 @@ function MovieApi() {
                 }
                 alt={`${result.Title} poster`}
               />
+              <RatingCircle value={result.vote_average * 10} />
             </div>
           ))
         ) : (
