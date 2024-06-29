@@ -17,8 +17,8 @@
   width: var(--size);
   aspect-ratio: 1;
   border-radius: 50%;
-  background-color: #040303;
-  display: grid;
+  background-color: #040303ee;
+  display: flex;
   place-content: center;
 }
 .progress-value {

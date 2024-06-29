@@ -9,7 +9,6 @@ const MoviePage = () => {
     <div className="App">
       <Menu />
       <MovieApi />
-      <RatingCircle />
       <Footer />
     </div>
   );
