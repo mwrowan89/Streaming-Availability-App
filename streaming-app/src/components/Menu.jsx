@@ -18,7 +18,6 @@ const Menu = () => {
 
   const toggleSearchBar = () => {
     setSearchBar(!searchBar);
-    console.log(searchBar);
   };
 
   return (
@@ -35,7 +34,9 @@ const Menu = () => {
         <h3 onClick={() => handleNavigation("/movies")}>Movies</h3>
         <h3 onClick={() => handleNavigation("/tv-shows")}>TV Shows</h3>
         <h3 onClick={() => handleNavigation("/people")}>People</h3>
-        <SearchIcon onClick={() => toggleSearchBar} />
+        <div onClick={toggleSearchBar}>
+          <SearchIcon />
+        </div>
         {/* TODO: add search functionality */}
       </div>
       {searchBar && <SearchBar />}
