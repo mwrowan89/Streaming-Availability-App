@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Modal from "react-modal";
 import {
   tmdbPopMovieInfo,
   tmdbTrendingMovies,
@@ -7,16 +8,29 @@ import {
 } from "../TmdbApi";
 import RatingCircle from "./RatingCircle";
 import "./Api.css";
+Modal.setAppElement("#root");
 
 function MovieApi() {
   const [loading, setLoading] = useState(false);
   const [movieResults, setMovieResults] = useState(null);
   const [page, setPage] = useState(1);
   const [selectedOption, setSelectedOption] = useState("");
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedResult, setSelectedResult] = useState(null);
 
   const handleChange = (e) => {
     setSelectedOption(e.target.value);
     setPage(1);
+  };
+
+  const openModal = (result) => {
+    setSelectedResult(result);
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+    setSelectedResult(null);
   };
 
   const filterResults = async () => {
@@ -78,7 +92,7 @@ function MovieApi() {
             <div key={index} className="movie-result-item">
               <img
                 onClick={(e) => {
-                  console.table(result);
+                  openModal(result);
                 }}
                 src={
                   result.poster_path && result.Poster !== "N/A"
@@ -117,6 +131,32 @@ function MovieApi() {
           </h3>
         </div>
       )}
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Result Details"
+        // style={{
+        //   overlay: {
+        //     backgroundColor: "rgba(0, 0, 0, 0.5)",
+        //   },
+        //   content: {
+        //     top: "50%",
+        //     left: "50%",
+        //     right: "auto",
+        //     bottom: "auto",
+        //     marginRight: "-50%",
+        //     transform: "translate(-50%, -50%)",
+        //   },
+        // }}
+      >
+        {selectedResult && (
+          <div>
+            <h1>{selectedResult.title}</h1>
+            <p>{selectedResult.description}</p>
+            <button onClick={closeModal}>Close</button>
+          </div>
+        )}
+      </Modal>
     </div>
   );
 }
