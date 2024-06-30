@@ -1,7 +1,7 @@
 import React from "react";
 
-const TitleDetails = (id) => {
-  return <div></div>;
+const TitleDetails = (result) => {
+  return <div>{result.title}</div>;
 };
 
 export default TitleDetails;
