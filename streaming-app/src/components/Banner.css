@@ -11,7 +11,7 @@
   display: inline-flex;
   margin-left: 170vw;
   gap: 10px;
-  animation: scroll 100s linear infinite; 
+  animation: scroll 100s linear infinite;
 }
 
 @keyframes scroll {
@@ -24,7 +24,6 @@
   100% {
     transform: translateX(10%);
   }
-  
 }
 
 .banner-result-item {
@@ -33,8 +32,8 @@
   transition: transform 0.5s ease, flex-grow 0.1s ease;
 }
 .banner-results:hover {
-animation-play-state: paused;
-cursor: pointer;
+  animation-play-state: paused;
+  cursor: pointer;
 }
 .banner-result-item:hover,
 .banner-result-item:focus {
@@ -47,7 +46,7 @@ cursor: pointer;
   display: flex;
   flex-direction: column;
   width: 12vw;
-  max-height: 18vw;
+  height: 18vw;
   padding: 15px;
   border-radius: 10px;
   overflow: scroll;
@@ -55,9 +54,9 @@ cursor: pointer;
   z-index: 1;
 }
 .close-button {
-color:red;
-font-weight: bold;
-position: absolute;
+  color: red;
+  font-weight: bold;
+  position: absolute;
 }
 
 .banner-result-item {
