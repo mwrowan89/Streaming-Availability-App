@@ -135,19 +135,6 @@ function MovieApi() {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Result Details"
-        // style={{
-        //   overlay: {
-        //     backgroundColor: "rgba(0, 0, 0, 0.5)",
-        //   },
-        //   content: {
-        //     top: "50%",
-        //     left: "50%",
-        //     right: "auto",
-        //     bottom: "auto",
-        //     marginRight: "-50%",
-        //     transform: "translate(-50%, -50%)",
-        //   },
-        // }}
       >
         {selectedResult && (
           <div>
