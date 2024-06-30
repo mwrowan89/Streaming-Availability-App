@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Modal from "react-modal";
 import {
   tmdbPopMovieInfo,
   tmdbTrendingMovies,
   tmdbTopRatedMovies,
   tmdbUpcomingMovies,
 } from "../TmdbApi";
+import PopUpWindow from "./PopUpWindow";
 import RatingCircle from "./RatingCircle";
 import "./Api.css";
-Modal.setAppElement("#root");
 
 function MovieApi() {
   const [loading, setLoading] = useState(false);
@@ -131,19 +130,11 @@ function MovieApi() {
           </h3>
         </div>
       )}
-      <Modal
+      <PopUpWindow
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        contentLabel="Result Details"
-      >
-        {selectedResult && (
-          <div>
-            <h1>{selectedResult.title}</h1>
-            <p>{selectedResult.description}</p>
-            <button onClick={closeModal}>Close</button>
-          </div>
-        )}
-      </Modal>
+        result={selectedResult}
+      />
     </div>
   );
 }
