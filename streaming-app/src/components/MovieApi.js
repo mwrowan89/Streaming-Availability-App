@@ -92,6 +92,7 @@ function MovieApi() {
               <img
                 onClick={(e) => {
                   openModal(result);
+                  console.table(result);
                 }}
                 src={
                   result.poster_path && result.Poster !== "N/A"

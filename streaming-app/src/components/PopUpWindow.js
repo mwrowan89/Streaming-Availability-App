@@ -27,7 +27,11 @@ const PopUpWindow = ({ isOpen, onRequestClose, result }) => {
         {result && (
           <div>
             <h1>{result.title}</h1>
-            <p>{result.description}</p>
+            <p>{result.overview}</p>
+            <p>{result.release_date}</p>
+            <p>{result.vote_average}</p>
+            <p>{result.vote_count}</p>
+
             <button onClick={onRequestClose}>Close</button>
           </div>
         )}
