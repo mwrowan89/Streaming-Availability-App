@@ -15,7 +15,7 @@
   justify-content: center;
   align-items: center;
   background-color: white;
-  color: red;
+  color: black;
   width: 100vw;
   margin-top: 10vw;
 }
@@ -29,4 +29,10 @@
   justify-content: center;
   align-items: center;
   background-color: "rgba(0, 0, 0, 0.5)";
+}
+
+.pop-up-results-more-info {
+  border-top: 2px solid black;
+  display: flex;
+  gap: 40px;
 }
