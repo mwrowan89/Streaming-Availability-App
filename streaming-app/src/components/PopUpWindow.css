@@ -12,13 +12,21 @@
     }, */
 
 .pop-up-window {
-  display: flex;
   justify-content: center;
   align-items: center;
   background-color: white;
   color: red;
+  width: 100vw;
+  margin-top: 10vw;
 }
 
 .pop-up-results {
-  color: red;
+  display: flex;
+  flex-direction: column;
+  min-height: 40vh;
+  width: 50vw;
+  margin-left: 25%;
+  justify-content: center;
+  align-items: center;
+  background-color: "rgba(0, 0, 0, 0.5)";
 }
