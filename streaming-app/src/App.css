@@ -33,20 +33,7 @@
   width: 25vw;
   margin-right: 5px;
 }
-.result-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-.result-item {
-  background-color: #00000040;
-  border-radius: 10px;
-}
-.search-results {
-  padding: 20px;
-  margin: 10px;
-  max-width: 90vw;
-}
+
 img {
   height: 19vw;
   width: 12vw;

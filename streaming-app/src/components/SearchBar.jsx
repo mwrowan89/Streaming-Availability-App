@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+import "./SearchBar.css";
 
 const SearchBar = () => {
   const [loading, setLoading] = useState(false);
@@ -56,14 +57,14 @@ const SearchBar = () => {
           Search
         </button>
       </form>
-      <div className="result-container">
+      <div className="search-result-container">
         {loading ? (
           <p>Loading...</p>
         ) : searchResults ? (
           searchResults.map((result, index) => (
             <div
               key={index}
-              className="result-item"
+              className="search-result-item"
               onMouseEnter={() => toggleMoreInfo(result.Title)}
               onMouseLeave={() => toggleMoreInfo(result.Title)}
             >
