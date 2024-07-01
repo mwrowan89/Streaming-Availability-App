@@ -12,7 +12,7 @@
 .banner-results {
   display: inline-flex;
   gap: 10px;
-  animation: scroll 90s linear infinite;
+  animation: scroll 100s linear infinite;
 }
 
 @keyframes scroll {
