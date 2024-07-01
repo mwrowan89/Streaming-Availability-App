@@ -21,31 +21,6 @@ const SearchBar = () => {
     setLoading(false);
   };
 
-  const toggleMoreInfo = (movieTitle) => {
-    setExpandedPoster((prevPoster) =>
-      prevPoster === movieTitle ? null : movieTitle
-    );
-  };
-
-  // const getTitle = async () => {
-  //   try {
-  //     setLoading(true);
-  //     const result = await axios.get("http://www.omdbapi.com/", {
-  //       params: {
-  //         s: title,
-  //         plot: "",
-  //         apikey: "5aa370ab",
-  //       },
-  //     });
-  //     const { data } = result;
-  //     setSearchResults(data.Search || []);
-  //     setLoading(false);
-  //   } catch (error) {
-  //     console.error("Error fetching data from OMDB API", error);
-  //     setLoading(false);
-  //   }
-  // };
-
   return (
     <div>
       <form
@@ -72,30 +47,27 @@ const SearchBar = () => {
         {loading ? (
           <p>Loading...</p>
         ) : searchResults ? (
-          searchResults.map((result, index) => (
-            <div
-              key={index}
-              className="search-result-item"
-              onMouseEnter={() => toggleMoreInfo(result.Title)}
-              onMouseLeave={() => toggleMoreInfo(result.Title)}
-            >
-              <h3>{result.Title}</h3>
-              <img
-                onClick={() => {
-                  console.table(result);
-                }}
-                src={
-                  result.poster_path && result.Poster !== "N/A"
-                    ? `https://image.tmdb.org/t/p/w500${result.poster_path}`
-                    : "./NotFound.jpeg"
-                }
-                alt={`${result.Title} poster`}
-              />
-              <RatingCircle value={result.vote_average * 10} />
-            </div>
-          ))
+          searchResults
+            .filter((result) => result.original_language === "en")
+            .map((result, index) => (
+              <div key={index} className="search-result-item">
+                <h3>{result.Title}</h3>
+                <img
+                  onClick={() => {
+                    console.table(result);
+                  }}
+                  src={
+                    result.poster_path && result.Poster !== "N/A"
+                      ? `https://image.tmdb.org/t/p/w500${result.poster_path}`
+                      : "./NotFound.jpeg"
+                  }
+                  alt={`${result.Title} poster`}
+                />
+                <RatingCircle value={result.vote_average * 10} />
+              </div>
+            ))
         ) : (
-          <p className="no-results">No search results.</p>
+          <p className="no-results"></p>
         )}
       </div>
     </div>

@@ -87,23 +87,25 @@ function MovieApi() {
         {loading ? (
           <p>Loading...</p>
         ) : movieResults ? (
-          movieResults.map((result, index) => (
-            <div key={index} className="movie-result-item">
-              <img
-                onClick={(e) => {
-                  openModal(result);
-                  console.table(result);
-                }}
-                src={
-                  result.poster_path && result.Poster !== "N/A"
-                    ? `https://image.tmdb.org/t/p/w500${result.poster_path}`
-                    : "./NotFound.jpeg"
-                }
-                alt={`${result.Title} poster`}
-              />
-              <RatingCircle value={result.vote_average * 10} />
-            </div>
-          ))
+          movieResults
+            .filter((result) => result.original_language === "en")
+            .map((result, index) => (
+              <div key={index} className="movie-result-item">
+                <img
+                  onClick={(e) => {
+                    openModal(result);
+                    console.table(result);
+                  }}
+                  src={
+                    result.poster_path && result.Poster !== "N/A"
+                      ? `https://image.tmdb.org/t/p/w500${result.poster_path}`
+                      : "./NotFound.jpeg"
+                  }
+                  alt={`${result.Title} poster`}
+                />
+                <RatingCircle value={result.vote_average * 10} />
+              </div>
+            ))
         ) : (
           <p className="no-results">No search results.</p>
         )}
