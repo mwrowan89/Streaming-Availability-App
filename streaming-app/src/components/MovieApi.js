@@ -42,15 +42,27 @@ function MovieApi() {
         const movies = await tmdbTopRatedMovies(page);
         setMovieResults(movies);
       } else if (selectedOption === "upcoming") {
-        const movies = await tmdbUpcomingMovies(page);
+        let upcomingMovies = [];
+        let currentPage = page;
         const today = new Date();
         const todayDateString = today.toISOString().split("T")[0];
 
-        const upcomingMovies = movies.filter(
-          (movie) => movie.release_date > todayDateString
-        );
+        while (upcomingMovies.length < 30) {
+          const movies = await tmdbUpcomingMovies(currentPage);
 
-        setMovieResults(upcomingMovies);
+          const filteredMovies = movies.filter(
+            (movie) => movie.release_date > todayDateString
+          );
+
+          upcomingMovies = [...upcomingMovies, ...filteredMovies];
+
+          currentPage += 1;
+
+          if (movies.length === 0) {
+            break;
+          }
+        }
+        setMovieResults(upcomingMovies.slice(0, 30));
       } else {
         const movies = await tmdbPopMovieInfo(page);
         setMovieResults(movies);
