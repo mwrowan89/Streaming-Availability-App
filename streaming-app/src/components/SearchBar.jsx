@@ -63,7 +63,9 @@ const SearchBar = () => {
                   }
                   alt={`${result.Title} poster`}
                 />
-                <RatingCircle value={result.vote_average * 10} />
+                <div className="search-rating-circle">
+                  <RatingCircle value={result.vote_average * 10} />
+                </div>
               </div>
             ))
         ) : (
