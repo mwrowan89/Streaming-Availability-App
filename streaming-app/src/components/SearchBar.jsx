@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import axios from "axios";
 import "./SearchBar.css";
 import { tmdbMovieSearchResults } from "../TmdbApi";
 import RatingCircle from "./RatingCircle";
@@ -9,8 +8,7 @@ const SearchBar = () => {
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState(null);
   const [searchResults, setSearchResults] = useState(null);
-  const [expandedPoster, setExpandedPoster] = useState(null);
-  const [titleInfo, setTitleInfo] = useState({});
+  // eslint-disable-next-line
   const [page, setPage] = useState(1);
 
   const results = async (title, page) => {

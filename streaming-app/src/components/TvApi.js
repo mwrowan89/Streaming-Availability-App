@@ -45,6 +45,7 @@ function TvApi() {
 
   useEffect(() => {
     filterResults();
+    // eslint-disable-next-line
   }, [selectedOption, page]);
 
   const nextPage = () => {
