@@ -1,15 +1,11 @@
 .banner-results-container {
-  overflow-x: auto;
-  white-space: nowrap;
-  /* justify-content: flex-end; */
-  position: relative;
-  perspective: 1000px;
-  width: 100%;
+  height: fit-content;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .banner-results {
   display: inline-flex;
-  margin-left: 170vw;
   gap: 10px;
   animation: scroll 100s linear infinite;
 }
@@ -52,11 +48,6 @@
   overflow: scroll;
   position: absolute;
   z-index: 1;
-}
-.close-button {
-  color: red;
-  font-weight: bold;
-  position: absolute;
 }
 
 .banner-result-item {

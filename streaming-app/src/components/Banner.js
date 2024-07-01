@@ -35,7 +35,7 @@ function Banner() {
   };
 
   return (
-    <div className="banner-results-conatiner">
+    <div className="banner-results-container">
       <div className="banner-results">
         {loading ? (
           <p>Loading...</p>
