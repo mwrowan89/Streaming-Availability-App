@@ -116,7 +116,7 @@ const peopleOptions = () => ({
   },
 });
 
-const searchOptions = (title, page) => ({
+const movieSearchOptions = (title, page) => ({
   method: "GET",
   url: "https://api.themoviedb.org/3/search/movie",
   params: {
@@ -125,14 +125,18 @@ const searchOptions = (title, page) => ({
     language: "en-US",
     page: page,
   },
+  headers: {
+    accept: "application/json",
+    Authorization: API_KEY,
+  },
 });
 
-export const tmdbSearchResults = async (title, page) => {
+export const tmdbMovieSearchResults = async (title, page) => {
   try {
-    const response = await axios.request(searchOptions(title, page));
+    const response = await axios.request(movieSearchOptions(title, page));
     return response.data.results;
   } catch (error) {
-    console.error("Error fetching trending movies", error);
+    console.error("Error fetching results", error);
     throw error;
   }
 };
@@ -142,7 +146,7 @@ export const tmdbTrendingMovies = async () => {
     const response = await axios.request(trendingMovieOptions());
     return response.data.results;
   } catch (error) {
-    console.error("Error fetching trending movies", error);
+    console.error("Error fetching results", error);
     throw error;
   }
 };
@@ -152,7 +156,7 @@ export const tmdbUpcomingMovies = async (page) => {
     const response = await axios.request(upcomingMovieOptions(page));
     return response.data.results;
   } catch (error) {
-    console.error("Error fetching trending movies", error);
+    console.error("Error fetching results", error);
     throw error;
   }
 };
@@ -172,7 +176,7 @@ export const tmdbPeopleInfo = async () => {
     const response = await axios.request(peopleOptions());
     return response.data.results;
   } catch (error) {
-    console.error("Error fetching movie data from TMDB API", error);
+    console.error("Error fetching results from TMDB API", error);
     throw error;
   }
 };
@@ -182,7 +186,7 @@ export const tmdbPopMovieInfo = async (page) => {
     const response = await axios.request(movieOptions(page));
     return response.data.results;
   } catch (error) {
-    console.error("Error fetching movie data from TMDB API", error);
+    console.error("Error fetching results", error);
     throw error;
   }
 };
@@ -192,7 +196,7 @@ export const tmdbPopTvInfo = async (page) => {
     const response = await axios.request(tvOptions(page));
     return response.data.results;
   } catch (error) {
-    console.error("Error fetching TV data from TMDB API", error);
+    console.error("Error fetching results", error);
     throw error;
   }
 };
@@ -202,7 +206,7 @@ export const tmdbTrendingTv = async () => {
     const response = await axios.request(trendingTvOptions());
     return response.data.results;
   } catch (error) {
-    console.error("Error fetching trending movies", error);
+    console.error("Error fetching results", error);
     throw error;
   }
 };
@@ -212,7 +216,7 @@ export const tmdbTopRatedTv = async (page) => {
     const response = await axios.request(topRatedTvOptions(page));
     return response.data.results;
   } catch (error) {
-    console.error("Error fetching trending movies", error);
+    console.error("Error fetching results", error);
     throw error;
   }
 };
@@ -222,7 +226,7 @@ export const tmdbAiringToday = async (page) => {
     const response = await axios.request(airingTodayOptions(page));
     return response.data.results;
   } catch (error) {
-    console.error("Error fetching trending movies", error);
+    console.error("Error fetching results", error);
     throw error;
   }
 };

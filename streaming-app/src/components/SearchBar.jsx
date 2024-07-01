@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import "./SearchBar.css";
+import { tmdbMovieSearchResults } from "../TmdbApi";
+import RatingCircle from "./RatingCircle";
 
 const SearchBar = () => {
   const [loading, setLoading] = useState(false);
@@ -9,6 +11,15 @@ const SearchBar = () => {
   const [searchResults, setSearchResults] = useState(null);
   const [expandedPoster, setExpandedPoster] = useState(null);
   const [titleInfo, setTitleInfo] = useState({});
+  const [page, setPage] = useState(1);
+
+  const results = async (title, page) => {
+    setLoading(true);
+    const movies = await tmdbMovieSearchResults(title, page);
+    setSearchResults(movies);
+    console.table(searchResults);
+    setLoading(false);
+  };
 
   const toggleMoreInfo = (movieTitle) => {
     setExpandedPoster((prevPoster) =>
@@ -16,31 +27,31 @@ const SearchBar = () => {
     );
   };
 
-  const getTitle = async () => {
-    try {
-      setLoading(true);
-      const result = await axios.get("http://www.omdbapi.com/", {
-        params: {
-          s: title,
-          plot: "",
-          apikey: "5aa370ab",
-        },
-      });
-      const { data } = result;
-      setSearchResults(data.Search || []);
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching data from OMDB API", error);
-      setLoading(false);
-    }
-  };
+  // const getTitle = async () => {
+  //   try {
+  //     setLoading(true);
+  //     const result = await axios.get("http://www.omdbapi.com/", {
+  //       params: {
+  //         s: title,
+  //         plot: "",
+  //         apikey: "5aa370ab",
+  //       },
+  //     });
+  //     const { data } = result;
+  //     setSearchResults(data.Search || []);
+  //     setLoading(false);
+  //   } catch (error) {
+  //     console.error("Error fetching data from OMDB API", error);
+  //     setLoading(false);
+  //   }
+  // };
 
   return (
     <div>
       <form
         className="form-container"
         onSubmit={(e) => {
-          getTitle();
+          results(title, page);
           e.preventDefault();
         }}
       >
@@ -70,29 +81,21 @@ const SearchBar = () => {
             >
               <h3>{result.Title}</h3>
               <img
+                onClick={() => {
+                  console.table(result);
+                }}
                 src={
-                  result.Poster && result.Poster !== "N/A"
-                    ? result.Poster
+                  result.poster_path && result.Poster !== "N/A"
+                    ? `https://image.tmdb.org/t/p/w500${result.poster_path}`
                     : "./NotFound.jpeg"
                 }
                 alt={`${result.Title} poster`}
               />
-              {expandedPoster === result.Title && titleInfo[result.Title] && (
-                <div>
-                  <p>Actors: {titleInfo[result.Title].Actors}</p>
-                  <p>Genre: {titleInfo[result.Title].Genre}</p>
-                  {titleInfo[result.Title].Rated &&
-                    titleInfo[result.Title].Rated !== "N/A" && (
-                      <p>Rated: {titleInfo[result.Title].Rated}</p>
-                    )}
-                </div>
-              )}
-              <p>Year: {result.Year}</p>
-              <p>Type: {result.Type}</p>
+              <RatingCircle value={result.vote_average * 10} />
             </div>
           ))
         ) : (
-          <p className="no-results"> </p>
+          <p className="no-results">No search results.</p>
         )}
       </div>
     </div>
