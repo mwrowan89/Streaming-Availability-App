@@ -1,9 +1,13 @@
 .search-result-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
+  margin-top: 1vw;
+  margin-bottom: 2vw;
 }
 .search-result-item {
+  width: 20vw;
   background-color: #00000040;
   border-radius: 10px;
 }
