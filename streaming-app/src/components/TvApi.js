@@ -59,7 +59,7 @@ function TvApi() {
   return (
     <div>
       <h2 className="filter-header">
-        <label>Search Movies By: &nbsp;</label>
+        <label>Search TV Shows By: &nbsp;</label>
         <select
           id="filter-options"
           value={selectedOption}

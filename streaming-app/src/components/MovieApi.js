@@ -43,7 +43,14 @@ function MovieApi() {
         setMovieResults(movies);
       } else if (selectedOption === "upcoming") {
         const movies = await tmdbUpcomingMovies(page);
-        setMovieResults(movies);
+        const today = new Date();
+        const todayDateString = today.toISOString().split("T")[0];
+
+        const upcomingMovies = movies.filter(
+          (movie) => movie.release_date > todayDateString
+        );
+
+        setMovieResults(upcomingMovies);
       } else {
         const movies = await tmdbPopMovieInfo(page);
         setMovieResults(movies);
