@@ -26,6 +26,9 @@
   border-radius: 5px;
   height: 30px;
 }
+.page-description {
+  margin-top: 1;
+}
 
 .form {
   border-radius: 5px;

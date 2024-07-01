@@ -28,3 +28,7 @@
   position: fixed;
   margin-top: 200px;
 }
+h3:hover {
+  text-shadow: 0px 0px 10px rgb(255, 255, 255), 0px 0px 10px #fff;
+  cursor: grab;
+}
