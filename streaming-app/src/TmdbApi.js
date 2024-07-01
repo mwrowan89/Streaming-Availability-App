@@ -116,6 +116,27 @@ const peopleOptions = () => ({
   },
 });
 
+const searchOptions = (title, page) => ({
+  method: "GET",
+  url: "https://api.themoviedb.org/3/search/movie",
+  params: {
+    query: title,
+    include_adult: false,
+    language: "en-US",
+    page: page,
+  },
+});
+
+export const tmdbSearchResults = async (title, page) => {
+  try {
+    const response = await axios.request(searchOptions(title, page));
+    return response.data.results;
+  } catch (error) {
+    console.error("Error fetching trending movies", error);
+    throw error;
+  }
+};
+
 export const tmdbTrendingMovies = async () => {
   try {
     const response = await axios.request(trendingMovieOptions());
