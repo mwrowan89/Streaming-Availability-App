@@ -10,7 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  width: 100vw;
+  width: 99vw;
   min-height: fit-content;
   background-color: rgba(3, 63, 106, 0.811);
 }
