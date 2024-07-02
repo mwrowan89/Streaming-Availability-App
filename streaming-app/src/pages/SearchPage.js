@@ -10,8 +10,7 @@ import { useLocation } from "react-router-dom";
 const SearchPage = () => {
   const [loading, setLoading] = useState(false);
   const [searchResults, setSearchResults] = useState(null);
-  // eslint-disable-next-line
-  const [page, setPage] = useState(1);
+  let page = 1;
 
   const location = useLocation();
   const query = new URLSearchParams(location.search).get("query");
