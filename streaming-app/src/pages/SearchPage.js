@@ -73,7 +73,12 @@ const SearchPage = () => {
               </div>
             ))
         ) : (
-          <p className="no-results"></p>
+          <h1 className="no-results">Sorry no results found</h1>
+        )}
+        {searchResults.length === 0 && (
+          <h1 className="search-no-results">
+            Sorry no results found for that title
+          </h1>
         )}
       </div>
       <Footer />

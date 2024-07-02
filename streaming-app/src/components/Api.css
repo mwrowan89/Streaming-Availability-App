@@ -27,10 +27,13 @@
 .next-prev-buttons {
   display: flex;
   border-top: 2px solid white;
+  margin-top: 3vw;
   justify-content: space-between;
+  gap: 30vw;
 }
 #next,
 #prev {
+  width: 10vw;
   color: red;
   cursor: pointer;
 }
