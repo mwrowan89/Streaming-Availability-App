@@ -26,7 +26,6 @@ const SearchPage = () => {
     setLoading(true);
     const movies = await tmdbMovieSearchResults(title, page);
     setSearchResults(movies);
-    console.table(searchResults);
     setLoading(false);
   };
 
