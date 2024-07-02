@@ -5,8 +5,7 @@ import MoviePage from "./pages/MoviePage";
 import TvPage from "./pages/TvPage";
 import PeoplePage from "./pages/PeoplePage";
 import TitleDetails from "./pages/TitleDetails";
-import SearchBar from "./components/SearchBar";
-
+import SearchPage from "./pages/SearchPage";
 const AppRoutes = () => {
   return (
     <Router>
@@ -15,7 +14,7 @@ const AppRoutes = () => {
         <Route path="/movies" element={<MoviePage />} />
         <Route path="/tv-shows" element={<TvPage />} />
         <Route path="/details" element={<TitleDetails />} />
-        <Route path="/search" element={<SearchBar />} />
+        <Route path="/search" element={<SearchPage />} />
         <Route path="/" element={<App />} />
       </Routes>
     </Router>

@@ -13,7 +13,6 @@ export default function App() {
       <Header />
       <Banner /> <br></br>
       <br />
-      <SearchBar />
       <SelectButtons />
       <Footer className="footer" />
     </div>

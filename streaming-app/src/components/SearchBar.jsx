@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./SearchBar.css";
 import { tmdbMovieSearchResults } from "../TmdbApi";
 import RatingCircle from "./RatingCircle";
@@ -10,6 +11,7 @@ const SearchBar = () => {
   const [searchResults, setSearchResults] = useState(null);
   // eslint-disable-next-line
   const [page, setPage] = useState(1);
+  const navigate = useNavigate();
 
   const results = async (title, page) => {
     setLoading(true);
@@ -19,13 +21,18 @@ const SearchBar = () => {
     setLoading(false);
   };
 
+  const handleNavigation = (path, query) => {
+    navigate(`${path}?query=${query}`);
+  };
+
   return (
     <div>
       <form
         className="form-container"
         onSubmit={(e) => {
-          results(title, page);
           e.preventDefault();
+          results(title, page);
+          handleNavigation("/search", title);
         }}
       >
         <input
@@ -41,35 +48,6 @@ const SearchBar = () => {
           Search
         </button>
       </form>
-      <div className="search-result-container">
-        {loading ? (
-          <p>Loading...</p>
-        ) : searchResults ? (
-          searchResults
-            .filter((result) => result.original_language === "en")
-            .map((result, index) => (
-              <div key={index} className="search-result-item">
-                <img
-                  className="search-result-image"
-                  onClick={() => {
-                    console.table(result);
-                  }}
-                  src={
-                    result.poster_path && result.Poster !== "N/A"
-                      ? `https://image.tmdb.org/t/p/w500${result.poster_path}`
-                      : "./NotFound.jpeg"
-                  }
-                  alt={`${result.Title} poster`}
-                />
-                <div className="search-rating-circle">
-                  <RatingCircle value={result.vote_average * 10} />
-                </div>
-              </div>
-            ))
-        ) : (
-          <p className="no-results"></p>
-        )}
-      </div>
     </div>
   );
 };
