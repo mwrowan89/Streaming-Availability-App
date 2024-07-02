@@ -22,10 +22,21 @@ const SearchPage = () => {
     }
   }, [query, page]);
 
-  const results = async (title, page) => {
+  const results = async (title) => {
     setLoading(true);
-    const movies = await tmdbMovieSearchResults(title, page);
-    setSearchResults(movies);
+    let allResults = [];
+    let page = 1;
+
+    while (allResults.length < 50) {
+      const movies = await tmdbMovieSearchResults(title, page);
+      allResults = [...allResults, ...movies];
+      if (movies.length === 0) {
+        break;
+      }
+      page += 1;
+    }
+
+    setSearchResults(allResults.slice(0, 50));
     setLoading(false);
   };
 
@@ -38,7 +49,10 @@ const SearchPage = () => {
           <p>Loading...</p>
         ) : searchResults ? (
           searchResults
-            .filter((result) => result.original_language === "en")
+            .filter(
+              (result) =>
+                result.original_language === "en" && result.poster_path
+            )
             .map((result, index) => (
               <div key={index} className="search-result-item">
                 <img
@@ -53,6 +67,7 @@ const SearchPage = () => {
                   }
                   alt={`${result.Title} poster`}
                 />
+                {!result.poster_path && <h1>{result.original_title}</h1>}
                 <div className="search-rating-circle">
                   <RatingCircle value={result.vote_average * 10} />
                 </div>

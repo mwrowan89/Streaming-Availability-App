@@ -5,8 +5,6 @@ import "./SearchBar.css";
 
 const SearchBar = () => {
   const [title, setTitle] = useState(null);
-  // eslint-disable-next-line
-  const [page, setPage] = useState(1);
   const navigate = useNavigate();
 
   const handleNavigation = (path, query) => {
