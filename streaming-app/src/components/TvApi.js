@@ -58,7 +58,7 @@ function TvApi() {
   };
 
   return (
-    <div>
+    <div className="page-container">
       <h2 className="filter-header">
         <label>Search TV Shows By: &nbsp;</label>
         <select

@@ -89,7 +89,7 @@ function MovieApi() {
   };
 
   return (
-    <div>
+    <div className="page-container">
       <h2 className="filter-header">
         <label>Search Movies By: &nbsp;</label>
         <select

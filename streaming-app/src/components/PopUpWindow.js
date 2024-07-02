@@ -6,7 +6,7 @@ Modal.setAppElement("#root");
 
 const PopUpWindow = ({ isOpen, onRequestClose, result }) => {
   return (
-    <div>
+    <div className="pop-up-window">
       <Modal
         className={"pop-up-window"}
         isOpen={isOpen}
