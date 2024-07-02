@@ -1,21 +1,22 @@
 .search-result-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
   justify-content: center;
   margin-top: 1vw;
   margin-bottom: 2vw;
+  width: 70vw;
+  padding-top: 20px;
 }
 .search-result-item {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding-top: 20px;
-  width: 20vw;
-  height: 20vw;
-  background-color: #00000040;
-  border-radius: 10px;
+  flex-wrap: wrap;
+  margin: 15px;
 }
 .search-rating-circle {
   scale: 1;
+  margin-left: -8vw;
+}
+.search-result-image {
+  height: 22vw;
+  width: 15vw;
 }

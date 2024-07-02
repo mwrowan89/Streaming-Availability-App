@@ -49,8 +49,8 @@ const SearchBar = () => {
             .filter((result) => result.original_language === "en")
             .map((result, index) => (
               <div key={index} className="search-result-item">
-                <h3>{result.Title}</h3>
                 <img
+                  className="search-result-image"
                   onClick={() => {
                     console.table(result);
                   }}
