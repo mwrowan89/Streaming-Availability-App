@@ -131,9 +131,34 @@ const movieSearchOptions = (title, page) => ({
   },
 });
 
+const tvSearchOptions = (title, page) => ({
+  method: "GET",
+  url: "https://api.themoviedb.org/3/search/tv",
+  params: {
+    query: title,
+    include_adult: false,
+    language: "en-US",
+    page: page,
+  },
+  headers: {
+    accept: "application/json",
+    Authorization: API_KEY,
+  },
+});
+
 export const tmdbMovieSearchResults = async (title, page) => {
   try {
     const response = await axios.request(movieSearchOptions(title, page));
+    return response.data.results;
+  } catch (error) {
+    console.error("Error fetching results", error);
+    throw error;
+  }
+};
+
+export const tmdbTvSearchResults = async (title, page) => {
+  try {
+    const response = await axios.request(tvSearchOptions(title, page));
     return response.data.results;
   } catch (error) {
     console.error("Error fetching results", error);

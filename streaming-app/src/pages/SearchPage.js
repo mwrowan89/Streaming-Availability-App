@@ -35,6 +35,7 @@ const SearchPage = () => {
       page += 1;
     }
 
+    console.table(searchResults);
     setSearchResults(allResults.slice(0, 50));
     setLoading(false);
   };
