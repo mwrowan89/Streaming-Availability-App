@@ -26,10 +26,12 @@
 }
 .menu-search-bar {
   position: absolute;
-
   margin: 0 35vw 0 0vw;
 }
 h3:hover {
   text-shadow: 0px 0px 10px rgb(255, 255, 255), 0px 0px 10px #fff;
   cursor: grab;
+}
+.search-page-bar {
+  margin-top: 2vw;
 }

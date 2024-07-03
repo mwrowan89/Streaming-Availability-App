@@ -42,7 +42,9 @@ const SearchPage = () => {
   return (
     <div className="App">
       <Menu />
-      <SearchBar />
+      <div className="search-page-bar">
+        <SearchBar />
+      </div>
       <div className="search-result-container">
         {loading ? (
           <p>Loading...</p>
