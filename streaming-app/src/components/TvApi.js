@@ -8,6 +8,7 @@ import {
 } from "../TmdbApi";
 import RatingCircle from "./RatingCircle";
 import PopUpWindow from "./PopUpWindow";
+import Loading from "./Loading";
 import "./Api.css";
 
 function TvApi() {
@@ -87,7 +88,9 @@ function TvApi() {
       </h2>
       <div className="tv-result-container">
         {loading ? (
-          <p>Loading...</p>
+          <p>
+            <Loading />
+          </p>
         ) : tvResults ? (
           tvResults.map((result, index) => (
             <div key={index} className="tv-result-item">
