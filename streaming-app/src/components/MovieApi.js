@@ -7,6 +7,7 @@ import {
 } from "../TmdbApi";
 import PopUpWindow from "./PopUpWindow";
 import RatingCircle from "./RatingCircle";
+import Loading from "./Loading";
 import "./Api.css";
 
 function MovieApi() {
@@ -105,7 +106,9 @@ function MovieApi() {
       </h2>
       <div className="movie-result-container">
         {loading ? (
-          <p>Loading...</p>
+          <p>
+            <Loading />
+          </p>
         ) : movieResults ? (
           movieResults
             .filter((result) => result.original_language === "en")

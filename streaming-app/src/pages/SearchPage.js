@@ -3,6 +3,7 @@ import SearchBar from "../components/SearchBar";
 import Menu from "../components/Menu";
 import Footer from "../components/Footer";
 import RatingCircle from "../components/RatingCircle";
+import Loading from "../components/Loading";
 import { tmdbMovieSearchResults, tmdbTvSearchResults } from "../TmdbApi";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
@@ -61,7 +62,9 @@ const SearchPage = () => {
       </div>
       <div className="search-result-container">
         {loading ? (
-          <p>Loading...</p>
+          <p>
+            <Loading />
+          </p>
         ) : searchResults.length > 0 ? (
           searchResults
             .filter(
