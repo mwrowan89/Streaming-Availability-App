@@ -3,7 +3,7 @@ import SearchBar from "../components/SearchBar";
 import Menu from "../components/Menu";
 import Footer from "../components/Footer";
 import RatingCircle from "../components/RatingCircle";
-import { tmdbMovieSearchResults } from "../TmdbApi";
+import { tmdbMovieSearchResults, tmdbTvSearchResults } from "../TmdbApi";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -23,20 +23,33 @@ const SearchPage = () => {
 
   const results = async (title) => {
     setLoading(true);
-    let allResults = [];
+    let allMovieResults = [];
+    let allTvResults = [];
     let page = 1;
 
-    while (allResults.length < 50) {
+    while (allMovieResults.length < 50) {
       const movies = await tmdbMovieSearchResults(title, page);
-      allResults = [...allResults, ...movies];
+      allMovieResults = [...allMovieResults, ...movies];
       if (movies.length === 0) {
         break;
       }
       page += 1;
     }
 
-    console.table(searchResults);
-    setSearchResults(allResults.slice(0, 50));
+    page = 1;
+
+    while (allTvResults.length < 50) {
+      const tvShows = await tmdbTvSearchResults(title, page);
+      allTvResults = [...allTvResults, ...tvShows];
+      if (tvShows.length === 0) {
+        break;
+      }
+      page += 1;
+    }
+    const allResults = [...allMovieResults, ...allTvResults].slice(0, 50);
+
+    console.table(allResults);
+    setSearchResults(allResults);
     setLoading(false);
   };
 
