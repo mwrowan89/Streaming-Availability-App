@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   gap: 35px;
-  margin: 0 2vw 0 53vw;
+  margin: 0 2vw 0 56vw;
   flex: 1 1 100px;
   transition: all 0.3s ease;
 }
@@ -25,8 +25,9 @@
   cursor: pointer;
 }
 .menu-search-bar {
-  position: fixed;
-  margin-top: 200px;
+  position: absolute;
+
+  margin: 0 35vw 0 0vw;
 }
 h3:hover {
   text-shadow: 0px 0px 10px rgb(255, 255, 255), 0px 0px 10px #fff;
