@@ -16,7 +16,7 @@ const PopUpWindow = ({ isOpen, onRequestClose, result }) => {
         <div>
           {result && (
             <div className="pop-up-results">
-              <h1>{result.title}</h1>
+              <h1>{result.title || result.original_name}</h1>
               <p>{result.overview}</p>
               <div className="pop-up-results-more-info">
                 <p>Release Date: {result.release_date}</p>

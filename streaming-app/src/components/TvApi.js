@@ -7,6 +7,7 @@ import {
   tmdbAiringToday,
 } from "../TmdbApi";
 import RatingCircle from "./RatingCircle";
+import PopUpWindow from "./PopUpWindow";
 import "./Api.css";
 
 function TvApi() {
@@ -14,10 +15,22 @@ function TvApi() {
   const [tvResults, setTvResults] = useState(null);
   const [page, setPage] = useState(1);
   const [selectedOption, setSelectedOption] = useState("");
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedResult, setSelectedResult] = useState(null);
 
   const handleChange = (e) => {
     setSelectedOption(e.target.value);
     setPage(1);
+  };
+
+  const openModal = (result) => {
+    setSelectedResult(result);
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+    setSelectedResult(null);
   };
 
   const filterResults = async () => {
@@ -79,7 +92,8 @@ function TvApi() {
           tvResults.map((result, index) => (
             <div key={index} className="tv-result-item">
               <img
-                onClick={() => {
+                onClick={(e) => {
+                  openModal(result);
                   console.table(result);
                 }}
                 src={
@@ -117,6 +131,11 @@ function TvApi() {
           Next Page
         </h3>
       </div>
+      <PopUpWindow
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        result={selectedResult}
+      />
     </div>
   );
 }
