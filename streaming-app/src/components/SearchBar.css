@@ -20,3 +20,7 @@
   height: 22vw;
   width: 15vw;
 }
+.no-results {
+  height: 65vh;
+  color: red;
+}

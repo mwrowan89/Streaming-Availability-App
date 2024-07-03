@@ -46,7 +46,7 @@ const SearchPage = () => {
       <div className="search-result-container">
         {loading ? (
           <p>Loading...</p>
-        ) : searchResults ? (
+        ) : searchResults.length > 0 ? (
           searchResults
             .filter(
               (result) =>
@@ -73,12 +73,7 @@ const SearchPage = () => {
               </div>
             ))
         ) : (
-          <h1 className="no-results">Sorry no results found</h1>
-        )}
-        {searchResults.length === 0 && (
-          <h1 className="search-no-results">
-            Sorry no results found for that title
-          </h1>
+          <h1 className="no-results">Sorry no results found.</h1>
         )}
       </div>
       <Footer />
