@@ -64,6 +64,7 @@ function Banner() {
                   <div className="card-back">
                     <div className="more-info">
                       <h3>{title}</h3>
+                      <br />
                       <p>{description}</p>
                     </div>
                   </div>
