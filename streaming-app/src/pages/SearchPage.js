@@ -4,6 +4,7 @@ import Menu from "../components/Menu";
 import Footer from "../components/Footer";
 import RatingCircle from "../components/RatingCircle";
 import Loading from "../components/Loading";
+import PopUpWindow from "../components/PopUpWindow";
 import { tmdbMovieSearchResults, tmdbTvSearchResults } from "../TmdbApi";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
@@ -11,10 +12,22 @@ import { useLocation } from "react-router-dom";
 const SearchPage = () => {
   const [loading, setLoading] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedResult, setSelectedResult] = useState(null);
   let page = 1;
 
   const location = useLocation();
   const query = new URLSearchParams(location.search).get("query");
+
+  const openModal = (result) => {
+    setSelectedResult(result);
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+    setSelectedResult(null);
+  };
 
   useEffect(() => {
     if (query) {
@@ -76,6 +89,7 @@ const SearchPage = () => {
                 <img
                   className="search-result-image"
                   onClick={() => {
+                    openModal(result);
                     console.table(result);
                   }}
                   src={
@@ -95,6 +109,11 @@ const SearchPage = () => {
           <h1 className="no-results">Sorry no results found.</h1>
         )}
       </div>
+      <PopUpWindow
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        result={selectedResult}
+      />
       <Footer />
     </div>
   );

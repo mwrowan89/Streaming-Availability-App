@@ -4,7 +4,7 @@
   background-color: rgba(255, 255, 255, 0);
   color: black;
   width: fit-content;
-  margin-top: 10vw;
+  margin-top: 5vw;
   margin-left: 20vw;
   border: 12px solid steelblue;
   border-radius: 5px;
@@ -21,18 +21,19 @@
   align-items: center;
   background-color: "rgba(0, 0, 0, 0.5)";
   background: linear-gradient(to right, red, blue, green);
+  color: white;
+}
+.pop-up-results h1 {
+  text-decoration: underline;
 }
 
 .pop-up-results-more-info {
   border-top: 2px solid black;
   display: flex;
   gap: 40px;
+  color: white;
 }
 .pop-up {
   width: fit-content;
   border: none;
-}
-.pop-up-background-image {
-  position: absolute;
-  opacity: 0.5;
 }
