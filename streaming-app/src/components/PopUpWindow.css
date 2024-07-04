@@ -3,7 +3,7 @@
   align-items: center;
   background-color: rgba(255, 255, 255, 0);
   color: black;
-  width: 100vw;
+  width: fit-content;
   margin-top: 10vw;
   margin-left: 20vw;
 }
@@ -24,4 +24,8 @@
   border-top: 2px solid black;
   display: flex;
   gap: 40px;
+}
+.pop-up {
+  width: fit-content;
+  border: none;
 }

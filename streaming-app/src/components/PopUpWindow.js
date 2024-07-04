@@ -6,14 +6,14 @@ Modal.setAppElement("#root");
 
 const PopUpWindow = ({ isOpen, onRequestClose, result }) => {
   return (
-    <div className="pop-up-window">
+    <div>
       <Modal
         className={"pop-up-window"}
         isOpen={isOpen}
         onRequestClose={onRequestClose}
         contentLabel="Result Details"
       >
-        <div>
+        <div className="pop-up">
           {result && (
             <div className="pop-up-results">
               <h1>{result.title || result.original_name}</h1>
