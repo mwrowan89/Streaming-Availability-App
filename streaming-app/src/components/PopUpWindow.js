@@ -16,6 +16,14 @@ const PopUpWindow = ({ isOpen, onRequestClose, result }) => {
         <div className="pop-up">
           {result && (
             <div className="pop-up-results">
+              <img
+                src={
+                  result.poster_path && result.Poster !== "N/A"
+                    ? `https://image.tmdb.org/t/p/w500${result.poster_path}`
+                    : "./NotFound.jpeg"
+                }
+                alt={`${result.Title} poster`}
+              />
               <h1>{result.title || result.original_name}</h1>
               <p>{result.overview}</p>
               <div className="pop-up-results-more-info">
