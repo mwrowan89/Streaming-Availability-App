@@ -1,0 +1,4 @@
+Genre filter
+Where title are playing
+User profiles
+More information page
