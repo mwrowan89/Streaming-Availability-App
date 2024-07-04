@@ -32,7 +32,9 @@ const PopUpWindow = ({ isOpen, onRequestClose, result }) => {
                 <p>Vote Count: {result.vote_count}</p>
               </div>
 
-              <button onClick={onRequestClose}>Close</button>
+              <h2 className="close-x" onClick={onRequestClose}>
+                X
+              </h2>
             </div>
           )}
         </div>

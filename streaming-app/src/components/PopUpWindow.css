@@ -37,3 +37,10 @@
   width: fit-content;
   border: none;
 }
+.close-x {
+  color: red;
+  position: absolute;
+  margin: 0 0 34vw 50vw;
+  scale: 2;
+  font-weight: 200;
+}
