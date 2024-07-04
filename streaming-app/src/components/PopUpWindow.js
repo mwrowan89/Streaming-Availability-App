@@ -28,7 +28,9 @@ const PopUpWindow = ({ isOpen, onRequestClose, result }) => {
               <p>{result.overview}</p>
               <div className="pop-up-results-more-info">
                 <p>Release Date: {result.release_date}</p>
-                <p>TMDB Viewer Rating: {result.vote_average}</p>
+                <p>
+                  TMDB Viewer Rating: {Math.round(result.vote_average)} / 10
+                </p>
                 <p>Vote Count: {result.vote_count}</p>
               </div>
 
