@@ -22,15 +22,6 @@ function PeopleApi() {
     fetchTvShows();
   }, []);
 
-  // const nextPage = () => {
-  //   setPage((page) => page + 1);
-  // };
-  // const prevPage = () => {
-  //   if (page > 1) {
-  //     setPage((page) => page - 1);
-  //   }
-  // };
-
   return (
     <div>
       <h1>Popular People This Week</h1>
