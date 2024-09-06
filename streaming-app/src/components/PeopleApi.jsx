@@ -6,7 +6,6 @@ import "./Api.css";
 function PeopleApi() {
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState(null);
-  // const [page, setPage] = useState(1);
 
   useEffect(() => {
     const fetchTvShows = async () => {
